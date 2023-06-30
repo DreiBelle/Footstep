@@ -11,7 +11,9 @@ class LoginController extends CI_Controller {
 
 
     public function index() {
-        $this->load->view('LoginView');
+        $data['error'] = 'Invalid username or password';
+        echo '<script></script>';
+        $this->load->view('LoginView', $data);
     }
 
 
