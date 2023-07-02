@@ -9,7 +9,7 @@
             margin: 0;
             padding: 0;
             background-color: #fff;
-            font-family: "Poppins", Arial, sans-serif;
+            font-family: "Poppins", Arial, sans-serif; /* Updated font-family */
         }
         .sidebar {
             height: 100vh;
@@ -40,7 +40,7 @@
         }
 
         .content {
-            margin-left: 290px; 
+            margin-left: 290px; /* Adjusted to match sidebar width */
             padding: 20px;
             color: #000;
         }
@@ -65,14 +65,14 @@
 
         header {
             padding: 10px;
-            height: 65px; 
+            height: 65px; /* Increased height to accommodate the logo */
             background-color: #000;
             color: #ffc107;
-            display: flex; 
-            justify-content: space-between;
+            display: flex; /* Added to enable aligning items */
+            justify-content: space-between; /* Added to align items */
             font-family: "Poppins", monospace;
             position: relative;
-            align-items: center; 
+            align-items: center; /* Center align items vertically */
         }
 
         .logo-container {
@@ -80,21 +80,21 @@
             align-items: center;
         }
         .logo-text {
-            font-size: 20px;
+            font-size: 20px; /* Increased font size */
             color: #ffc107;
             font-family: "Poppins", monospace, sans-serif;
-            margin-left: 10px;
+            margin-left: 10px; /* Adjusted margin for better alignment */
         }
 
         .user-label {
             font-size: 14px;
-            margin-right: 5px; 
-            display: flex; 
-            align-items: center;
+            margin-right: 5px; /* Adjusted margin for better alignment */
+            display: flex; /* Added to enable aligning items */
+            align-items: center; /* Added to align items */
         }
 
         .user-icon {
-            margin-right: 3px; 
+            margin-right: 3px; /* Adjusted margin for better alignment */
         }
 
         .sidebar li i {
@@ -105,10 +105,11 @@
             position: absolute;
             top: -10px;
             left: 10px;
-            height: 85px;
+            height: 85px; /* Increased height for a bigger logo */
             padding: 10px;
         }
 
+        /* Dropdown styles */
         .dropdown {
             position: relative;
         }
@@ -139,8 +140,6 @@
             background-color: #444;
         }
 
-
-
     </style>
 </head>
 <body>
@@ -149,25 +148,34 @@
         <img src="<?php echo base_url();?>assets/logo.png" alt="Logo" class="logo">
         <!-- <span class="logo-text">ZENCO FOOTSTEP</span> -->
     </div>
-    <span class="user-label"><i class="fas fa-user user-icon"></i>User: Admin</span>
+    <span class="user-label"><i class="fas fa-user user-icon"></i>User: Finance Officer</span>
 </header>
 
 <div class="sidebar">
     <div class="sidebar-header">
-        <h2>Zenco Foostep</h2>
+        <h2>Accounting Management</h2>
     </div>
     <ul>
-    <li><a href="#"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
-            <!-- <div class="section-divider"></div> -->
-            <li><a href="#"><i class="fas fa-shopping-cart"></i>Checkout Management</a></li>
-            <li><a href="#"><i class="fas fa-file-invoice"></i>Accounting Management</a></li>
-            <li><a href="#"><i class="fas fa-box"></i>Inventory Management</a></li>
-            <li><a href="#"><i class="fas fa-users"></i>Human Resource Management</a></li>
-            <!-- <div class="section-divider"></div> -->
-            <li><a href="#"><i class="fas fa-chart-bar"></i>Data Analytics</a></li>
-            <!-- <div class="section-divider"></div> -->
-            <li><a href="#"><i class="fas fa-cog"></i>Settings</a></li>
-            <!-- <div class="section-divider"></div> -->
+        <li><a href="#"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
+        <div class="section-divider"></div>
+        <li class="dropdown">
+        <a href="#"><i class="fas fa-hand-holding-usd"></i>Sales</a>
+            <div class="dropdown-content">
+                <a href="#"><i class="fas fa-plus"></i>Add Sales</a>
+                <a href="#"><i class="fas fa-eye"></i>View Sales</a>
+                <a href="#"><i class="fas fa-edit"></i>Edit Sales</a>
+                <a href="#"><i class="fas fa-trash"></i>Delete Sales</a>
+            </div>
+        </li>
+        <div class="section-divider"></div>
+
+        <li class="dropdown">
+        <a href="#"><i class="fas fa-credit-card"></i>Expenses</a>
+            <div class="dropdown-content">
+                <a href="#"><i class="fas fa-plus"></i>Add Expenses</a>
+                <a href="#"><i class="fas fa-eye"></i>View Expenses</a>
+                <a href="#"><i class="fas fa-edit"></i>Edit Expenses</a>
+                <a href="#"><i class="fas fa-trash"></i>Delete Expenses</a>
             </div>
         </li>
         <div class="section-divider"></div>
@@ -179,13 +187,8 @@
     <!-- Your main content goes here -->
     <!-- Replace this with the content you want to display in the main section -->
     <h1>Welcome to the Dashboard</h1>
+    <p>This is the main content area of your dashboard.</p>
 </div>
-
-
-
 
 </body>
 </html>
-
-
-
