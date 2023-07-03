@@ -39,6 +39,10 @@ class LoginController extends CI_Controller {
                 redirect('CheckoutController'); // Redirect to the cashier dashboard
             } elseif ($user->role === 'Finance') {
                 redirect('AccountingController'); // Redirect to the cashier dashboard
+            } elseif ($user->role === 'HR') {
+                redirect('HRController'); // Redirect to the cashier dashboard
+            } elseif ($user->role === 'Inventory') {
+                redirect('InventoryController'); // Redirect to the cashier dashboard
             }
             else {
                 $data['error'] = 'Invalid username or password';
