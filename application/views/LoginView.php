@@ -9,6 +9,7 @@
             height: 100%;
             font-family: 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
+            
         }
 
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
@@ -29,7 +30,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('assets/bg.jpg');
+            background-image: url('<?php echo base_url('assets/bg.jpg'); ?>');
             background-size: cover;
             filter: blur(8px); 
             z-index: -1;
@@ -153,7 +154,7 @@
         <div class="background-blur"></div>
         <div class="login-form">
             <div class="form-content">
-                <img class="logo" src="assets/logo.png" alt="Logo">
+                <img class="logo" src="<?php echo base_url('assets/logo.png'); ?>" alt="Logo">
                 <h2>Welcome Back!</h2>
     
                 <form method="post" action="<?php echo site_url('LoginController/authenticate'); ?>">

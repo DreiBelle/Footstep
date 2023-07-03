@@ -177,7 +177,7 @@
         <img src="<?php echo base_url();?>assets/logo.png" alt="Logo" class="logo">
         <!-- <span class="logo-text">ZENCO FOOTSTEP</span> -->
     </div>
-    <span class="user-label"><i class="fas fa-user user-icon"></i>User: Administrator</span>
+    <span class="user-label"><i class="fas fa-user user-icon"></i>User: <?php echo $user['role']; ?></span>
 </header>
 
 <div class="sidebar">

@@ -10,9 +10,7 @@ class LoginController extends CI_Controller {
     }
 
     public function index() {
-        $data['error'] = 'Invalid username or password';
-        echo '<script></script>';
-        $this->load->view('LoginView', $data);
+        $this->load->view('LoginView');
     }
 
     public function authenticate() {
@@ -44,12 +42,13 @@ class LoginController extends CI_Controller {
             } elseif ($user->role === 'Inventory') {
                 redirect('InventoryController'); // Redirect to the cashier dashboard
             }
-            else {
-                $data['error'] = 'Invalid username or password';
-                echo '<script></script>';
-                $this->load->view('LoginView', $data);
-            }
         } 
+        else {
+            // Invalid username or password
+            $data['error'] = 'Invalid username or password';
+            echo '<script>alert("' . $data['error'] . '");</script>';
+            $this->load->view('LoginView');
+        }
     }
 }
 ?>
