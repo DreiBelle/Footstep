@@ -193,11 +193,11 @@
         <li><a href="#"><i class="fas fa-chart-bar"></i>Data Analytics</a></li>
         <li><a href="#"><i class="fas fa-cog"></i>Settings</a></li>
         <div class="section-divider"></div>
-        <li><a href="#"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+        <li><a href="<?php echo site_url('Dashboard/Logout'); ?>"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
     </ul>
 </div>
 
-    <div class="content" id="imageContainer">
+    <!-- <div class="content" id="imageContainer">
          <img src="<?php echo base_url();?>assets/pc.jpg" alt="Dashboard Image">
      </div>
     <div class="about">
@@ -208,7 +208,7 @@
     
         <h2>Vision</h2>
         <p>We Believe in EXCELLENCE as the constant call of our hearts, minds and strength in the attainment of needed PROFIT AND GROWTH THROUGH QUALITY AND LOYALTY</p>
-    </div>
+    </div> -->
         <img class="picFootstep" src="<?php echo base_url();?>assets/logo.png" alt="Logo" class="logo">
 
 <script>

@@ -18,4 +18,8 @@ class Dashboard extends CI_Controller {
             redirect('LoginController');
         }
     }
+    public function Logout() {
+        $this->session->unset_userdata('user');
+        redirect('LoginController');
+    }
 }

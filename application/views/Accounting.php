@@ -179,7 +179,7 @@
             </div>
         </li>
         <div class="section-divider"></div>
-        <li><a href="#"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+        <li><a href="<?php echo site_url('Dashboard/Logout'); ?>"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
     </ul>
 </div>
 
