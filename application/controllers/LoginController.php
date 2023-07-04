@@ -30,18 +30,19 @@ class LoginController extends CI_Controller {
 
             $this->session->set_userdata('user', $userData);
          
-            // Redirect based on the user role
-            if ($user->role === 'Administrator') {
-                redirect('Dashboard'); // Redirect to the admin dashboard
-            } elseif ($user->role === 'Cashier') {
-                redirect('CheckoutController'); // Redirect to the cashier dashboard
-            } elseif ($user->role === 'Finance') {
-                redirect('AccountingController'); // Redirect to the cashier dashboard
-            } elseif ($user->role === 'HR') {
-                redirect('HRController'); // Redirect to the cashier dashboard
-            } elseif ($user->role === 'Inventory') {
-                redirect('InventoryController'); // Redirect to the cashier dashboard
-            }
+            // // Redirect based on the user role
+            // if ($user->role === 'Administrator') {
+            //     redirect('Dashboard'); // Redirect to the admin dashboard
+            // } elseif ($user->role === 'Cashier') {
+            //     redirect('CheckoutController'); // Redirect to the cashier dashboard
+            // } elseif ($user->role === 'Finance') {
+            //     redirect('AccountingController'); // Redirect to the cashier dashboard
+            // } elseif ($user->role === 'HR') {
+            //     redirect('HRController'); // Redirect to the cashier dashboard
+            // } elseif ($user->role === 'Inventory') {
+            //     redirect('InventoryController'); // Redirect to the cashier dashboard
+            // }
+            redirect('Dashboard');
         } 
         else {
             // Invalid username or password

@@ -1,183 +1,140 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>CheckoutManagement</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #fff;
-            font-family: "Poppins", Arial, sans-serif; /* Updated font-family */
-        }
-        .sidebar {
-            height: 100vh;
-            width: 290px;
-            background-color: #000;
-            color: #ffc107;
-            position: fixed;
+        #contents {
+            margin-left: 300px;
+            padding-top: 80px;
         }
 
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        table {
+            width: 100%;
+            border-collapse: collapse;
         }
 
-        .sidebar li {
-            padding: 11px;
+        th, td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
         }
 
-        .sidebar li a {
-            color: #ffc107;
-            text-decoration: none;
-            font-family: "Poppins", monospace;
+        tr:hover {
+            background-color: #f2f2f2;
         }
 
-        .sidebar li a:hover {
-            color: #fff;
+        .add-btn {
+            margin-bottom: 10px;
         }
 
-        .content {
-            margin-left: 290px; /* Adjusted to match sidebar width */
-            padding: 20px;
-            color: #000;
+        .search-form {
+            margin-bottom: 10px;
         }
-
-        .section-divider {
-            margin-top: 5px;
-            border-top: 1px solid #ffc107;
-        }
-
-        .sidebar-header {
-            padding: 20px;
-            background-color: #ffc107;
-            text-align: center;
-        }
-
-        .sidebar-header h2 {
-            margin: 0;
-            font-size: 20px;
-            color: #000;
-            font-family: "Poppins", monospace;
-        }
-
-        header {
-            padding: 10px;
-            height: 65px; /* Increased height to accommodate the logo */
-            background-color: #000;
-            color: #ffc107;
-            display: flex; /* Added to enable aligning items */
-            justify-content: space-between; /* Added to align items */
-            font-family: "Poppins", monospace;
-            position: relative;
-            align-items: center; /* Center align items vertically */
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
-        .logo-text {
-            font-size: 20px; /* Increased font size */
-            color: #ffc107;
-            font-family: "Poppins", monospace, sans-serif;
-            margin-left: 10px; /* Adjusted margin for better alignment */
-        }
-
-        .user-label {
-            font-size: 14px;
-            margin-right: 5px; /* Adjusted margin for better alignment */
-            display: flex; /* Added to enable aligning items */
-            align-items: center; /* Added to align items */
-        }
-
-        .user-icon {
-            margin-right: 3px; /* Adjusted margin for better alignment */
-        }
-
-        .sidebar li i {
-            margin-right: 10px;
-        }
-
-        .logo {
-            position: absolute;
-            top: -10px;
-            left: 10px;
-            height: 85px; /* Increased height for a bigger logo */
-            padding: 10px;
-        }
-
-        /* Dropdown styles */
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #333;
-            min-width: 280px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .dropdown-content a {
-            color: #ffc107;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            font-size: 14px;
-            text-align: left;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #444;
-        }
-
     </style>
 </head>
+
 <body>
-<header>
-    <div class="logo-container">
-        <img src="<?php echo base_url();?>assets/logo.png" alt="Logo" class="logo">
-        <!-- <span class="logo-text">ZENCO FOOTSTEP</span> -->
+    <?php $this->load->view($navbar) ?>
+    <div id="contents">
+        <div class="add-btn">
+            <button onclick="showAddForm()">Add</button>
+        </div>
+
+        <div class="search-form">
+            <label for="search-id">Search by ID:</label>
+            <input type="text" id="search-id" name="search-id">
+            <button onclick="searchById()">Search</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>John Doe</td>
+                    <td>john@example.com</td>
+                    <td>
+                        <button onclick="showEditForm(1)">Edit</button>
+                        <button onclick="deleteRecord(1)">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Jane Smith</td>
+                    <td>jane@example.com</td>
+                    <td>
+                        <button onclick="showEditForm(2)">Edit</button>
+                        <button onclick="deleteRecord(2)">Delete</button>
+                    </td>
+                </tr>
+                <!-- Add more rows here -->
+            </tbody>
+        </table>
+
+        <!-- Add Form - Hidden by default -->
+        <div id="add-form" style="display: none;">
+            <h3>Add Record</h3>
+            <!-- Add form fields here -->
+            <button onclick="addRecord()">Save</button>
+            <button onclick="hideAddForm()">Cancel</button>
+        </div>
+
+        <!-- Edit Form - Hidden by default -->
+        <div id="edit-form" style="display: none;">
+            <h3>Edit Record</h3>
+            <!-- Edit form fields here -->
+            <button onclick="updateRecord()">Update</button>
+            <button onclick="hideEditForm()">Cancel</button>
+        </div>
     </div>
-    <span class="user-label"><i class="fas fa-user user-icon"></i>User: <?php echo $user['role']; ?></span>
-</header>
 
-<div class="sidebar">
-    <div class="sidebar-header">
-        <h2>Checkout Management</h2>
-    </div>
-    <ul>
-        <li><a href="#"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
-        <div class="section-divider"></div>
-        <li class="dropdown">
-            <a href="#"><i class="fas fa-money-bill"></i>Payments</a>
-            <div class="dropdown-content">
-                <a href="#"><i class="fas fa-plus"></i>Add Payment</a>
-                <a href="#"><i class="fas fa-eye"></i>View Payment</a>
-                <a href="#"><i class="fas fa-edit"></i>Edit Payment</a>
-                <a href="#"><i class="fas fa-trash"></i>Delete Payment</a>
-            </div>
-        </li>
-        <div class="section-divider"></div>
-        <li><a href="<?php echo site_url('Dashboard/Logout'); ?>"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
-    </ul>
-</div>
+    <script>
+        function showAddForm() {
+            var addForm = document.getElementById('add-form');
+            addForm.style.display = 'block';
+        }
 
-<div class="content">
-    <!-- Your main content goes here -->
-    <!-- Replace this with the content you want to display in the main section -->
-    <h1>Welcome to the Dashboard</h1>
-    <p>This is the main content area of your dashboard.</p>
-</div>
+        function hideAddForm() {
+            var addForm = document.getElementById('add-form');
+            addForm.style.display = 'none';
+        }
 
+        function showEditForm(id) {
+            var editForm = document.getElementById('edit-form');
+            // Populate the edit form fields based on the record with the given ID
+            editForm.style.display = 'block';
+        }
+
+        function hideEditForm() {
+            var editForm = document.getElementById('edit-form');
+            editForm.style.display = 'none';
+        }
+
+        function addRecord() {
+            // Code to add the record to the table
+            hideAddForm();
+        }
+
+        function updateRecord() {
+            // Code to update the record in the table
+            hideEditForm();
+        }
+
+        function deleteRecord(id) {
+            // Code to delete the record with the given ID from the table
+        }
+
+        function searchById() {
+            var searchId = document.getElementById('search-id').value;
+            // Code to search the table for records with the given ID and display the results
+        }
+    </script>
 </body>
+
 </html>

@@ -8,14 +8,19 @@ class CheckoutController extends CI_Controller {
         // Load any necessary models or helpers
     }
 
+    
+
     public function index() {
         // Load the CheckoutManagement view
         $user = $this->session->userdata('user');
-        if ($user) {
+        if ($user['role'] == "Administrator") {
             $data['user'] = $user;
+            $data['navbar'] = "navbar/AdminNavbar";
             $this->load->view('CheckoutManagement', $data);
-        } else {
-            redirect('LoginController');
+        } else if ($user['role'] == "Cashier") {
+            $data['user'] = $user;
+            $data['navbar'] = "navbar/CashierNavbar";
+            $this->load->view('Dashboard', $data);
         }
     }
 }
