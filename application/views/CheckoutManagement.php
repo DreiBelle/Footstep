@@ -58,40 +58,49 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .search-form button {
-            background: linear-gradient(45deg, #f1c40f, #e0b832);
-            /* Gradient background for the "Search" button */
-            color: black;
+        .search-form {
+            display: flex;
+            align-items: center;
+            height: 50px;
+            margin-left: 550px;
+        }
+
+        .search-input-container {
+            position: relative;
+        }
+
+        .search-input {
+            width: 300px;
+            padding: 10px;
             border: 2px solid #f1c40f;
-            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            outline: none;
+        }
+
+        .search-input::placeholder {
+            color: #aaa;
+        }
+
+        .search-button {
+            background: #f1c40f;
+            color: black;
+            border: none;
+            padding: 10px 15px;
             border-radius: 4px;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+            font-size: 13px;
         }
 
-        .add-btn button:hover,
-        .search-form button:hover {
-            transform: translateY(-2px);
-            /* Lift the button slightly on hover */
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-            /* Add a subtle shadow on hover */
+        .search-button:hover {
+            background-color: #e0b832;
         }
 
-        .search-form {
-            display: inline-block;
-            margin-bottom: 10px;
-            margin-left: 130px;
+        .fa-search {
+            margin-right: 5px;
         }
 
-        input[type="text"],
-        button[type="submit"],
-        button[type="button"] {
-            margin-bottom: 5px;
-            padding: 6px 12px;
-            border: 1px solid black;
-            border-radius: 4px;
-        }
 
         table {
             background-color: #f9f9f9;
@@ -146,8 +155,7 @@
             background-color: green;
             border: 1px solid #888;
             color: white;
-            3
-            display: flex;
+            3 display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
@@ -158,7 +166,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;  
+            height: 100vh;
         }
 
         .form-container {
@@ -235,13 +243,21 @@
     <?php $this->load->view($navbar) ?>
     <div id="contents">
         <div class="search-form">
-            <label for="search-id">Search by ID:</label>
-            <input type="text" id="search-id" name="search-id">
-            <button onclick="searchById()">Search</button>
+            <form method="get" action="<?php echo site_url('CheckoutController/viewCheckout'); ?>">
+                <div class="search-input-container">
+                    <input type="text" name="asd" placeholder="Search by ID" class="search-input">
+                    <button type="submit" class="search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </form>
         </div>
 
         <div class="add-btn">
-            <button id="AddCheckoutbtn">Add Payment</button>
+            <button id="AddCheckoutbtn">
+                <i class="fas fa-plus-circle"></i> Add Payment
+            </button>
+
 
             <div id="AddCheckoutModal" class="modal">
                 <div class="flex-center">
@@ -317,10 +333,13 @@
                                     '<?php echo $data['Total_payment']; ?>',
                                     '<?php echo $data['Payment_method']; ?>',
                                     '<?php echo $data['Payment_date']; ?>'
-                                )">Edit</button>
-
-                                <button onclick="clicks()" class="action-btn edit-btn" >Delete
+                                )"><i class="fas fa-edit"></i> Edit
                                 </button>
+
+                                <button onclick="clicks()" class="action-btn edit-btn">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </button>
+
 
                             </td>
                         </tr>
@@ -330,24 +349,44 @@
 
             <!-- EdIt -->
             <div id="EditModal" class="modal">
-                <div id="EditModalContent" class="modal-content">
-                    <span class="close1">&times;</span>
+                <div style="margin-right: 900px; margin-top: -300px; margin-left: -80px;">
+                    <div id="EditModalContent" class="modal-content">
+                        <span class="close1" style="color: black; cursor: pointer; font-size: 24px;"
+                            onclick="closeForm()">&times;</span>
 
-                    <form method="post" action="<?php echo site_url('/CheckoutController/EditCheckout'); ?>">
-                        <input type="text" id=IdInput name=IdInput readonly>
-                        <input type="text" id=ProductInput name=ProductInput>
-                        <input type="text" id=DescriptionInput name=DescriptionInput>
-                        <input type="text" id=TotalPaymentInput name=TotalPaymentInput>
-                        <input type="text" id=PaymentMethodInput name=PaymentMethodInput>
-                        <input type="text" id=PaymentDateInput name=PaymentDateInput>
-                        <input type="submit" value="Update">
-                    </form>
+                        <form method="post" action="<?php echo site_url('CheckoutController/EditCheckout'); ?>"
+                            class="form-container">
+                            <h2>Update Payment</h2>
+                            <label for="PaymentId"><i class="fas fa-id-badge"></i> Payment ID:</label>
+                            <input type="text" name="IdInput" id="IdInput" required>
+                            <label for="Product"><i class="fas fa-box"></i> Product:</label>
+                            <input type="text" name="ProductInput" id="ProductInput" required>
+                            <label for="Description"><i class="fas fa-file-alt"></i> Description:</label>
+                            <input type="text" name="DescriptionInput" id="DescriptionInput" required>
+                            <label for="TotalPayment"><i class="fas fa-dollar-sign"></i> Total Payment:</label>
+                            <input type="text" name="TotalPaymentInput" id="TotalPaymentInput" required>
+                            <label for="PaymentMethod"><i class="fas fa-credit-card"></i> Payment Method:</label>
+                            <select name="PaymentMethodInput" id="PaymentMethodInput" required>
+                                <option>Please select</option>
+                                <option value="Cash">Cash</option>
+                                <option value="Credit Card">Credit Card</option>
+                                <option value="Debit Card">Debit Card</option>
+                                <option value="PayPal">PayPal</option>
+                                <!-- Add more payment method options as needed -->
+                            </select>
+                            <label for="PaymentDate"><i class="fas fa-calendar-alt"></i> Payment Date:</label>
+                            <input type="date" name="PaymentDateInput" id="PaymentDateInput" required>
+                            <div>
+                                <input type="submit" value="SAVE">
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
 
             <script>
-                function clicks(){
-                    window.location.href= "<?php echo site_url("CheckoutController/deleteRecord/".$data["Payment_id"])?>";
+                function clicks() {
+                    window.location.href = "<?php echo site_url("CheckoutController/deleteRecord/" . $data["Payment_id"]) ?>";
                 }
                 document.addEventListener("DOMContentLoaded", function () {
                     var button = document.getElementById("AddCheckoutbtn");
@@ -392,6 +431,10 @@
 
                 function hideForm() {
                     document.getElementById('form').style.display = 'none';
+                }
+                function closeForm() {
+                    var modal = document.getElementById("EditModal");
+                    modal.style.display = "none";
                 }
 
                 function searchById() {

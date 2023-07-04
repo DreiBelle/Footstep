@@ -14,10 +14,11 @@
         .sidebar {
             height: 100vh;
             width: 290px;
-            background-color: #000;
+            background-color: black;
             color: #ffc107;
             position: fixed;
             margin-top: -35px;
+            z-index: 2;
         }
 
         .sidebar ul {
@@ -68,10 +69,10 @@
         }
 
         header {
-            padding: 10px;
+            /* margin-left: 250px; */
             height: 65px; 
             width: 100vw;
-            background-color: #000;
+            background-color: black;
             color: #ffc107;
             display: flex; 
             justify-content: space-between;
@@ -175,8 +176,7 @@
 <body>
 <header>
     <div class="logo-container">
-        <img src="<?php echo base_url();?>assets/logo.png" alt="Logo" class="logo">
-        <!-- <span class="logo-text">ZENCO FOOTSTEP</span> -->
+ 
     </div>
     <span class="user-label"><i class="fas fa-user user-icon"></i>User: <?php echo $user['role']; ?></span>
 </header>
@@ -204,16 +204,14 @@
     </ul>
 </div>
 
-<img class="picFootstep" src="<?php echo base_url();?>assets/logo.png" alt="Logo" class="logo">
+<img style="z-index: 3;" class="picFootstep" src="<?php echo base_url();?>assets/logo.png" alt="Logo" class="logo">
+
 <script>
-    // Function to display the image when the page loads
+
     function showDashboardImage() {
         var imageContainer = document.getElementById('imageContainer');
-        // Show the image container
         imageContainer.style.display = 'flex';
     }
-
-    // Call the function to show the image on page load
     showDashboardImage();
 </script>
 

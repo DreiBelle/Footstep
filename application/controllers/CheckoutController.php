@@ -15,10 +15,35 @@ class CheckoutController extends CI_Controller
     {
         // Load the CheckoutManagement view
         $user = $this->session->userdata('user');
+
         if ($user['role'] == "Administrator") {
             $data['user'] = $user;
             $data['check'] = $this->Checkout_Model->getCheckout();
             $data['navbar'] = "navbar/AdminNavbar";
+            $this->load->view('CheckoutManagement', $data);
+        } else if ($user['role'] == "Cashier") {
+            $data['user'] = $user;
+            $data['navbar'] = "navbar/CashierNavbar";
+            $this->load->view('Dashboard', $data);
+        }
+    }
+
+    public function viewCheckout()
+    {
+        // Load the CheckoutManagement view
+        $user = $this->session->userdata('user');
+        $searchid = $this->input->get('asd');
+
+        if ($user['role'] == "Administrator") {
+            $data['user'] = $user;
+         
+            $data['navbar'] = "navbar/AdminNavbar";
+            if(!empty($searchid)){
+                $data['check'] = $this->Checkout_Model->Search($searchid);
+            }
+            else{
+                $data['check'] = $this->Checkout_Model->getCheckout();
+            }
             $this->load->view('CheckoutManagement', $data);
         } else if ($user['role'] == "Cashier") {
             $data['user'] = $user;
@@ -51,35 +76,36 @@ class CheckoutController extends CI_Controller
     }
 
 
-public function EditCheckout() {
-    $PaymentId = $this->input->post('IdInput');
-    $Product = $this->input->post('ProductInput');
-    $Description = $this->input->post('DescriptionInput');
-    $TotalPayment = $this->input->post('TotalPaymentInput');
-    $PaymentMethod = $this->input->post('PaymentMethodInput');
-    $PaymentDate = $this->input->post('PaymentDateInput');
+    public function EditCheckout()
+    {
+        $PaymentId = $this->input->post('IdInput');
+        $Product = $this->input->post('ProductInput');
+        $Description = $this->input->post('DescriptionInput');
+        $TotalPayment = $this->input->post('TotalPaymentInput');
+        $PaymentMethod = $this->input->post('PaymentMethodInput');
+        $PaymentDate = $this->input->post('PaymentDateInput');
 
-    $data = array(
-        'Payment_id' => $PaymentId,
-        'Product' => $Product,
-        'Description' => $Description,
-        'Total_payment' => $TotalPayment,
-        'Payment_method' => $PaymentMethod,
-        'Payment_date' => $PaymentDate,
-    );
+        $data = array(
+            'Payment_id' => $PaymentId,
+            'Product' => $Product,
+            'Description' => $Description,
+            'Total_payment' => $TotalPayment,
+            'Payment_method' => $PaymentMethod,
+            'Payment_date' => $PaymentDate,
+        );
 
-    $this->Checkout_Model->EditCheckout($PaymentId, $data);
+        $this->Checkout_Model->EditCheckout($PaymentId, $data);
 
-    redirect('CheckoutController');
-}
+        redirect('CheckoutController');
+    }
 
 
 
-public function deleteRecord($id)
-{
-    $this->Checkout_Model->deleteRecords($id);
-    redirect('CheckoutController');
-}
+    public function deleteRecord($id)
+    {
+        $this->Checkout_Model->deleteRecords($id);
+        redirect('CheckoutController');
+    }
 
     public function DeleteCheckout()
     {
@@ -92,7 +118,7 @@ public function deleteRecord($id)
                 $response = array('success' => false, 'message' => 'Failed to delete the record.');
                 echo json_encode($response);
             }
-        } else {    
+        } else {
             show_error('Invalid request.', 400);
         }
     }

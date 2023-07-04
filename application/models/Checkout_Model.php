@@ -34,6 +34,11 @@ class Checkout_Model extends CI_Model {
         
         return $this->db->affected_rows() > 0;
     }
+
+    public function Search($id){
+        $this->db->like('Payment_id', $id);
+        return $this->db->get('payment')->result_array();
+    }
 }
     
 ?>
