@@ -29,6 +29,10 @@
         .search-form {
             margin-bottom: 10px;
         }
+
+        .form-container {
+            display: none;
+        }
     </style>
 </head>
 
@@ -36,7 +40,7 @@
     <?php $this->load->view($navbar) ?>
     <div id="contents">
         <div class="add-btn">
-            <button onclick="showAddForm()">Add</button>
+            <button onclick="showForm('add-form')">Add</button>
         </div>
 
         <div class="search-form">
@@ -49,92 +53,92 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
+                    <th>Product</th>
+                    <th>Description</th>
+                    <th>Total Payment</th>
+                    <th>Payment Method</th>
+                    <th>Payment Date</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>John Doe</td>
-                    <td>john@example.com</td>
-                    <td>
-                        <button onclick="showEditForm(1)">Edit</button>
-                        <button onclick="deleteRecord(1)">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Jane Smith</td>
-                    <td>jane@example.com</td>
-                    <td>
-                        <button onclick="showEditForm(2)">Edit</button>
-                        <button onclick="deleteRecord(2)">Delete</button>
-                    </td>
-                </tr>
-                <!-- Add more rows here -->
+                <?php foreach ($check as $data) { ?>
+                    <tr>
+                        <td><?php echo $data['Payment_id']; ?></td>
+                        <td><?php echo $data['Product']; ?></td>
+                        <td><?php echo $data['Description']; ?></td>
+                        <td><?php echo $data['Total_payment']; ?></td>
+                        <td><?php echo $data['Payment_method']; ?></td>
+                        <td><?php echo $data['Payment_date']; ?></td>
+                        <td>
+                            <button onclick="showForm('edit-form', <?php echo $data['Payment_id']; ?>)">Edit</button>
+                            <button onclick="deleteRecord(<?php echo $data['Payment_id']; ?>)">Delete</button>
+                        </td>
+                    </tr>
+                <?php } ?>
             </tbody>
         </table>
 
-        <!-- Add Form - Hidden by default -->
-        <div id="add-form" style="display: none;">
-            <h3>Add Record</h3>
-            <!-- Add form fields here -->
-            <button onclick="addRecord()">Save</button>
-            <button onclick="hideAddForm()">Cancel</button>
+        <!-- Add/Edit Form -->
+        <div class="form-container" id="form">
+            <!-- The form content will be filled dynamically based on whether it's an add or edit form -->
         </div>
 
-        <!-- Edit Form - Hidden by default -->
-        <div id="edit-form" style="display: none;">
-            <h3>Edit Record</h3>
-            <!-- Edit form fields here -->
-            <button onclick="updateRecord()">Update</button>
-            <button onclick="hideEditForm()">Cancel</button>
-        </div>
+        <script>
+            function showForm(formId, id = null) {
+                var formContainer = document.getElementById('form');
+                var formContent = '';
+
+                if (formId === 'add-form') {
+                    formContent += '<h3>Add Record</h3>';
+                    formContent += '<form action="<?php echo base_url('CheckoutController/addCheckout'); ?>" method="post">';
+                    formContent += '<label for="product">Product:</label>';
+                    formContent += '<input type="text" name="Product" required>';
+                    // Add other input fields for the form
+                    formContent += '<button type="submit">Add</button>';
+                } else if (formId === 'edit-form') {
+                    // Get the data of the record with the given ID from the PHP array
+                    var record = <?php echo json_encode($checkoutData); ?>;
+                    var index = record.findIndex(item => item.Payment_id === id);
+
+                    if (index !== -1) {
+                        var data = record[index];
+
+                        formContent += '<h3>Edit Record</h3>';
+                        formContent += '<form action="<?php echo base_url('CheckoutController/updateCheckout'); ?>" method="post">';
+                        formContent += '<input type="hidden" name="Payment_id" value="' + data.Payment_id + '">';
+                        formContent += '<label for="product">Product:</label>';
+                        formContent += '<input type="text" name="Product" value="' + data.Product + '" required>';
+                        // Add other input fields for the form
+                        formContent += '<button type="submit">Update</button>';
+                    } else {
+                        console.log('Record not found');
+                        return;
+                    }
+                }
+
+                formContent += '<button type="button" onclick="hideForm()">Cancel</button>';
+                formContent += '</form>';
+                formContainer.innerHTML = formContent;
+                formContainer.style.display = 'block';
+            }
+
+            function hideForm() {
+                document.getElementById('form').style.display = 'none';
+            }
+
+            function deleteRecord(id) {
+                // Code to delete the record with the given ID
+                // You can use AJAX to perform the delete operation without reloading the page
+                console.log('Delete record with ID:', id);
+            }
+
+            function searchById() {
+                var searchId = document.getElementById('search-id').value;
+                // Code to search the table for records with the given ID and display the results
+                console.log('Search by ID:', searchId);
+            }
+        </script>
     </div>
-
-    <script>
-        function showAddForm() {
-            var addForm = document.getElementById('add-form');
-            addForm.style.display = 'block';
-        }
-
-        function hideAddForm() {
-            var addForm = document.getElementById('add-form');
-            addForm.style.display = 'none';
-        }
-
-        function showEditForm(id) {
-            var editForm = document.getElementById('edit-form');
-            // Populate the edit form fields based on the record with the given ID
-            editForm.style.display = 'block';
-        }
-
-        function hideEditForm() {
-            var editForm = document.getElementById('edit-form');
-            editForm.style.display = 'none';
-        }
-
-        function addRecord() {
-            // Code to add the record to the table
-            hideAddForm();
-        }
-
-        function updateRecord() {
-            // Code to update the record in the table
-            hideEditForm();
-        }
-
-        function deleteRecord(id) {
-            // Code to delete the record with the given ID from the table
-        }
-
-        function searchById() {
-            var searchId = document.getElementById('search-id').value;
-            // Code to search the table for records with the given ID and display the results
-        }
-    </script>
 </body>
-
 </html>
