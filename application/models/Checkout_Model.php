@@ -25,7 +25,8 @@ class Checkout_Model extends CI_Model {
 
 
     public function deleteCheckouttt($id) {
-        $this->db->delete('payment', array('Payment_id' => $id));
+        $this->db->where('Payment_id', $id);
+        return $this->db->delete('payments');
     }
 }
 ?>

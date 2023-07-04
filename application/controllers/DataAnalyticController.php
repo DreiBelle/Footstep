@@ -1,4 +1,4 @@
-<!-- <?php
+<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class InventoryController extends CI_Controller {
@@ -21,4 +21,4 @@ class InventoryController extends CI_Controller {
             $this->load->view('Dashboard', $data);
         }
     }
-} -->
+} 

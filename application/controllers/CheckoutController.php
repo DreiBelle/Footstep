@@ -1,15 +1,18 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class CheckoutController extends CI_Controller {
-    public function __construct() {
+class CheckoutController extends CI_Controller
+{
+    public function __construct()
+    {
         parent::__construct();
         $this->load->library('session');
         $this->load->model('Checkout_Model');
         // Load any necessary models or helpers
     }
 
-    public function index() {
+    public function index()
+    {
         // Load the CheckoutManagement view
         $user = $this->session->userdata('user');
         if ($user['role'] == "Administrator") {
@@ -36,8 +39,8 @@ class CheckoutController extends CI_Controller {
         $data = array(
             'Payment_id' => $PaymentId,
             'Product' => $Product,
-            'Description' => $Description ,
-            'Total_payment' =>  $TotalPayment,
+            'Description' => $Description,
+            'Total_payment' => $TotalPayment,
             'Payment_method' => $PaymentMethod,
             'Payment_date' => $PaymentDate,
         );
@@ -49,25 +52,17 @@ class CheckoutController extends CI_Controller {
 
     public function DeleteCheckout()
     {
-        $PaymentId = $this->input->post('PaymentId');
-        $Product = $this->input->post('Product');
-        $Description = $this->input->post('Description');
-        $TotalPayment = $this->input->post('TotalPayment');
-        $PaymentMethod = $this->input->post('PaymentMethod');
-        $PaymentDate = $this->input->post('PaymentDate');
-
-        $data = array(
-            'Payment_id' => $PaymentId,
-            'Product' => $Product,
-            'Description' => $Description ,
-            'Total_payment' =>  $TotalPayment,
-            'Payment_method' => $PaymentMethod,
-            'Payment_date' => $PaymentDate,
-        );
-
-        $this->Checkout_Model->DeleteCheckouttt($data);
-
-        redirect('CheckoutController');
+        if ($this->input->is_ajax_request()) {
+            $paymentId = $this->input->post('paymentId');
+            if ($this->Checkout_Model->deleteCheckouttt($PaymentId)) {
+                $response = array('success' => true);
+                echo json_encode($response);
+            } else {
+                $response = array('success' => false, 'message' => 'Failed to delete the record.');
+                echo json_encode($response);
+            }
+        } else {    
+            show_error('Invalid request.', 400);
+        }
     }
-
 }
