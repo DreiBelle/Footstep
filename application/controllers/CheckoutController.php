@@ -50,7 +50,6 @@ class CheckoutController extends CI_Controller
         redirect('CheckoutController');
     }
 
-<<<<<<< HEAD
 
 public function EditCheckout() {
     $PaymentId = $this->input->post('IdInput');
@@ -82,7 +81,6 @@ public function deleteRecord($id)
     redirect('CheckoutController');
 }
 
-=======
     public function DeleteCheckout()
     {
         if ($this->input->is_ajax_request()) {
@@ -98,5 +96,4 @@ public function deleteRecord($id)
             show_error('Invalid request.', 400);
         }
     }
->>>>>>> 0fe21d09c150e1d46a0f0cc15fdeeb476e2e7d74
 }

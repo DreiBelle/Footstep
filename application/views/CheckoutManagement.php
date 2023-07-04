@@ -399,46 +399,6 @@
                     console.log('Search by ID:', searchId);
                 }
 
-<<<<<<< HEAD
-=======
-                // function deleteRecord(PaymentId) {
-                //     $.ajax({
-                //         type: 'POST',
-                //         url: '<?php echo base_url("CheckoutController/DeleteCheckout"); ?>',
-                //         data: { PaymentId: PaymentId },
-                //         success: function (response) {
-                //             if (response.success) {
-                //                 console.log('Record deleted successfully!');
-                //             } else {
-                //                 console.error('Failed to delete the record.');
-                //             }
-                //         },
-                //         error: function (xhr, status, error) {
-                //             console.error('Error occurred during the deletion:', error);
-                //         }
-                //     });
-                // }
-
-                function deleteRecord(PaymentId) {
-                    $.ajax({
-                        type: 'POST',
-                        url: '<?php echo base_url("CheckoutController/DeleteCheckout"); ?>',
-                        data: { PaymentId: PaymentId },
-                        dataType: 'json', // Add this line to specify the expected response data type
-                        success: function (response) {
-                            console.log('Response:', response); // Log the response to the console for debugging
-                            if (response.success) {
-                                console.log('Record deleted successfully!');
-                            } else {
-                                console.error('Failed to delete the record.');
-                            }
-                        },
-                        error: function (xhr, status, error) {
-                            console.error('Error occurred during the deletion:', error);
-                        }
-                    });
-                }
->>>>>>> 0fe21d09c150e1d46a0f0cc15fdeeb476e2e7d74
             </script>
         </div>
 </body>
