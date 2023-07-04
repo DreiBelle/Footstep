@@ -23,7 +23,8 @@
             border-collapse: collapse;
         }
 
-        th,td {
+        th,
+        td {
             padding: 8px;
             border-bottom: 1px solid #ddd;
             color: black;
@@ -312,17 +313,45 @@
                                 <?php echo $data['Payment_date']; ?>
                             </td>
                             <td>
-                                <button class="action-btn edit-btn"
-                                    onclick="showForm('edit-form', <?php echo $data['Payment_id']; ?>)">Edit</button>
-                                <button class="action-btn delete-btn"
-                                    onclick="deleteRecord(<?php echo $data['Payment_id']; ?>)">Delete</button>
+                                <button class="action-btn edit-btn" onclick="showForm(
+                                    '<?php echo $data['Payment_id']; ?>',
+                                    '<?php echo $data['Product']; ?>',
+                                    '<?php echo $data['Description']; ?>',
+                                    '<?php echo $data['Total_payment']; ?>',
+                                    '<?php echo $data['Payment_method']; ?>',
+                                    '<?php echo $data['Payment_date']; ?>'
+                                )">Edit</button>
+
+                                <button onclick="clicks()" class="action-btn edit-btn" >Delete
+                                </button>
+
                             </td>
                         </tr>
                     <?php } ?>
                 </tbody>
             </table>
 
+            <!-- EdIt -->
+            <div id="EditModal" class="modal">
+                <div id="EditModalContent" class="modal-content">
+                    <span class="close1">&times;</span>
+
+                    <form method="post" action="<?php echo site_url('/CheckoutController/EditCheckout'); ?>">
+                        <input type="text" id=IdInput name=IdInput readonly>
+                        <input type="text" id=ProductInput name=ProductInput>
+                        <input type="text" id=DescriptionInput name=DescriptionInput>
+                        <input type="text" id=TotalPaymentInput name=TotalPaymentInput>
+                        <input type="text" id=PaymentMethodInput name=PaymentMethodInput>
+                        <input type="text" id=PaymentDateInput name=PaymentDateInput>
+                        <input type="submit" value="Update">
+                    </form>
+                </div>
+            </div>
+
             <script>
+                function clicks(){
+                    window.location.href= "<?php echo site_url("CheckoutController/deleteRecord/".$data["Payment_id"])?>";
+                }
                 document.addEventListener("DOMContentLoaded", function () {
                     var button = document.getElementById("AddCheckoutbtn");
                     var modal = document.getElementById("AddCheckoutModal");
@@ -343,36 +372,36 @@
                     };
                 })
 
+                function showForm(PaymentId, Product, Description, TotalPayment, PaymentMethod, PaymentDate) {
+                    var modal = document.getElementById("EditModal");
+                    var content = document.getElementById("EditModalContent");
+
+                    var IdInput = document.getElementById("IdInput");
+                    var ProductInput = document.getElementById("ProductInput");
+                    var DescriptionInput = document.getElementById("DescriptionInput");
+                    var TotalPaymentInput = document.getElementById("TotalPaymentInput");
+                    var PaymentMethodInput = document.getElementById("PaymentMethodInput");
+                    var PaymentDateInput = document.getElementById("PaymentDateInput");
+
+                    IdInput.value = PaymentId;
+                    ProductInput.value = Product;
+                    DescriptionInput.value = Description;
+                    TotalPaymentInput.value = TotalPayment;
+                    PaymentMethodInput.value = PaymentMethod;
+                    PaymentDateInput.value = PaymentDate;
+
+                    modal.style.display = "block";
+                }
+
                 function hideForm() {
                     document.getElementById('form').style.display = 'none';
                 }
-
-                // function deleteRecord(id) {
-                //     console.log('Delete record with ID:', id);
-                // }
 
                 function searchById() {
                     var searchId = document.getElementById('search-id').value;
                     console.log('Search by ID:', searchId);
                 }
 
-                function deleteRecord(PaymentId) {
-                    $.ajax({
-                        type: 'POST',
-                        url: '<?php echo base_url("CheckoutController/DeleteCheckout"); ?>',
-                        data: { PaymentId: PaymentId },
-                        success: function (response) {
-                            if (response.success) {
-                                console.log('Record deleted successfully!');
-                            } else {
-                                console.error('Failed to delete the record.');
-                            }
-                        },
-                        error: function (xhr, status, error) {
-                            console.error('Error occurred during the deletion:', error);
-                        }
-                    });
-                }
             </script>
         </div>
 </body>

@@ -18,16 +18,23 @@ class Checkout_Model extends CI_Model {
     }
 
 
-    public function updateCheckout($id, $data) {
-        $this->db->where('Payment_id', $id);
-        $this->db->update('payment', $data);
+    public function EditCheckout($PaymentId, $data) {
+        $this->db->set($data);
+        $this->db->where('Payment_id', $PaymentId);
+        $this->db->update('payment');
+
+        return $this->db->affected_rows() > 0;
     }
 
 
-    public function deleteCheckouttt($id) {
-        $this->db->where('Payment_id', $id);
-        return $this->db->delete('payments');
+    public function deleteRecords($paymentId)
+    {
+        $this->db->where('Payment_id', $paymentId);
+        $this->db->delete('payment');
+        
+        return $this->db->affected_rows() > 0;
     }
 }
+    
 ?>
 
