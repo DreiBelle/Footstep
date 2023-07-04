@@ -26,18 +26,46 @@ class CheckoutController extends CI_Controller {
 
     public function addCheckout()
     {
-       
+        $PaymentId = $this->input->post('PaymentId');
+        $Product = $this->input->post('Product');
+        $Description = $this->input->post('Description');
+        $TotalPayment = $this->input->post('TotalPayment');
+        $PaymentMethod = $this->input->post('PaymentMethod');
+        $PaymentDate = $this->input->post('PaymentDate');
 
         $data = array(
-            'Payment_id' => $this->input->post('Payment_id'),
-            'Product' => $this->input->post('Product'),
-            'Description' => $this->input->post('Description'),
-            'Total_payment' => $this->input->post('Total_payment'),
-            'Payment_method' => $this->input->post('Payment_method'),
-            'Payment_date' => $this->input->post('Payment_date'),
+            'Payment_id' => $PaymentId,
+            'Product' => $Product,
+            'Description' => $Description ,
+            'Total_payment' =>  $TotalPayment,
+            'Payment_method' => $PaymentMethod,
+            'Payment_date' => $PaymentDate,
         );
 
-        $this->ProductModel->addCheckout($data);
+        $this->Checkout_Model->addCheckouttt($data);
+
+        redirect('CheckoutController');
+    }
+
+    public function DeleteCheckout()
+    {
+        $PaymentId = $this->input->post('PaymentId');
+        $Product = $this->input->post('Product');
+        $Description = $this->input->post('Description');
+        $TotalPayment = $this->input->post('TotalPayment');
+        $PaymentMethod = $this->input->post('PaymentMethod');
+        $PaymentDate = $this->input->post('PaymentDate');
+
+        $data = array(
+            'Payment_id' => $PaymentId,
+            'Product' => $Product,
+            'Description' => $Description ,
+            'Total_payment' =>  $TotalPayment,
+            'Payment_method' => $PaymentMethod,
+            'Payment_date' => $PaymentDate,
+        );
+
+        $this->Checkout_Model->DeleteCheckouttt($data);
 
         redirect('CheckoutController');
     }

@@ -61,7 +61,7 @@
             <span class="user-label"><i class="fas fa-user user-icon"></i>User: <?php echo $user['role']; ?></span>
         </header>
 
-        <div class="content" id="imageContainer">
+        <!-- <div class="content" id="imageContainer">
             <img src="<?php echo base_url();?>assets/pc.jpg" alt="Dashboard Image">
         </div>
 
@@ -73,9 +73,9 @@
 
             <h2>Vision</h2>
             <p>We Believe in EXCELLENCE as the constant call of our hearts, minds and strength in the attainment of needed PROFIT AND GROWTH THROUGH QUALITY AND LOYALTY</p>
-        </div>
+        </div> -->
 
-        <!-- <img class="picFootstep" src="<?php echo base_url();?>assets/logo.png" alt="Logo" class="logo"> -->
+        <img class="picFootstep" src="<?php echo base_url();?>assets/logo.png" alt="Logo" class="logo">
 
         <script>
             // Function to display the image when the page loads

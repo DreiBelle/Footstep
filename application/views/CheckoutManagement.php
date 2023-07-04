@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>CheckoutManagement</title>
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit-id.js" crossorigin="anonymous"></script>
     <style>
         body {
             margin: 0;
@@ -51,11 +52,10 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        /* Style for the "Search" button */
         .search-form button {
             background: linear-gradient(45deg, #f1c40f, #e0b832); /* Gradient background for the "Search" button */
-            color: black; /* Font color for the "Search" button */
-            border: 2px solid #f1c40f; /* Yellow border for the "Search" button */
+            color: black; 
+            border: 2px solid #f1c40f; 
             padding: 6px 12px;
             border-radius: 4px;
             cursor: pointer;
@@ -73,19 +73,6 @@
             margin-left: 130px;
         }
 
-        .form-container {
-            display: none;
-        }
-
-        form {
-            margin-bottom: 10px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
         input[type="text"],
         button[type="submit"],
         button[type="button"] {
@@ -95,46 +82,141 @@
             border-radius: 4px;
         }
 
-        /* New styles for the table */
         table {
-            background-color: #f9f9f9; /* Light gray background for the table */
-            color: black; /* Font color of the table */
+            background-color: #f9f9f9; 
+            color: black; 
             margin-top: 20px;
         }
 
         th {
-            background-color: #f1c40f; /* Yellow header background */
-            color: #fff; /* White text color for the header */
+            background-color: #f1c40f; 
+            color: #fff; 
         }
 
         tr:nth-child(even) {
-            background-color: #fafafa; /* Alternate row background color */
+            background-color: #fafafa; 
         }
 
-        /* Styles for action buttons */
         .action-btn {
             padding: 6px 12px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.3s;
-            color: #fff; /* Font color for the buttons */
+            color: #fff;
         }
 
         .action-btn.edit-btn {
-            background-color: #3498db; /* Blue background for the Edit button */
+            background-color: #3498db;
         }
 
         .action-btn.delete-btn {
-            background-color: #e74c3c; /* Red background for the Delete button */
+            background-color: #e74c3c; 
             margin-left: 5px;
         }
 
         .action-btn.edit-btn:hover, .action-btn.delete-btn:hover {
-            background-color: #2980b9; /* Darker blue background on hover */
+            background-color: #2980b9; 
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); 
         }
 
-        
+        .modal-content {
+            background-color: rgba(255, 255, 255, 0.8); 
+            border: 1px solid #888;
+            padding: 20px;
+            width: 50%; 
+            height: 80%;
+            border-radius: 25px;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            margin: 400px; 
+        }
+
+        .flex-center{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background-color: #f9f9f9;
+            color: black;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            margin: 0 auto;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 30px;
+        }
+
+        .form-container label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        .form-container input[type="submit"] {
+            background-color: #f1c40f;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background-color: #e0b832;
+        }
+
+        .form-container .close {
+            position: absolute;
+            top: 10px;
+            right: 100px; 
+            font-size: 20px;
+            cursor: pointer;
+        }
+              
+        span{
+            margin-right: -380px;
+        }
+
+        .form-container select {
+            height: 7%;
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 16px;
+        }
     </style>
 </head>
 
@@ -148,7 +230,39 @@
         </div>
 
         <div class="add-btn">
-            <button onclick="showForm('add-form')">Add Payment</button>
+            <button id="AddCheckoutbtn">Add Payment</button>
+    
+            <div id="AddCheckoutModal" class="modal">
+            <div class="flex-center">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <form method="post" action="<?php echo site_url('CheckoutController/addCheckout'); ?>" class="form-container">
+                        <h2>Add Payment</h2>
+                        <label for="PaymentId"><i class="fas fa-id-badge"></i> Payment ID:</label>
+                        <input type="text" name="PaymentId" id="PaymentId" required>
+                        <label for="Product"><i class="fas fa-box"></i> Product:</label>
+                        <input type="text" name="Product" id="Product" required>
+                        <label for="Description"><i class="fas fa-file-alt"></i> Description:</label>
+                        <input type="text" name="Description" id="Description" required>
+                        <label for="TotalPayment"><i class="fas fa-dollar-sign"></i> Total Payment:</label>
+                        <input type="text" name="TotalPayment" id="TotalPayment" required>
+                        <label for="PaymentMethod"><i class="fas fa-credit-card"></i> Payment Method:</label>
+                        <select name="PaymentMethod" id="PaymentMethod" required>
+                            <option>Please select</option>
+                            <option value="Cash">Cash</option>
+                            <option value="Credit Card">Credit Card</option>
+                            <option value="Debit Card">Debit Card</option>
+                            <option value="PayPal">PayPal</option>
+                            <!-- Add more payment method options as needed -->
+                        </select>
+                        <label for="PaymentDate"><i class="fas fa-calendar-alt"></i> Payment Date:</label>
+                        <input type="date" name="PaymentDate" id="PaymentDate" required>
+                        <div>
+                            <input type="submit" value="SAVE">
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
 
         <table>
@@ -180,64 +294,38 @@
                 <?php } ?>
             </tbody>
         </table>
-
-        <!-- Add/Edit Form -->
-        <div class="form-container" id="form">
-            <!-- The form content will be filled dynamically based on whether it's an add or edit form -->
-        </div>
-
+     
         <script>
-            function showForm(formId, id = null) {
-                var formContainer = document.getElementById('form');
-                var formContent = '';
+            document.addEventListener("DOMContentLoaded", function () {
+            var button = document.getElementById("AddCheckoutbtn");
+            var modal = document.getElementById("AddCheckoutModal");
+            var span = document.getElementsByClassName("close")[0];
 
-                if (formId === 'add-form') {
-                    formContent += '<h3>Add Record</h3>';
-                    formContent += '<form action="<?php echo base_url('CheckoutController/addCheckout'); ?>" method="post">';
-                    formContent += '<label for="product">Product:</label>';
-                    formContent += '<input type="text" name="Product" required>';
-                    // Add other input fields for the form
-                    formContent += '<button type="submit">Add</button>';
-                } else if (formId === 'edit-form') {
-                    // Get the data of the record with the given ID from the PHP array
-                    var record = <?php echo json_encode($checkoutData); ?>;
-                    var index = record.findIndex(item => item.Payment_id === id);
+            button.onclick = function () {
+                modal.style.display = "block";
+            };
 
-                    if (index !== -1) {
-                        var data = record[index];
+            span.onclick = function () {
+                modal.style.display = "none";
+            };
 
-                        formContent += '<h3>Edit Record</h3>';
-                        formContent += '<form action="<?php echo base_url('CheckoutController/updateCheckout'); ?>" method="post">';
-                        formContent += '<input type="hidden" name="Payment_id" value="' + data.Payment_id + '">';
-                        formContent += '<label for="product">Product:</label>';
-                        formContent += '<input type="text" name="Product" value="' + data.Product + '" required>';
-                        // Add other input fields for the form
-                        formContent += '<button type="submit">Update</button>';
-                    } else {
-                        console.log('Record not found');
-                        return;
-                    }
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
                 }
+            };
+        })
 
-                formContent += '<button type="button" onclick="hideForm()">Cancel</button>';
-                formContent += '</form>';
-                formContainer.innerHTML = formContent;
-                formContainer.style.display = 'block';
-            }
-
-            function hideForm() {
+        function hideForm() {
                 document.getElementById('form').style.display = 'none';
             }
 
             function deleteRecord(id) {
-                // Code to delete the record with the given ID
-                // You can use AJAX to perform the delete operation without reloading the page
                 console.log('Delete record with ID:', id);
             }
 
             function searchById() {
                 var searchId = document.getElementById('search-id').value;
-                // Code to search the table for records with the given ID and display the results
                 console.log('Search by ID:', searchId);
             }
         </script>

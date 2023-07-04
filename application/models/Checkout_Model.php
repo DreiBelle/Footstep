@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 class Checkout_Model extends CI_Model {
-    public function addCheckout($data) {
+    public function addCheckouttt($data) {
         return $this->db->insert('payment', $data);
     }
 
@@ -24,7 +24,7 @@ class Checkout_Model extends CI_Model {
     }
 
 
-    public function deleteCheckout($id) {
+    public function deleteCheckouttt($id) {
         $this->db->delete('payment', array('Payment_id' => $id));
     }
 }
