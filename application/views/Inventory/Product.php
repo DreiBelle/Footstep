@@ -21,6 +21,7 @@
         .search-form {
             margin-bottom: 20px;
         }
+
         .search-form input[type="text"] {
             margin-left: 70vh;
             width: 20%;
@@ -234,6 +235,7 @@
             width: 100%;
             font-family: "Arial", Helvetica, sans-serif;
         }
+
         span {
             margin-right: -365px;
         }
@@ -246,7 +248,7 @@
         <div class="search-form">
             <h1 style="text-align: center; padding: 10px; font-size: 30px; font-weight: bold; margin: 0;">Inventory
                 Management</h1>
-                <form method="get" action="<?php echo site_url('InventoryController/ViewProducts'); ?>">
+            <form method="get" action="<?php echo site_url('InventoryController/ViewProducts'); ?>">
                 <input type="text" name="asd" placeholder="Search by ID">
                 <input type="submit" value="Search">
             </form>
@@ -261,20 +263,27 @@
                 <div class="flex-center">
                     <div class="modal-content">
                         <span class="close">&times;</span>
-                        <form method="post" action="<?php echo site_url('InventoryController/add_prod'); ?>" enctype="multipart/form-data"
-                            class="form-container">
+                        <form method="post" action="<?php echo site_url('InventoryController/add_prod'); ?>"
+                            enctype="multipart/form-data" class="form-container">
                             <!-- <h2>Purchase</h2> -->
                             <label for="ProductImage"><i class="fas fa-image"></i> Product Image:</label>
                             <input type="file" name="Product_image" required>
 
                             <label for="ProductId"><i class="fas fa-barcode"></i> Product ID:</label>
-                            <input type="text" name="ProductId" id="ProductId" required style="border: 1px solid lightgray;">
+                            <input type="text" name="ProductId" id="ProductId" required
+                                style="border: 1px solid lightgray;">
 
                             <label for="ProductName"><i class="fas fa-tag"></i> Product Name:</label>
-                            <input type="text" name="ProductName" id="ProductName" required style="border: 1px solid lightgray;">
+                            <input type="text" name="ProductName" id="ProductName" required
+                                style="border: 1px solid lightgray;">
 
                             <label for="Category"><i class="fas fa-tags"></i> Category:</label>
-                            <input type="text" name="Category" id="Category" required style="border: 1px solid lightgray;">
+                            <select name="Category" id="Category" required style="border: 1px solid lightgray; width: 100%; height: 45px;">
+                            <option>Select a category</option>    
+                            <option value="Slippers">Slippers</option>
+                                <option value="Rubber Shoes">Rubber Shoes</option>
+                                <option value="Black Shoes">Black Shoes</option>
+                            </select>
 
                             <label for="Price"><i class="fas fa-money-bill"></i> Price:</label>
                             <input type="text" name="Price" id="Price" required style="border: 1px solid lightgray;">
@@ -307,7 +316,9 @@
                 <?php foreach ($check as $data) { ?>
                     <tr>
                         <td>
-                        <img style="height: 100px; width:100px; object-fit: cover; border-radius: 1px; padding: 5px" src="<?php echo MAIN_BASE_URL . $data['Product_image']; ?>"></td>
+                            <img style="height: 100px; width:100px; object-fit: cover; border-radius: 1px; padding: 5px"
+                                src="<?php echo MAIN_BASE_URL . $data['Product_image']; ?>">
+                        </td>
                         </td>
                         <td>
                             <?php echo $data['Product_id']; ?>
@@ -341,35 +352,36 @@
         </table>
 
         <div id="PurchaseModal" class="modal">
-                <div style="margin-right: 900px; margin-top: -300px; margin-left: -80px;">
-                    <div id="PurchaseModalContent" class="modal-content">
-                        <span class="close1" style="color: black; cursor: pointer; font-size: 24px;"
-                            onclick="closeForm()">&times;</span>
+            <div style="margin-right: 900px; margin-top: -300px; margin-left: -80px;">
+                <div id="PurchaseModalContent" class="modal-content">
+                    <span class="close1" style="color: black; cursor: pointer; font-size: 24px;"
+                        onclick="closeForm()">&times;</span>
 
-                        <form method="post" action="<?php echo site_url('InventoryController/PurchaseProducts'); ?>"
-                            class="form-container">
-                            <h2>Purchase Product</h2>
-                            <!-- <label for="ProductImage"><i class="fas fa-image"></i> Product Image:</label>
+                    <form method="post" action="<?php echo site_url('InventoryController/PurchaseProducts'); ?>"
+                        class="form-container">
+                        <h2>Purchase Product</h2>
+                        <!-- <label for="ProductImage"><i class="fas fa-image"></i> Product Image:</label>
                             <input type="image" name="ProductImageInput" id="ProductImageInput"> -->
 
-                            
-                            <label for="ProductIdInput"><i class="fas fa-box"></i> Product ID:</label>
-                            <input type="text" name="ProductIdInput" id="ProductIdInput" readonly>
-                            <label for="ProductNameInput"><i class="fas fa-file-alt"></i> Product Name:</label>
-                            <input type="text" name="ProductNameInput" id="ProductNameInput" readonly>
-                            <label for="CategoryInput"><i class="fas fa-dollar-sign"></i> Category:</label>
-                            <input type="text" name="CategoryInput" id="CategoryInput" readonly>
-                            <label for="PriceInput"><i class="fas fa-crPurchase-card"></i> Price:</label>
-                            <input type="text" name="PriceInput" id="PriceInput" readonly>
-                            <label for="QuantityInput"><i class="fas fa-calendar-alt"></i> Quantity:</label>
-                            <input type="text" name="QuantityInput" id="QuantityInput" required style="border: 1px solid lightgray;">
-                            <div>
-                                <input type="submit" value="Buy">
-                            </div>
-                        </form>
-                    </div>
+
+                        <label for="ProductIdInput"><i class="fas fa-box"></i> Product ID:</label>
+                        <input type="text" name="ProductIdInput" id="ProductIdInput" readonly>
+                        <label for="ProductNameInput"><i class="fas fa-file-alt"></i> Product Name:</label>
+                        <input type="text" name="ProductNameInput" id="ProductNameInput" readonly>
+                        <label for="CategoryInput"><i class="fas fa-dollar-sign"></i> Category:</label>
+                        <input type="text" name="CategoryInput" id="CategoryInput" readonly>
+                        <label for="PriceInput"><i class="fas fa-crPurchase-card"></i> Price:</label>
+                        <input type="text" name="PriceInput" id="PriceInput" readonly>
+                        <label for="QuantityInput"><i class="fas fa-calendar-alt"></i> Quantity:</label>
+                        <input type="text" name="QuantityInput" id="QuantityInput" required
+                            style="border: 1px solid lightgray;">
+                        <div>
+                            <input type="submit" value="Buy">
+                        </div>
+                    </form>
                 </div>
             </div>
+        </div>
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 var button = document.getElementById("AddProductbtn");
@@ -392,38 +404,38 @@
             })
 
             function showForm(ProductId, ProductName, Category, Price, Quantity) {
-                    var modal = document.getElementById("PurchaseModal");
-                    var content = document.getElementById("PurchaseModalContent");
+                var modal = document.getElementById("PurchaseModal");
+                var content = document.getElementById("PurchaseModalContent");
 
-                    // var ProductImageInput = getProductPictureUrl("ProductImageInput");
-                    var ProductIdInput = document.getElementById("ProductIdInput");
-                    var ProductNameInput = document.getElementById("ProductNameInput");
-                    var CategoryInput = document.getElementById("CategoryInput");
-                    var PriceInput = document.getElementById("PriceInput");
-                    var QuantityInput = document.getElementById("QuantityInput");
-               
-                    // ProductImageInput.value = ProductImage;
-                    ProductIdInput.value = ProductId;
-                    ProductNameInput.value = ProductName;
-                    CategoryInput.value = Category;
-                    PriceInput.value = Price;
-                    QuantityInput.value = 0;
+                // var ProductImageInput = getProductPictureUrl("ProductImageInput");
+                var ProductIdInput = document.getElementById("ProductIdInput");
+                var ProductNameInput = document.getElementById("ProductNameInput");
+                var CategoryInput = document.getElementById("CategoryInput");
+                var PriceInput = document.getElementById("PriceInput");
+                var QuantityInput = document.getElementById("QuantityInput");
 
-                    modal.style.display = "block";
-                }
+                // ProductImageInput.value = ProductImage;
+                ProductIdInput.value = ProductId;
+                ProductNameInput.value = ProductName;
+                CategoryInput.value = Category;
+                PriceInput.value = Price;
+                QuantityInput.value = 0;
 
-                function hideForm() {
-                    document.getElementById('form').style.display = 'none';
-                }
-                function closeForm() {
-                    var modal = document.getElementById("PurchaseModal");
-                    modal.style.display = "none";
-                }
+                modal.style.display = "block";
+            }
+
+            function hideForm() {
+                document.getElementById('form').style.display = 'none';
+            }
+            function closeForm() {
+                var modal = document.getElementById("PurchaseModal");
+                modal.style.display = "none";
+            }
 
             function searchById() {
-                    var searchId = document.getElementById('search-id').value;
-                    console.log('Search by ID:', searchId);
-                }
+                var searchId = document.getElementById('search-id').value;
+                console.log('Search by ID:', searchId);
+            }
 
 
         </script>

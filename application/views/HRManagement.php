@@ -3,7 +3,7 @@
 
 <head>
     <title>Human Resource Management</title>
-    
+
     <script src="https://kit.fontawesome.com/your-font-awesome-kit-id.js" crossorigin="anonymous"></script>
     <style>
         body {
@@ -58,7 +58,7 @@
             position: absolute;
             border: none;
             border-radius: 4px;
-            background-color: #f9f9f9;
+            /* background-color: #f9f9f9; */
             color: black;
             cursor: pointer;
             font-family: "Arial", "Helvetica", sans-serif;
@@ -112,7 +112,7 @@
         }
 
         table {
-          
+
             border-collapse: collapse;
             font-family: "Arial", "Helvetica", sans-serif;
         }
@@ -165,20 +165,38 @@
             z-index: 1;
             left: 0;
             top: 0;
-            width: 100%;
-            height: 100%;
+            width: 20px;
+            height: 20px;
             background-color: rgba(0, 0, 0, 0.8);
         }
 
         .modal-content {
             background-color: #f9f9f9;
-            border: 1px solid #f9f9f9;
+            border: 0px solid #f9f9f9;
             color: black;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            margin: 450px;
+            margin: 500px;
+            margin-top: 550px;
+            width: 1px;
+            height: 1px;
+            font-family: "Arial", "Helvetica", sans-serif;
+        }
+
+        .Editmodal-content {
+            background-color: #f9f9f9;
+            border: 0px solid #f9f9f9;
+            color: black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 500px;
+            margin-top: 700px;
+            width: 1px;
+            height: 1px;
             font-family: "Arial", "Helvetica", sans-serif;
         }
 
@@ -234,8 +252,18 @@
             width: 100%;
             font-family: "Arial", Helvetica, sans-serif;
         }
-        span {
-            margin-right: -365px;
+
+        .form-container input[type="cancel"] {
+            background-color: #f9f9f9;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            font-family: "Arial", Helvetica, sans-serif;
         }
     </style>
 </head>
@@ -260,7 +288,7 @@
             <div id="AddEmployeeModal" class="modal">
                 <div class="flex-center">
                     <div class="modal-content">
-                        <span class="close">&times;</span>
+                        <!-- <span class="close">&times;</span> -->
                         <form method="post" action="<?php echo site_url('HRController/addEmployee'); ?>"
                             class="form-container">
                             <h2>Add Employee</h2>
@@ -284,7 +312,10 @@
                                 style="border: 1px solid lightgray;">
 
                             <div>
-                                <input type="submit" value="SAVE">
+                                <input type="submit" value="SAVE"
+                                    style="display: inline-block; background-color: #007bff; color: #fff; border: none; border-radius: 4px; padding: 8px 16px; margin-right: 10px; cursor: pointer;">
+                                <input type="button" value="CANCEL" onclick="closeModal()"
+                                    style="display: inline-block; background-color: #dc3545; color: #fff; border: none; border-radius: 4px; padding: 8px 16px; cursor: pointer; width: 360px; margin-top: 5px;">
                             </div>
                         </form>
                     </div>
@@ -292,17 +323,18 @@
             </div>
         </div>
 
+
         <!-- EdIt -->
         <div id="EditModal" class="modal">
             <div style="margin-right: 900px; margin-top: -300px; margin-left: -80px;">
-                <div id="EditModalContent" class="modal-content">
+                <div id="EditModalContent" class="Editmodal-content">
                     <span class="close1" style="color: black; cursor: pointer; font-size: 24px;"
                         onclick="closeForm()">&times;</span>
 
                     <form method="post" action="<?php echo site_url('HRController/editEmployee'); ?>"
                         class="form-container">
                         <h2>Update Payment</h2>
-                        <label for="EmployeeIdInput" ><i class="fas fa-id-badge"></i> Employee Id:</label>
+                        <label for="EmployeeIdInput"><i class="fas fa-id-badge"></i> Employee Id:</label>
                         <input type="text" name="EmployeeIdInput" id="EmployeeIdInput" required
                             style="border: 1px solid gray;">
 
@@ -321,7 +353,10 @@
                         <input type="text" name="AddressInput" id="AddressInput" required
                             style="border: 1px solid gray;">
                         <div>
-                            <input type="submit" value="SAVE">
+                        <input type="submit" value="SAVE"
+                                    style="display: inline-block; background-color: #007bff; color: #fff; border: none; border-radius: 4px; padding: 8px 16px; margin-right: 10px; cursor: pointer;">
+                            <input type="button" value="CANCEL" onclick="closeForm()"
+                                    style="display: inline-block; background-color: #dc3545; color: #fff; border: none; border-radius: 4px; padding: 8px 16px; cursor: pointer; width: 360px; margin-top: 5px;">
                         </div>
                     </form>
                 </div>
@@ -367,8 +402,8 @@
 
                             </button>
                             <button onclick="clicks()" class="action-btn edit-btn">
-                                    <i class="fas fa-trash-alt"></i> Delete
-                                </button>
+                                <i class="fas fa-trash-alt"></i> Delete
+                            </button>
                         </td>
                     </tr>
                 <?php } ?>
@@ -423,6 +458,12 @@
             function closeForm() {
                 var modal = document.getElementById("EditModal");
                 modal.style.display = "none";
+            }
+            function closeModal() {
+                document.getElementById("AddEmployeeModal").style.display = "none";
+            }
+            function closeForm() {
+                document.getElementById("EditModal").style.display = "none";
             }
 
             function searchById() {
