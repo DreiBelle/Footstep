@@ -53,7 +53,7 @@ class CheckoutController extends CI_Controller
     public function DeleteCheckout()
     {
         if ($this->input->is_ajax_request()) {
-            $paymentId = $this->input->post('paymentId');
+            $PaymentId = $this->input->post('PaymentId');
             if ($this->Checkout_Model->deleteCheckouttt($PaymentId)) {
                 $response = array('success' => true);
                 echo json_encode($response);

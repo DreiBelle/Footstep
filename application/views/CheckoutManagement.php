@@ -142,12 +142,10 @@
         }
 
         .modal-content {
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: green;
             border: 1px solid #888;
-            padding: 20px;
-            width: 50%;
-            height: 75%;
-            border-radius: 25px;
+            color: white;
+            3
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -159,11 +157,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 100vh;  
         }
 
         .form-container {
-            background-color: #f9f9f9;
+            background-color: white;
             color: black;
             border-radius: 8px;
             padding: 20px;
@@ -189,7 +187,7 @@
             width: 100%;
             padding: 8px;
             border: 1px solid #ccc;
-            s border-radius: 4px;
+            border-radius: 4px;
             margin-bottom: 16px;
         }
 
@@ -277,7 +275,6 @@
                     </div>
                 </div>
             </div>
-
             <table>
                 <thead>
                     <tr>
@@ -356,12 +353,32 @@
                     console.log('Search by ID:', searchId);
                 }
 
+                // function deleteRecord(PaymentId) {
+                //     $.ajax({
+                //         type: 'POST',
+                //         url: '<?php echo base_url("CheckoutController/DeleteCheckout"); ?>',
+                //         data: { PaymentId: PaymentId },
+                //         success: function (response) {
+                //             if (response.success) {
+                //                 console.log('Record deleted successfully!');
+                //             } else {
+                //                 console.error('Failed to delete the record.');
+                //             }
+                //         },
+                //         error: function (xhr, status, error) {
+                //             console.error('Error occurred during the deletion:', error);
+                //         }
+                //     });
+                // }
+
                 function deleteRecord(PaymentId) {
                     $.ajax({
                         type: 'POST',
                         url: '<?php echo base_url("CheckoutController/DeleteCheckout"); ?>',
                         data: { PaymentId: PaymentId },
+                        dataType: 'json', // Add this line to specify the expected response data type
                         success: function (response) {
+                            console.log('Response:', response); // Log the response to the console for debugging
                             if (response.success) {
                                 console.log('Record deleted successfully!');
                             } else {
