@@ -63,39 +63,18 @@ class Inventory_Model extends CI_Model
             return 0;
         }
     } 
-    // public function getSales()
-    // {
-    //     // Retrieve all orders from the tbl_order table
-    //     $query = $this->db->get('product');
-    //     return $query->result_array();
-    // }
+    public function getSales()
+    {
+        // Retrieve all orders from the tbl_order table
+        $query = $this->db->get('product');
+        return $query->result_array();
+    }
 
     public function get_allstocks(){
         $this->db->select('inventory.* , product.Product_name, product.Product_image, product.Category,');
         $this->db->from('inventory');
         $this->db->join('product', 'inventory.Product_id = product.Product_id');
         $query = $this->db->get();
-        return $query->result();
-    }
-
-    public function GetSlippers()
-    {
-        $this->db->where('Category', 'Slippers');
-        $query = $this->db->get('product');
-        return $query->result();
-    }
-
-    public function GetBlackShoes()
-    {
-        $this->db->where('Category', 'Black Shoes');
-        $query = $this->db->get('product');
-        return $query->result();
-    }
-
-    public function GetRubberShoes()
-    {
-        $this->db->where('Category', 'Rubber Shoes');
-        $query = $this->db->get('product');
         return $query->result();
     }
 

@@ -15,9 +15,6 @@ class InventoryController extends CI_Controller
     {
         // Load the CheckoutManagement view
         $user = $this->session->userdata('user');
-        $data['Slippers'] = $this->Checkout_Model->GetSlippers();
-        $data['BlackShoes'] = $this->Checkout_Model->GetBlackShoes();
-        $data['RubberShoes'] = $this->Checkout_Model->GetRubberShoes();
 
         if ($user['role'] == "Administrator") {
             $data['user'] = $user;
