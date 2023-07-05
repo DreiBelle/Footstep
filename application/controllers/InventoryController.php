@@ -15,6 +15,9 @@ class InventoryController extends CI_Controller
     {
         // Load the CheckoutManagement view
         $user = $this->session->userdata('user');
+        $data['Slippers'] = $this->Checkout_Model->GetSlippers();
+        $data['BlackShoes'] = $this->Checkout_Model->GetBlackShoes();
+        $data['RubberShoes'] = $this->Checkout_Model->GetRubberShoes();
 
         if ($user['role'] == "Administrator") {
             $data['user'] = $user;
@@ -127,7 +130,7 @@ class InventoryController extends CI_Controller
 
         $newStocks = $currentStocks + $Quantity;
         $expenses = $Price * $Quantity;
-        $getTotalExpenses = $expenses + $getCurrentExpenses;
+        // $getTotalExpenses = $expenses + $getCurrentExpenses;
 
         $data = array(
             'Product_id' => $ProductId,
@@ -135,7 +138,7 @@ class InventoryController extends CI_Controller
             'Category' => $Category,
             'Price' => $Price,
             'Quantity' => $newStocks,
-            'TotalProductExpenses' => $getTotalExpenses,
+            // 'TotalProductExpenses' => $getTotalExpenses,
         );
 
         $this->Inventory_Model->BuyProduct($ProductId, $data);
