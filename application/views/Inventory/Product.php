@@ -23,22 +23,25 @@
         }
 
         .search-form input[type="text"] {
-            margin-left: 70vh;
-            width: 20%;
+            margin-left: 60vh;
+            width: 30%;
             padding: 10px;
             border: 1px solid #f9f9f9;
             border-radius: 4px;
-            background-color: #f9f9f9;
+            background-color: rgba(255, 193, 7, 0.8);
+            /* Adjust the alpha value (0.8) as needed */
             color: black;
             outline: none;
             font-family: "Arial", "Helvetica", sans-serif;
         }
 
+
         .search-form input[type="submit"] {
             padding: 10px;
             border: none;
             border-radius: 4px;
-            background-color: #f9f9f9;
+            width: 100px;
+            background-color: #ffc107;
             color: black;
             cursor: pointer;
             font-family: "Arial", "Helvetica", sans-serif;
@@ -53,13 +56,13 @@
 
         .add-btn button {
             width: 160px;
-       
+
             margin-top: -62px;
             padding: 10px;
             position: absolute;
             border: none;
             border-radius: 4px;
-            background-color: #f9f9f9;
+            background-color: #ffc107;
             color: black;
             cursor: pointer;
             font-family: "Arial", "Helvetica", sans-serif;
@@ -147,20 +150,22 @@
             transition: background-color 0.3s;
             color: black;
             font-family: "Arial", "Helvetica", sans-serif;
+            background-color: #ffc107;
+            color: black;
         }
 
         .action-btn.Purchase-btn {
-            background-color: #f9f9f9;
+            background-color: #ffc107;
         }
 
         .action-btn.delete-btn {
-            background-color: #e74c3c;
+            background-color: #ffc107;
             margin-left: 5px;
         }
 
         .action-btn.Purchase-btn:hover,
         .action-btn.delete-btn:hover {
-            background-color: #2980b9;
+            background-color: #FFD700;
         }
 
         .modal {
@@ -290,8 +295,7 @@
                             <label for="ProductImage"><i class="fas fa-image"></i> Product Image:</label>
                             <input type="file" name="Product_image" required>
 
-                            <label for="ProductId"><i class="fas fa-fingerprint"></i> Product ID:</label>
-                            <input type="text" name="ProductId" id="ProductId" required
+                            <input type="hidden" name="ProductId" id="ProductId" required
                                 style="border: 1px solid lightgray;">
 
                             <label for="ProductName"><i class="fas fa-cube"></i> Product Name:</label>
@@ -306,19 +310,6 @@
                                 <option value="Rubber Shoes">Rubber Shoes</option>
                                 <option value="Black Shoes">Black Shoes</option>
                             </select>
-
-                            <!-- <label for="Size"><i class="fas fa-ruler-horizontal"></i> Size:</label>
-                            <select name="Size" id="Size" required
-                                style="border: 1px solid lightgray; width: 100%; height: 45px;">
-                                <option>Select a size</option>
-                                <option value="36">36</option>
-                                <option value="37">37</option>
-                                <option value="38">38</option>
-                                <option value="39">39</option>
-                                <option value="40">40</option>
-                                <option value="41">41</option>
-                                <option value="42">42</option>
-                            </select> -->
 
                             <label for="Price"><i class="fas fa-money-bill"></i> Price:</label>
                             <input type="text" name="Price" id="Price" required style="border: 1px solid lightgray;">
@@ -401,8 +392,8 @@
                             <input type="image" name="ProductImageInput" id="ProductImageInput"> -->
 
 
-                        <label for="ProductIdInput"><i class="fas fa-box"></i> Product ID:</label>
-                        <input type="text" name="ProductIdInput" id="ProductIdInput" readonly>
+
+                        <input type="hidden" name="ProductIdInput" id="ProductIdInput" readonly>
                         <label for="ProductNameInput"><i class="fas fa-file-alt"></i> Product Name:</label>
                         <input type="text" name="ProductNameInput" id="ProductNameInput" readonly>
                         <label for="CategoryInput"><i class="fas fa-dollar-sign"></i> Category:</label>

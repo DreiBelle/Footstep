@@ -25,27 +25,31 @@
         }
 
         .search-form input[type="text"] {
-            margin-left: 70vh;
-            width: 20%;
+            margin-left: 60vh;
+            width: 30%;
             padding: 10px;
             border: 1px solid #f9f9f9;
             border-radius: 4px;
-            background-color: #f9f9f9;
+            background-color: rgba(255, 193, 7, 0.8);
+            /* Adjust the alpha value (0.8) as needed */
             color: black;
             outline: none;
             font-family: "Arial", "Helvetica", sans-serif;
         }
 
+
         .search-form input[type="submit"] {
             padding: 10px;
             border: none;
             border-radius: 4px;
-            background-color: #f9f9f9;
+            width: 100px;
+            background-color: #ffc107;
             color: black;
             cursor: pointer;
             font-family: "Arial", "Helvetica", sans-serif;
             transition: background-color 0.3s;
         }
+
 
         .add-btn {
             margin-bottom: 20px;
@@ -58,7 +62,7 @@
             position: absolute;
             border: none;
             border-radius: 4px;
-            /* background-color: #f9f9f9; */
+             background-color: #ffc107; 
             color: black;
             cursor: pointer;
             font-family: "Arial", "Helvetica", sans-serif;
@@ -149,14 +153,14 @@
         }
 
         .action-btn.edit-btn {
-            background-color: #f9f9f9;
+            background-color: #ffc107;
         }
 
 
 
         .action-btn.edit-btn:hover,
         .action-btn.delete-btn:hover {
-            background-color: #2980b9;
+            background-color: #FFD700;
         }
 
         .modal {
@@ -186,7 +190,7 @@
         }
 
         .Editmodal-content {
-            background-color: #f9f9f9;
+            background-color: #ffc107;
             border: 0px solid #f9f9f9;
             color: black;
             display: flex;
@@ -291,9 +295,8 @@
                         <!-- <span class="close">&times;</span> -->
                         <form method="post" action="<?php echo site_url('HRController/addEmployee'); ?>"
                             class="form-container">
-                            <h2>Add Employee</h2>
-                            <label for="EmployeeId"><i class="fas fa-image"></i> Employee Id:</label>
-                            <input type="text" name="EmployeeId" id="EmployeeId" required
+                            <h2>Add Employee</h2> 
+                            <input type="hidden" name="EmployeeId" id="EmployeeId" required
                                 style="border: 1px solid lightgray;">
 
                             <label for="Name"><i class="fas fa-barcode"></i> Name:</label>
@@ -334,8 +337,8 @@
                     <form method="post" action="<?php echo site_url('HRController/editEmployee'); ?>"
                         class="form-container">
                         <h2>Update Payment</h2>
-                        <label for="EmployeeIdInput"><i class="fas fa-id-badge"></i> Employee Id:</label>
-                        <input type="text" name="EmployeeIdInput" id="EmployeeIdInput" required
+                
+                        <input type="hidden" name="EmployeeIdInput" id="EmployeeIdInput" required
                             style="border: 1px solid gray;">
 
                         <label for="NameInput"><i class="fas fa-box"></i> Name:</label>
@@ -365,10 +368,10 @@
         <table>
             <thead>
                 <tr>
-                    <th width="12.67%">Employee ID</th>
+                    <th width="15.67%">Employee ID</th>
                     <th width="16.67%">Name</th>
-                    <th width="15.67%">Position</th>
-                    <th width="15.67%">Hire Date</th>
+                    <th width="16.67%">Position</th>
+                    <th width="16.67%">Hire Date</th>
                     <th width="16.67%">Address</th>
                     <th width="19.67%">Action</th>
                 </tr>

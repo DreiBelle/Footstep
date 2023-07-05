@@ -156,27 +156,21 @@
         <h2>Accounting Management</h2>
     </div>
     <ul>
-        <li><a href="#"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
+    <li><a href="<?php echo site_url('Dashboard'); ?>"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
         <div class="section-divider"></div>
-        <li class="dropdown">
+        <li >
         <a href="#"><i class="fas fa-hand-holding-usd"></i>Sales</a>
-            <div class="dropdown-content">
-                <a href="#"><i class="fas fa-plus"></i>Add Sales</a>
-                <a href="#"><i class="fas fa-eye"></i>View Sales</a>
-                <a href="#"><i class="fas fa-edit"></i>Edit Sales</a>
-                <a href="#"><i class="fas fa-trash"></i>Delete Sales</a>
-            </div>
         </li>
         <div class="section-divider"></div>
 
-        <li class="dropdown">
-        <a href="#"><i class="fas fa-credit-card"></i>Expenses</a>
-            <div class="dropdown-content">
-                <a href="#"><i class="fas fa-plus"></i>Add Expenses</a>
-                <a href="#"><i class="fas fa-eye"></i>View Expenses</a>
-                <a href="#"><i class="fas fa-edit"></i>Edit Expenses</a>
-                <a href="#"><i class="fas fa-trash"></i>Delete Expenses</a>
-            </div>
+        <li>
+        <a href="<?php echo site_url('Accounting_Controller/PayrollController'); ?>"><i class="fas fa-credit-card"></i>Payroll</a>
+        </li>
+        <div class="section-divider"></div>
+
+        <li>
+        <a href="<?php echo site_url('Accounting_Controller/PurchaseController'); ?>"><i class="fas fa-credit-card"></i>Purchase Transaction</a>
+           
         </li>
         <div class="section-divider"></div>
         <li><a href="<?php echo site_url('Dashboard/Logout'); ?>"><i class="fas fa-sign-out-alt"></i>Logout</a></li>

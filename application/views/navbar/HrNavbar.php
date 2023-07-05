@@ -156,16 +156,9 @@
         <h2>Human Resource Management</h2>
     </div>
     <ul>
-        <li><a href="#"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
+        <li><a href="<?php echo site_url('Dashboard'); ?>"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
         <div class="section-divider"></div>
-        <li class="dropdown">
-        <a href="#"><i class="fas fa-users"></i>Employee</a>
-            <div class="dropdown-content">
-                <a href="#"><i class="fas fa-plus"></i>Add Employee</a>
-                <a href="#"><i class="fas fa-eye"></i>View Employee</a>
-                <a href="#"><i class="fas fa-edit"></i>Edit Employee</a>
-                <a href="#"><i class="fas fa-trash"></i>Delete Employee</a>
-            </div>
+       <li> <a href="<?php echo site_url('HRController'); ?>"><i class="fas fa-users"></i>Employee</a>
         </li>
         <div class="section-divider"></div>
 

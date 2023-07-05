@@ -6,6 +6,9 @@ class Dashboard extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->library('session');
+        $this->load->model('Accounting_Model/Payroll_Model');
+        $this->load->model('Accounting_Model/Purchase_Model');
+        $this->load->model('HR_Model');
     }
 
     // public function index() {
@@ -30,7 +33,7 @@ class Dashboard extends CI_Controller {
             $data['navbar'] = "navbar/CashierNavbar";
             $this->load->view('Dashboard', $data);
         }
-        else if ($user['role'] == "Finance") {
+        else if ($user['role'] == "Accounting") {
             $data['user'] = $user;
             $data['navbar'] = "navbar/FinanceNavbar";
             $this->load->view('Dashboard', $data);
@@ -38,6 +41,7 @@ class Dashboard extends CI_Controller {
         else if ($user['role'] == "HR") {
             $data['user'] = $user;
             $data['navbar'] = "navbar/HrNavbar";
+            $data['check'] = $this->HR_Model->getEmployee();
             $this->load->view('Dashboard', $data);
         }
         else if ($user['role'] == "Inventory") {

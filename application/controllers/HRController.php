@@ -19,6 +19,7 @@ class HRController extends CI_Controller {
         } else if ($user['role'] == "HR") {
             $data['user'] = $user;
             $data['navbar'] = "navbar/HrNavbar";
+            $data['check'] = $this->HR_Model->getEmployee();
             $this->load->view('HRManagement', $data);
         }
     }
@@ -61,9 +62,15 @@ class HRController extends CI_Controller {
                 $data['check'] = $this->HR_Model->getEmployee();
             }
             $this->load->view('HRManagement', $data);
-        } else if ($user['role'] == "Hr") {
+        } else if ($user['role'] == "HR") {
             $data['user'] = $user;
             $data['navbar'] = "navbar/HrNavbar";
+            if(!empty($searchid)){
+                $data['check'] = $this->HR_Model->Search($searchid);
+            }
+            else{
+                $data['check'] = $this->HR_Model->getEmployee();
+            }
             $this->load->view('HRManagement', $data);
         }
     }
