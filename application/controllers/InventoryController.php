@@ -90,7 +90,8 @@ class InventoryController extends CI_Controller
             'Product_name' => $this->input->post('ProductName'),
             'Category' => $this->input->post('Category'),
             'Price' => $this->input->post('Price'),
-            'Quantity' => $this->input->post('Quantity')
+            'Size' => $this->input->post('Size'),
+            'Quantity' => 0,
 
         );
     
@@ -105,9 +106,10 @@ class InventoryController extends CI_Controller
         $ProductName = $this->input->post('ProductName');
         $Category = $this->input->post('Category');
         $Price = $this->input->post('Price');
+        $Size = $this->input->post('Size');
         $Quantity = $this->input->post('Quantity');
         
-        $this->Inventory_Model->create_product($Product_image, $ProductId, $ProductName, $Category, $Price ,$Quantity);
+        $this->Inventory_Model->create_product($Product_image, $ProductId, $ProductName, $Category, $Price, $Size ,$Quantity);
         redirect('InventoryController');
     }
 
@@ -127,7 +129,7 @@ class InventoryController extends CI_Controller
 
         $newStocks = $currentStocks + $Quantity;
         $expenses = $Price * $Quantity;
-        // $getTotalExpenses = $expenses + $getCurrentExpenses;
+        $getTotalExpenses = $expenses + $getCurrentExpenses;
 
         $data = array(
             'Product_id' => $ProductId,
@@ -135,7 +137,7 @@ class InventoryController extends CI_Controller
             'Category' => $Category,
             'Price' => $Price,
             'Quantity' => $newStocks,
-            // 'TotalProductExpenses' => $getTotalExpenses,
+            'TotalProductExpenses' => $getTotalExpenses,
         );
 
         $this->Inventory_Model->BuyProduct($ProductId, $data);

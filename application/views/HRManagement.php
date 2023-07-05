@@ -365,10 +365,10 @@
         <table>
             <thead>
                 <tr>
-                    <th width="14.67%">Employee ID</th>
+                    <th width="12.67%">Employee ID</th>
                     <th width="16.67%">Name</th>
-                    <th width="16.67%">Position</th>
-                    <th width="19.67%">Hire Date</th>
+                    <th width="15.67%">Position</th>
+                    <th width="15.67%">Hire Date</th>
                     <th width="16.67%">Address</th>
                     <th width="19.67%">Action</th>
                 </tr>

@@ -185,6 +185,7 @@
             height: 1px;
             font-family: "Arial", "Helvetica", sans-serif;
         }
+
         .Purchasemodal-content {
             background-color: #f9f9f9;
             border: 0px solid #f9f9f9;
@@ -256,7 +257,6 @@
         span {
             margin-right: -365px;
         }
-
     </style>
 </head>
 
@@ -287,21 +287,35 @@
                             <label for="ProductImage"><i class="fas fa-image"></i> Product Image:</label>
                             <input type="file" name="Product_image" required>
 
-                            <label for="ProductId"><i class="fas fa-barcode"></i> Product ID:</label>
+                            <label for="ProductId"><i class="fas fa-fingerprint"></i> Product ID:</label>
                             <input type="text" name="ProductId" id="ProductId" required
                                 style="border: 1px solid lightgray;">
 
-                            <label for="ProductName"><i class="fas fa-tag"></i> Product Name:</label>
+                            <label for="ProductName"><i class="fas fa-cube"></i> Product Name:</label>
                             <input type="text" name="ProductName" id="ProductName" required
                                 style="border: 1px solid lightgray;">
 
                             <label for="Category"><i class="fas fa-tags"></i> Category:</label>
-                            <select name="Category" id="Category" required style="border: 1px solid lightgray; width: 100%; height: 45px;">
-                            <option>Select a category</option>    
-                            <option value="Slippers">Slippers</option>
+                            <select name="Category" id="Category" required
+                                style="border: 1px solid lightgray; width: 100%; height: 45px;">
+                                <option>Select a category</option>
+                                <option value="Slippers">Slippers</option>
                                 <option value="Rubber Shoes">Rubber Shoes</option>
                                 <option value="Black Shoes">Black Shoes</option>
                             </select>
+
+                            <!-- <label for="Size"><i class="fas fa-ruler-horizontal"></i> Size:</label>
+                            <select name="Size" id="Size" required
+                                style="border: 1px solid lightgray; width: 100%; height: 45px;">
+                                <option>Select a size</option>
+                                <option value="36">36</option>
+                                <option value="37">37</option>
+                                <option value="38">38</option>
+                                <option value="39">39</option>
+                                <option value="40">40</option>
+                                <option value="41">41</option>
+                                <option value="42">42</option>
+                            </select> -->
 
                             <label for="Price"><i class="fas fa-money-bill"></i> Price:</label>
                             <input type="text" name="Price" id="Price" required style="border: 1px solid lightgray;">
@@ -310,9 +324,9 @@
                             <input type="text" name="Quantity" id="Quantity" required> -->
 
                             <div>
-                            <input type="submit" value="SAVE"
+                                <input type="submit" value="SAVE"
                                     style="display: inline-block; background-color: #007bff; color: #fff; border: none; border-radius: 4px; padding: 8px 16px; margin-right: 10px; cursor: pointer;">
-                            <input type="button" value="CANCEL" onclick="closeModal()"
+                                <input type="button" value="CANCEL" onclick="closeModal()"
                                     style="display: inline-block; background-color: #dc3545; color: #fff; border: none; border-radius: 4px; padding: 8px 16px; cursor: pointer; width: 360px; margin-top: 5px;">
                             </div>
                         </form>
@@ -375,7 +389,7 @@
         <div id="PurchaseModal" class="modal">
             <div style="margin-right: 900px; margin-top: -300px; margin-left: -80px;">
                 <div id="PurchaseModalContent" class="Purchasemodal-content">
-     
+
 
                     <form method="post" action="<?php echo site_url('InventoryController/PurchaseProducts'); ?>"
                         class="form-container">
@@ -396,79 +410,79 @@
                         <input type="text" name="QuantityInput" id="QuantityInput" required
                             style="border: 1px solid lightgray;">
                         <div>
-                        <input type="submit" value="BUY"
-                                    style="display: inline-block; background-color: #007bff; color: #fff; border: none; border-radius: 4px; padding: 8px 16px; margin-right: 10px; cursor: pointer;">
+                            <input type="submit" value="BUY"
+                                style="display: inline-block; background-color: #007bff; color: #fff; border: none; border-radius: 4px; padding: 8px 16px; margin-right: 10px; cursor: pointer;">
                             <input type="button" value="CANCEL" onclick="closeForm()"
-                                    style="display: inline-block; background-color: #dc3545; color: #fff; border: none; border-radius: 4px; padding: 8px 16px; cursor: pointer; width: 360px; margin-top: 5px;">
+                                style="display: inline-block; background-color: #dc3545; color: #fff; border: none; border-radius: 4px; padding: 8px 16px; cursor: pointer; width: 360px; margin-top: 5px;">
                         </div>
-                        </div>
-                    </form>
                 </div>
+                </form>
             </div>
         </div>
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                var button = document.getElementById("AddProductbtn");
-                var modal = document.getElementById("AddProductModal");
-                var span = document.getElementsByClassName("close")[0];
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var button = document.getElementById("AddProductbtn");
+            var modal = document.getElementById("AddProductModal");
+            var span = document.getElementsByClassName("close")[0];
 
-                button.onclick = function () {
-                    modal.style.display = "block";
-                };
-
-                span.onclick = function () {
-                    modal.style.display = "none";
-                };
-
-                window.onclick = function (event) {
-                    if (event.target == modal) {
-                        modal.style.display = "none";
-                    }
-                };
-            })
-
-            function showForm(ProductId, ProductName, Category, Price, Quantity) {
-                var modal = document.getElementById("PurchaseModal");
-                var content = document.getElementById("PurchaseModalContent");
-
-                // var ProductImageInput = getProductPictureUrl("ProductImageInput");
-                var ProductIdInput = document.getElementById("ProductIdInput");
-                var ProductNameInput = document.getElementById("ProductNameInput");
-                var CategoryInput = document.getElementById("CategoryInput");
-                var PriceInput = document.getElementById("PriceInput");
-                var QuantityInput = document.getElementById("QuantityInput");
-
-                // ProductImageInput.value = ProductImage;
-                ProductIdInput.value = ProductId;
-                ProductNameInput.value = ProductName;
-                CategoryInput.value = Category;
-                PriceInput.value = Price;
-                QuantityInput.value = 0;
-
+            button.onclick = function () {
                 modal.style.display = "block";
-            }
+            };
 
-            function hideForm() {
-                document.getElementById('form').style.display = 'none';
-            }
-            function closeForm() {
-                var modal = document.getElementById("PurchaseModal");
+            span.onclick = function () {
                 modal.style.display = "none";
-            }
-            function closeForm() {
-                document.getElementById("PurchaseModal").style.display = "none";
-            }
-            function closeModal() {
-                document.getElementById("AddProductModal").style.display = "none";
-            }
+            };
 
-            function searchById() {
-                var searchId = document.getElementById('search-id').value;
-                console.log('Search by ID:', searchId);
-            }
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            };
+        })
+
+        function showForm(ProductId, ProductName, Category, Price, Quantity) {
+            var modal = document.getElementById("PurchaseModal");
+            var content = document.getElementById("PurchaseModalContent");
+
+            // var ProductImageInput = getProductPictureUrl("ProductImageInput");
+            var ProductIdInput = document.getElementById("ProductIdInput");
+            var ProductNameInput = document.getElementById("ProductNameInput");
+            var CategoryInput = document.getElementById("CategoryInput");
+            var PriceInput = document.getElementById("PriceInput");
+            var QuantityInput = document.getElementById("QuantityInput");
+
+            // ProductImageInput.value = ProductImage;
+            ProductIdInput.value = ProductId;
+            ProductNameInput.value = ProductName;
+            CategoryInput.value = Category;
+            PriceInput.value = Price;
+            QuantityInput.value = 0;
+
+            modal.style.display = "block";
+        }
+
+        function hideForm() {
+            document.getElementById('form').style.display = 'none';
+        }
+        function closeForm() {
+            var modal = document.getElementById("PurchaseModal");
+            modal.style.display = "none";
+        }
+        function closeForm() {
+            document.getElementById("PurchaseModal").style.display = "none";
+        }
+        function closeModal() {
+            document.getElementById("AddProductModal").style.display = "none";
+        }
+
+        function searchById() {
+            var searchId = document.getElementById('search-id').value;
+            console.log('Search by ID:', searchId);
+        }
 
 
-        </script>
+    </script>
 </body>
 
 </html>
