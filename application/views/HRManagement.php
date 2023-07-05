@@ -3,6 +3,7 @@
 
 <head>
     <title>Human Resource Management</title>
+    
     <script src="https://kit.fontawesome.com/your-font-awesome-kit-id.js" crossorigin="anonymous"></script>
     <style>
         body {
@@ -20,11 +21,12 @@
 
         .search-form {
             margin-bottom: 20px;
+            /* margin-left: 10%; */
         }
 
         .search-form input[type="text"] {
-            margin-left: 90vh;
-            width: 400px;
+            margin-left: 70vh;
+            width: 20%;
             padding: 10px;
             border: 1px solid #f9f9f9;
             border-radius: 4px;
@@ -110,7 +112,7 @@
         }
 
         table {
-            width: 100%;
+          
             border-collapse: collapse;
             font-family: "Arial", "Helvetica", sans-serif;
         }
@@ -325,12 +327,12 @@
         <table>
             <thead>
                 <tr>
-                    <th>Employee ID</th>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Hire Date</th>
-                    <th>Address</th>
-                    <th>Action</th>
+                    <th width="13.67%">Employee ID</th>
+                    <th width="16.67%">Name</th>
+                    <th width="16.67%">Position</th>
+                    <th width="16.67%">Hire Date</th>
+                    <th width="16.67%">Address</th>
+                    <th width="19.67%">Action</th>
                 </tr>
             </thead>
             <tbody>

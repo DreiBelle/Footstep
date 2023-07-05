@@ -113,6 +113,29 @@ class InventoryController extends CI_Controller
 
     
 
+
+    public function PurchaseProducts()
+    {
+        $ProductId = $this->input->post('ProductIdInput');
+        $ProductName = $this->input->post('ProductNameInput');
+        $Category = $this->input->post('CategoryInput');
+        $Price = $this->input->post('PriceInput');
+        $Quantity = $this->input->post('QuantityInput');
+
+        $data = array(
+            'Product_id' => $ProductId,
+            'Product_name' => $ProductName,
+            'Category' => $Category,
+            'Price' => $Price,
+            'Quantity' => $Quantity,
+
+        );
+
+        $this->Inventory_Model->BuyProduct($ProductId, $data);
+
+        redirect('/InventoryController/ViewProducts');
+    }
+
     // STOCK
     public function ViewStocks()
     {
@@ -126,7 +149,7 @@ class InventoryController extends CI_Controller
             if (!empty($searchid)) {
                 $data['check'] = $this->Inventory_Model->Search($searchid);
             } else {
-                $data['check'] = $this->Inventory_Model->getProduct();
+                $data['check'] = $this->Inventory_Model->getSales();
             }
             $this->load->view('Inventory/Stock', $data);
 

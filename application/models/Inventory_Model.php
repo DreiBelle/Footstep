@@ -7,14 +7,13 @@ class Inventory_Model extends CI_Model {
         return $this->db->insert('product', $data);
     }
 
+    public function BuyProduct($ProductId, $data) {
+        $this->db->set($data);
+        $this->db->where('Product_id', $ProductId);
+        $this->db->update('product');
 
-
-
-
-    // public function getProduct() {
-    //     return $this->db->get('product')->result_array();
-    // }
-
+        return $this->db->affected_rows() > 0;
+    }
 
 
     public function Search($id){
@@ -32,6 +31,14 @@ class Inventory_Model extends CI_Model {
     public function create_product($data) {
         $this->db->insert('product', $data);
     }
+
+    public function getSales() {
+        // Retrieve all orders from the tbl_order table
+        $query = $this->db->get('product');
+        return $query->result_array();
+    }
+
+    
     
 }
     
