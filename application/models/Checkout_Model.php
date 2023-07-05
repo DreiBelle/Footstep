@@ -7,6 +7,7 @@ class Checkout_Model extends CI_Model {
     public function GetSlippers()
     {
         $this->db->where('Category', 'Slippers');
+        $this->db->where('Quantity !=', 0);
         $query = $this->db->get('product');
         return $query->result();
     }
@@ -14,6 +15,7 @@ class Checkout_Model extends CI_Model {
     public function GetBlackShoes()
     {
         $this->db->where('Category', 'Black Shoes');
+        $this->db->where('Quantity !=', 0);
         $query = $this->db->get('product');
         return $query->result();
     }
@@ -21,6 +23,7 @@ class Checkout_Model extends CI_Model {
     public function GetRubberShoes()
     {
         $this->db->where('Category', 'Rubber Shoes');
+        $this->db->where('Quantity !=', 0);
         $query = $this->db->get('product');
         return $query->result();
     }

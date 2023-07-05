@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -9,8 +10,10 @@
             margin: 0;
             padding: 0;
             background-color: #fff;
-            font-family: "Poppins", Arial, sans-serif; /* Updated font-family */
+            font-family: "Poppins", Arial, sans-serif;
+            /* Updated font-family */
         }
+
         .sidebar {
             height: 100vh;
             width: 290px;
@@ -40,9 +43,11 @@
         }
 
         .content {
-            margin-left: 290px; /* Adjusted to match sidebar width */
+            margin-left: 290px;
             padding: 20px;
             color: #000;
+            padding-top: 85px;
+            /* Add padding-top to push content below the header */
         }
 
         .section-divider {
@@ -65,36 +70,47 @@
 
         header {
             padding: 10px;
-            height: 65px; /* Increased height to accommodate the logo */
+            height: 65px;
+            /* Increased height to accommodate the logo */
             background-color: #000;
             color: #ffc107;
-            display: flex; /* Added to enable aligning items */
-            justify-content: space-between; /* Added to align items */
+            display: flex;
+            /* Added to enable aligning items */
+            justify-content: space-between;
+            /* Added to align items */
             font-family: "Poppins", monospace;
             position: relative;
-            align-items: center; /* Center align items vertically */
+            align-items: center;
+            /* Center align items vertically */
         }
 
         .logo-container {
             display: flex;
             align-items: center;
         }
+
         .logo-text {
-            font-size: 20px; /* Increased font size */
+            font-size: 20px;
+            /* Increased font size */
             color: #ffc107;
             font-family: "Poppins", monospace, sans-serif;
-            margin-left: 10px; /* Adjusted margin for better alignment */
+            margin-left: 10px;
+            /* Adjusted margin for better alignment */
         }
 
         .user-label {
             font-size: 14px;
-            margin-right: 5px; /* Adjusted margin for better alignment */
-            display: flex; /* Added to enable aligning items */
-            align-items: center; /* Added to align items */
+            margin-right: 5px;
+            /* Adjusted margin for better alignment */
+            display: flex;
+            /* Added to enable aligning items */
+            align-items: center;
+            /* Added to align items */
         }
 
         .user-icon {
-            margin-right: 3px; /* Adjusted margin for better alignment */
+            margin-right: 3px;
+            /* Adjusted margin for better alignment */
         }
 
         .sidebar li i {
@@ -105,7 +121,8 @@
             position: absolute;
             top: -10px;
             left: 10px;
-            height: 85px; /* Increased height for a bigger logo */
+            height: 85px;
+            /* Increased height for a bigger logo */
             padding: 10px;
         }
 
@@ -139,54 +156,42 @@
         .dropdown-content a:hover {
             background-color: #444;
         }
-
     </style>
 </head>
+
 <body>
-<header>
-    <div class="logo-container">
-        <img src="<?php echo base_url();?>assets/logo.png" alt="Logo" class="logo">
-        <!-- <span class="logo-text">ZENCO FOOTSTEP</span> -->
-    </div>
-    <span class="user-label"><i class="fas fa-user user-icon"></i>User: <?php echo $user['role']; ?></span>
-</header>
+    <header>
+        <div class="logo-container">
+            <img src="<?php echo base_url(); ?>assets/logo.png" alt="Logo" class="logo">
+            <!-- <span class="logo-text">ZENCO FOOTSTEP</span> -->
+        </div>
+        <span class="user-label"><i class="fas fa-user user-icon"></i>User:
+            <?php echo $user['role']; ?>
+        </span>
+    </header>
 
-<div class="sidebar">
-    <div class="sidebar-header">
-        <h2>Inventory Management</h2>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2>Inventory Management</h2>
+        </div>
+        <ul>
+            <li><a href="#"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
+            <div class="section-divider"></div>
+            <li class="dropdown">
+                <a href="<?php echo site_url('InventoryController/ViewProducts'); ?>"><i
+                        class="fas fa-cube"></i>Product</a>
+            </li>
+            <div class="section-divider"></div>
+            <li class="dropdown">
+                <a href="<?php echo site_url('StockController'); ?>"><i class="fas fa-people-carry"></i>Stock</a>
     </div>
-    <ul>
-    <li><a href="#"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
-        <div class="section-divider"></div>
-        <li class="dropdown">
-        <a href="#"><i class="fas fa-cube"></i>Product</a>
-            <div class="dropdown-content">
-                <a href="#"><i class="fas fa-plus"></i>Add Product</a>
-                <a href="#"><i class="fas fa-eye"></i>View Product</a>
-                <a href="#"><i class="fas fa-edit"></i>Edit Product</a>
-                <a href="#"><i class="fas fa-trash"></i>Delete Product</a>
-            </div>
-        </li>
-        <div class="section-divider"></div>
-        <li class="dropdown">
-            <a href="#"><i class="fas fa-people-carry"></i>Supplier</a>
-            <div class="dropdown-content">
-                <a href="#"><i class="fas fa-plus"></i>Add Supplier</a>
-                <a href="#"><i class="fas fa-eye"></i>View Supplier</a>
-                <a href="#"><i class="fas fa-edit"></i>Edit Supplier</a>
-                <a href="#"><i class="fas fa-trash"></i>Delete Supplier</a>
-            </div>
-        </li>
-        <div class="section-divider"></div>
-        <li><a href="#"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+    </li>
+    <div class="section-divider"></div>
+    <li><a href="<?php echo site_url('Dashboard/Logout'); ?>"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
     </ul>
-</div>
-
-<div class="content">
-    <h1>Welcome to the inventory</h1>
-    <p>This is the main content area of your dashboard.</p>
-</div>
-
+    </div>
+ 
+    
 </body>
-</html>
 
+</html>
