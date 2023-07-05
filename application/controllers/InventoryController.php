@@ -142,6 +142,26 @@ class InventoryController extends CI_Controller
 
         redirect('/InventoryController/ViewProducts');
     }
+    
+    public function show_stocks()
+    {
+        $user = $this->session->userdata('user');
+        if ($user) {
+            // Pass the user data to the view
+            $data['user'] = $user;;
+            $this->load->model('Inventory_Model');
+            $data['navbar'] = "navbar/AdminNavbar";
+            $stocks = $this->Inventory_Model->get_allstocks();
+            // Pass the stocks data to the view
+            $data['stocks'] = $stocks;
+            $this->load->view('Inventory/Stock', $data);
+        } else {
+            // User data not found in session, redirect to login
+            redirect('LoginController');
+        }
+    }
+
+
 
     // STOCK
     public function ViewStocks()

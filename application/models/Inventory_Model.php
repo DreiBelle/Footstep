@@ -70,6 +70,15 @@ class Inventory_Model extends CI_Model
         return $query->result_array();
     }
 
+    public function get_allstocks(){
+        $this->db->select('inventory.* , product.Product_name, product.Product_image, product.Category,');
+        $this->db->from('inventory');
+        $this->db->join('product', 'inventory.Product_id = product.Product_id');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+
 }
 
 ?>
