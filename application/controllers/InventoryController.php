@@ -122,13 +122,20 @@ class InventoryController extends CI_Controller
         $Price = $this->input->post('PriceInput');
         $Quantity = $this->input->post('QuantityInput');
 
+        $currentStocks = (int) $this->Inventory_Model->getStocks($ProductId);
+        $getCurrentExpenses = (int) $this->Inventory_Model->getExpenses($ProductId);
+
+        $newStocks = $currentStocks + $Quantity;
+        $expenses = $Price * $Quantity;
+        $getTotalExpenses = $expenses + $getCurrentExpenses;
+
         $data = array(
             'Product_id' => $ProductId,
             'Product_name' => $ProductName,
             'Category' => $Category,
             'Price' => $Price,
-            'Quantity' => $Quantity,
-
+            'Quantity' => $newStocks,
+            'TotalProductExpenses' => $getTotalExpenses,
         );
 
         $this->Inventory_Model->BuyProduct($ProductId, $data);

@@ -407,7 +407,7 @@
                     ProductNameInput.value = ProductName;
                     CategoryInput.value = Category;
                     PriceInput.value = Price;
-                    QuantityInput.value = Quantity;
+                    QuantityInput.value = 0;
 
                     modal.style.display = "block";
                 }

@@ -13,10 +13,12 @@ class HR_Model extends CI_Model {
     }
 
 
-    public function getEmployee() {
+    public function getEmployee()
+    {
+        $this->db->order_by('Employee_id', 'asc');
         return $this->db->get('employee')->result_array();
     }
-
+    
 
     public function EditEmployee($employeeId, $data) {
         $this->db->set($data);

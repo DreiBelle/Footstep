@@ -234,6 +234,9 @@
             width: 100%;
             font-family: "Arial", Helvetica, sans-serif;
         }
+        span {
+            margin-right: -365px;
+        }
     </style>
 </head>
 

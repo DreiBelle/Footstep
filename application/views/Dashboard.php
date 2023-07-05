@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Dashboard</title>
     <style>
         body {
             font-family: "Arial", "Helvetica", sans-serif;
-            margin: 0;
+            /* margin: 0; */
+            /* background-image: url("<?php echo base_url(); ?>assets/pc.jpg"); */
+            
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
         #container {
@@ -13,27 +18,36 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: calc(120vh - 60px); /* Subtract navbar height from the viewport height */
-            background-color: #f2f2f2; /* Light gray background */
-            padding-top: 10px;
+            height: calc(100vh - 60px);
+            margin-left: 240px;
+            padding: 20px;
+            padding: 10px;
+        }
+        .card {
+            width: 80%;
+            margin-bottom: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); */
+            padding: 30px;
+            margin-top: -20px;
+            justify-content: center;
+            text-align: justify;
         }
 
         h1 {
-            font-size: 32px;
+            font-size: 30px;
             color: #333333;
-            margin-bottom: 50px;
-            margin-left: 200px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Add a subtle text shadow */
+            margin-bottom: 20px;
+            text-align: center;
         }
 
-        #welcome-section {
-            background-color: #dddddd; /* Gray background */
-            padding: 20px;
-            margin-left: 150px;
-            margin-top: 50px;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-            text-align: center; /* Center the content */
+        p {
+            font-size: 16px;
+            color: #666666;
+            line-height: 1.5;
         }
     </style>
 </head>
@@ -41,10 +55,19 @@
 <body>
     <?php $this->load->view($navbar); ?>
     <div id="container">
-       <!-- <div id="welcome-section"> -->
-           <h1>Welcome to Dashboard!</h1>    
-       </div>
+
+        <div class="card">
+            <img src="<?php echo base_url(); ?>assets/logo." alt="PC Image"
+            style="width: 50%; max-width: 100%; height: auto; display: block; margin: 20px auto; margin-top: -20px;">
+            <h1>About Zenco Footstep</h1>
+            <p>Zenco Footstep is owned by Yao Khaphu. In 1957, he established Zenith Commercial to engage in the distribution of sandals and rubber shoes. It began as a one-door establishment in San Fernando St., Binondo. In 1959, he transferred to Caloocan City where a bigger warehouse is located.</p>
+            <p>On May 26, 1961, Zenco Footstep opened in Divisoria, and the expansion of Zenco Footstep in provincial areas was in 1967. Zenco Footstep is currently located at Session Road, Baguio City. It is engaged in selling rubber shoes, sandals, slippers, and sapatero products by category.</p>
+            <p>With a solid marketing network, Zenco Footstep has the strongest foothold in the marketing and selling of footwear items in key marketplaces up north and down south—a competitive edge that remains unparalleled in the industry.</p>
+       
+        </div>
+     
     </div>
+
 </body>
 
 </html>

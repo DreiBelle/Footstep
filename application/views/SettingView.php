@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Sales</title>
+    <title>Setting</title>
     <script src="https://kit.fontawesome.com/your-font-awesome-kit-id.js" crossorigin="anonymous"></script>
     <style>
         body {
@@ -25,7 +25,7 @@
 <body>
     <?php $this->load->view($navbar) ?>
     <div id="contents">
-            <h1 style="text-align: center; padding: 10px; font-size: 30px; font-weight: bold; margin: 0;">Sales</h1>
+            <h1 style="text-align: center; padding: 10px; font-size: 30px; font-weight: bold; margin: 0;">Basta Setting to</h1>
             </form>
         </div>
 

@@ -192,7 +192,7 @@
         <li class="dropdown">
             <a href="javascript:void(0)"><i class="fas fa-file-invoice"></i>Accounting Management </a>
             <div class="dropdown-content">
-                <a href="#"><i class="fas fa-chart-line"></i>Sales</a>
+                <a href="<?php echo site_url('AccountingController'); ?>"><i class="fas fa-chart-line"></i>Sales</a>
                 <a href="#"><i class="fas fa-receipt"></i>Expenses</a>
             </div>
         </li>
@@ -209,7 +209,7 @@
         <div class="section-divider"></div>
         <li><a href="<?php echo site_url('DataAnalyticsController'); ?>"><i class="fas fa-chart-bar"></i>Data Analytics</a></li>
         <div class="section-divider"></div>
-        <li><a href="#"><i class="fas fa-cog"></i>Settings</a></li>
+        <li><a href="<?php echo site_url('SettingController'); ?>"><i class="fas fa-cog"></i>Settings</a></li>
         <div class="section-divider"></div>
         <li><a href="<?php echo site_url('Dashboard/Logout'); ?>"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
     </ul>
