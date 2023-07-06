@@ -1,8 +1,5 @@
 
 
-
-
-
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -15,7 +12,7 @@ class Checkout_Model extends CI_Model {
     }
 
 
-
+    
     public function AddStock($ID, $data)
     {
         $this->db->where('Product_id', $ID);

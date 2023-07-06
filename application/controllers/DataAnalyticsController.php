@@ -5,11 +5,10 @@ class DataAnalyticsController extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->library('session');
-        // Load any necessary models or helpers
+        $this->load->model('DataAnalytics_Model'); // Load the model
     }
 
     public function index() {
-        // Load the CheckoutManagement view
         $user = $this->session->userdata('user');
         if ($user['role'] == "Administrator") {
             $data['user'] = $user;
@@ -17,4 +16,20 @@ class DataAnalyticsController extends CI_Controller {
             $this->load->view('DataAnalytics', $data);
         }
     }
+
+    public function AccountingReport()
+    {
+        $user = $this->session->userdata('user');
+        $data['result'] = $this->DataAnalytics_Model->GetSalesData();
+        $data['Expenses'] = $this->DataAnalytics_Model->GetExpensesData();
+        $data['Payroll'] = $this->DataAnalytics_Model->GetPayrollData();
+        $data['Overall'] = $this->DataAnalytics_Model->GetOverall();
+
+        if ($user['role'] == "Administrator") {
+            $data['user'] = $user;
+            $data['navbar'] = "navbar/AdminNavbar";
+            $this->load->view('DataAnalytics', $data); // Load the correct view file
+        }
+    }
 }
+?>
