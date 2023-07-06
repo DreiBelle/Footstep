@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Checkout Management</title>
     <script src="https://kit.fontawesome.com/your-font-awesome-kit-id.js" crossorigin="anonymous"></script>
@@ -13,7 +14,11 @@
         }
 
         .content {
-            min-width: 700px;
+            margin-left: 240px;
+            padding-left: 20px;
+            margin-top: 20px;
+            margin-right: 20px;
+            margin-bottom: 20px;
         }
 
         #navbar {
@@ -123,8 +128,44 @@
         .pay-now-button:hover {
             background-color: #0056b3;
         }
+
+        .paymentModal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Black w/ opacity */
+        }
+
+        .paymentmodal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 200px;
+            text-align: center;
+        }
+
+        .payment-option {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+        }
     </style>
 </head>
+
 <body>
     <div id="navbar">
         <?php $this->load->view($navbar) ?>
@@ -139,15 +180,25 @@
                             style="background-image: url(<?php echo MAIN_BASE_URL . $item->Product_image; ?>);"></div>
                         <div class="card-content">
                             <div>
-                                <p style="color: gray;">Name: <?php echo $item->Product_name; ?></p>
-                                <p style="color: gray;">Quantity: <?php echo $item->Quantity; ?></p>
+                                <p style="color: gray;">Name:
+                                    <?php echo $item->Product_name; ?>
+                                </p>
+                                <p style="color: gray;">Quantity:
+                                    <?php echo $item->Quantity; ?>
+                                </p>
                                 <p style="color: gray;" id="Price_<?php echo $item->Product_id; ?>">Price: <?php echo $item->Price; ?></p>
                             </div>
                             <div>
-                                <input type="hidden" name="ProductIdInput" id="ProductIdInput_<?php echo $item->Product_id; ?>" value="<?php echo $item->Product_id; ?>" disabled>
-                                <input type="text" placeholder="Enter Size" name="SizeInput" id="SizeInput_<?php echo $item->Product_id; ?>" class="size-input">
-                                <input type="number" placeholder="Enter Quantity" name="QuantityInput" id="QuantityInput_<?php echo $item->Product_id; ?>" class="quantity-input">
-                                <button style="margin-top: 15px;" class="card-button" onclick="addToCart(<?php echo $item->Product_id; ?>, '<?php echo $item->Product_name; ?>', '<?php echo $item->Quantity; ?>')">Add to Cart</button>
+                                <input type="hidden" name="ProductIdInput"
+                                    id="ProductIdInput_<?php echo $item->Product_id; ?>"
+                                    value="<?php echo $item->Product_id; ?>" disabled>
+                                <input type="text" placeholder="Enter Size" name="SizeInput"
+                                    id="SizeInput_<?php echo $item->Product_id; ?>" class="size-input">
+                                <input type="number" placeholder="Enter Quantity" name="QuantityInput"
+                                    id="QuantityInput_<?php echo $item->Product_id; ?>" class="quantity-input">
+                                <button style="margin-top: 15px;" class="card-button"
+                                    onclick="addToCart(<?php echo $item->Product_id; ?>, '<?php echo $item->Product_name; ?>', '<?php echo $item->Quantity; ?>')">Add
+                                    to Cart</button>
                             </div>
                         </div>
                     </div>
@@ -159,15 +210,25 @@
                             style="background-image: url(<?php echo MAIN_BASE_URL . $item->Product_image; ?>);"></div>
                         <div class="card-content">
                             <div>
-                                <p style="color: gray;">Name: <?php echo $item->Product_name; ?></p>
-                                <p style="color: gray;">Quantity: <?php echo $item->Quantity; ?></p>
+                                <p style="color: gray;">Name:
+                                    <?php echo $item->Product_name; ?>
+                                </p>
+                                <p style="color: gray;">Quantity:
+                                    <?php echo $item->Quantity; ?>
+                                </p>
                                 <p style="color: gray;" id="Price_<?php echo $item->Product_id; ?>">Price: <?php echo $item->Price; ?></p>
                             </div>
                             <div>
-                                <input type="hidden" name="ProductIdInput" id="ProductIdInput_<?php echo $item->Product_id; ?>" value="<?php echo $item->Product_id; ?>" disabled>
-                                <input type="text" placeholder="Enter Size" name="SizeInput" id="SizeInput_<?php echo $item->Product_id; ?>" class="size-input">
-                                <input type="number" placeholder="Enter Quantity" name="QuantityInput" id="QuantityInput_<?php echo $item->Product_id; ?>" class="quantity-input">
-                                <button style="margin-top: 15px;" class="card-button" onclick="addToCart(<?php echo $item->Product_id; ?>, '<?php echo $item->Product_name; ?>', '<?php echo $item->Quantity; ?>')">Add to Cart</button>
+                                <input type="hidden" name="ProductIdInput"
+                                    id="ProductIdInput_<?php echo $item->Product_id; ?>"
+                                    value="<?php echo $item->Product_id; ?>" disabled>
+                                <input type="text" placeholder="Enter Size" name="SizeInput"
+                                    id="SizeInput_<?php echo $item->Product_id; ?>" class="size-input">
+                                <input type="number" placeholder="Enter Quantity" name="QuantityInput"
+                                    id="QuantityInput_<?php echo $item->Product_id; ?>" class="quantity-input">
+                                <button style="margin-top: 15px;" class="card-button"
+                                    onclick="addToCart(<?php echo $item->Product_id; ?>, '<?php echo $item->Product_name; ?>', '<?php echo $item->Quantity; ?>')">Add
+                                    to Cart</button>
                             </div>
                         </div>
                     </div>
@@ -179,15 +240,25 @@
                             style="background-image: url(<?php echo MAIN_BASE_URL . $item->Product_image; ?>);"></div>
                         <div class="card-content">
                             <div>
-                                <p style="color: gray;">Name: <?php echo $item->Product_name; ?></p>
-                                <p style="color: gray;">Quantity: <?php echo $item->Quantity; ?></p>
+                                <p style="color: gray;">Name:
+                                    <?php echo $item->Product_name; ?>
+                                </p>
+                                <p style="color: gray;">Quantity:
+                                    <?php echo $item->Quantity; ?>
+                                </p>
                                 <p style="color: gray;" id="Price_<?php echo $item->Product_id; ?>">Price: <?php echo $item->Price; ?></p>
                             </div>
                             <div>
-                                <input type="hidden" name="ProductIdInput" id="ProductIdInput_<?php echo $item->Product_id; ?>" value="<?php echo $item->Product_id; ?>" disabled>
-                                <input type="text" placeholder="Enter Size" name="SizeInput" id="SizeInput_<?php echo $item->Product_id; ?>" class="size-input">
-                                <input type="number" placeholder="Enter Quantity" name="QuantityInput" id="QuantityInput_<?php echo $item->Product_id; ?>" class="quantity-input">
-                                <button style="margin-top: 15px;" class="card-button" onclick="addToCart(<?php echo $item->Product_id; ?>, '<?php echo $item->Product_name; ?>', '<?php echo $item->Quantity; ?>')">Add to Cart</button>
+                                <input type="hidden" name="ProductIdInput"
+                                    id="ProductIdInput_<?php echo $item->Product_id; ?>"
+                                    value="<?php echo $item->Product_id; ?>" disabled>
+                                <input type="text" placeholder="Enter Size" name="SizeInput"
+                                    id="SizeInput_<?php echo $item->Product_id; ?>" class="size-input">
+                                <input type="number" placeholder="Enter Quantity" name="QuantityInput"
+                                    id="QuantityInput_<?php echo $item->Product_id; ?>" class="quantity-input">
+                                <button style="margin-top: 15px;" class="card-button"
+                                    onclick="addToCart(<?php echo $item->Product_id; ?>, '<?php echo $item->Product_name; ?>', '<?php echo $item->Quantity; ?>')">Add
+                                    to Cart</button>
                             </div>
                         </div>
                     </div>
@@ -203,8 +274,10 @@
             </div>
         </div>
 
-            <table id="cartDisplay" style="position: fixed; bottom: 0; width: 75%; background-color: white; height: 10%; margin-right: 5%; display: none; overflow-y: auto;"></table>
-        </div>
+        <table id="cartDisplay"
+            style="position: fixed; bottom: 0; width: 75%; background-color: white; height: 10%; margin-right: 5%; display: none; overflow-y: auto;">
+        </table>
+    </div>
     </div>
     <script>
         var cartItems = [];
@@ -334,31 +407,55 @@
             totalDisplay.textContent = totalPrice.toFixed(2);
         }
 
+
         function calculateTotal() {
-            var totalPrice = 0;
+            var modal = document.getElementById("paymentModal");
+            modal.style.display = "block";
 
-            for (var i = 0; i < cartItems.length; i++) {
-                totalPrice += cartItems[i].price;
+            var cashBtn = document.getElementById("cashBtn");
+            cashBtn.addEventListener("click", function () {
+                processPayment("Cash");
+            });
 
-                var itemId = cartItems[i].id;
-                var quantity = cartItems[i].quantity;
-                var size = cartItems[i].size;
+            var rbbiBtn = document.getElementById("rbbiBtn");
+            rbbiBtn.addEventListener("click", function () {
+                processPayment("RBBI");
+            });
+        }
 
-                // Send an AJAX request to reduce the stock for each item
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", "<?php echo site_url('/CheckoutController/ReduceStock'); ?>", true);
-                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        function processPayment(chosen) {
+            var modal = document.getElementById("paymentModal");
 
-                var data = "ProductIdInput=" + encodeURIComponent(itemId) + "&QuantityInput=" + encodeURIComponent(quantity);
-                xhr.send(data);
+            if (chosen == "Cash") {
+                totalPrice = 0;
 
-                // Send an AJAX request to save the size for each item
-                var xhrSize = new XMLHttpRequest();
-                xhrSize.open("POST", "<?php echo site_url('/CheckoutController/SaveSize'); ?>", true);
-                xhrSize.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                for (var i = 0; i < cartItems.length; i++) {
+                    totalPrice += cartItems[i].price;
 
-                var dataSize = "ProductIdInput=" + encodeURIComponent(itemId) + "&SizeInput=" + encodeURIComponent(size);
-                xhrSize.send(dataSize);
+                    var itemId = cartItems[i].id;
+                    var quantity = cartItems[i].quantity;
+                    var size = cartItems[i].size;
+
+                    console.log(quantity);
+
+                    // Send an AJAX request to reduce the stock for each item
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", "<?php echo site_url('/CheckoutController/ReduceStock'); ?>", true);
+                    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+                    var data = "ProductIdInput=" + encodeURIComponent(itemId) + "& QuantityInput=" + encodeURIComponent(quantity);
+                    xhr.send(data);
+
+                    // Send an AJAX request to save the size for each item
+                    var xhrSize = new XMLHttpRequest();
+                    xhrSize.open("POST", "<?php echo site_url('/CheckoutController/SaveSize'); ?>", true);
+                    xhrSize.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+                    var dataSize = "ProductIdInput=" + encodeURIComponent(itemId) + "& SizeInput=" + encodeURIComponent(size);
+                    xhrSize.send(dataSize);
+                }
+            } else if (chosen == "RBBI") {
+                console.log("this is RBBI");
             }
 
             var xhr = new XMLHttpRequest();
@@ -380,6 +477,7 @@
                     updateCartDisplay();
 
                     var buttonRow = document.getElementById('buttonRow');
+
                     location.reload();
                     if (buttonRow && buttonRow.parentNode) { // Check if buttonRow exists and its parentNode exists
                         buttonRow.parentNode.removeChild(buttonRow); // Remove the buttonRow from the DOM
@@ -389,69 +487,7 @@
 
             xhr.send(data);
         }
-
-
-        function processPayment(chosen) {
-            var modal = document.getElementById("paymentModal");
-
-            if (chosen == "Cash") {
-                var totalPrice = 0;
-
-                for (var i = 0; i < cartItems.length; i++) {
-                    totalPrice += cartItems[i].price;
-
-                    var itemId = cartItems[i].id;
-                    var quantity = cartItems[i].quantity;
-
-                    // Send an AJAX request to reduce the stock for each item
-                    var xhr = new XMLHttpRequest();
-                    xhr.open("POST", "<?php echo site_url('/Checkout_Controller/ReduceStock'); ?>", true);
-                    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-                    var data = "ItemIDInput=" + encodeURIComponent(itemId) + "&QuantityInput=" + encodeURIComponent(quantity);
-                    xhr.send(data);
-                }
-
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", "<?php echo site_url('/Checkout_Controller/InsertTotalExpense'); ?>", true);
-                xhr.setRequestHeader("Content-Type", "application/json");
-
-                // Create an object with additional data
-                var additionalData = {
-                    totalPrice: totalPrice,
-                    additionalProperty: "additional value",
-                };
-
-                // Merge additionalData with the existing data object
-                var data = JSON.stringify(Object.assign({}, additionalData));
-
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-                        cartItems = [];
-                        updateCartDisplay();
-
-                        var buttonRow = document.getElementById('buttonRow');
-
-                        location.reload();
-                        if (buttonRow && buttonRow.parentNode) { // Check if buttonRow exists and its parentNode exists
-                            buttonRow.parentNode.removeChild(buttonRow); // Remove the buttonRow from the DOM
-                        }
-                    }
-                };
-
-                xhr.send(data);
-            }
-            else if (chosen == "BDO") {
-                console.log("this is BDO")
-            }
-            else if (chosen == "RBBI") {
-                console.log("this is Rbbi")
-            }
-            else if (chosen == "ClsBtn") {
-                console.log("this is Close")
-                modal.style.display = "none";
-            }
-        }
     </script>
 </body>
+
 </html>

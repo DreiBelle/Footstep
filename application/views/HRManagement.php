@@ -33,7 +33,7 @@
         }
 
         .search-form input[type="text"] {
-            margin-left: 90vh;
+            margin-left: 60vh;
             width: 30%;
             padding: 10px;
             border: 1px solid #f9f9f9;
@@ -276,6 +276,44 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: 100%;
             font-family: "Arial", Helvetica, sans-serif;
+        }
+
+        .paymentModal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Black w/ opacity */
+        }
+
+        .paymentmodal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 200px;
+            text-align: center;
+        }
+
+        .payment-option {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+        }
+        ::-webkit-scrollbar {
+            display: none;
         }
         
     </style>

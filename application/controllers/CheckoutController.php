@@ -57,19 +57,21 @@ class CheckoutController extends CI_Controller
 
     public function InsertTotalExpense()
     {
-        $totalPrice = json_decode($this->input->raw_input_stream)->totalPrice;
-        $try = json_decode($this->input->raw_input_stream)->additionalProperty;
-    
+        $requestBody = json_decode($this->input->raw_input_stream, true);
+        $totalPrice = $requestBody['totalPrice'];
+        $additionalProperty = $requestBody['additionalProperty'];
+
         $data = array(
             'TotalBought' => $totalPrice,
-            'try' => $try,
+            'try' => $additionalProperty,
         );
-    
+
         $this->Checkout_Model->InsertExpense($data);
-    
+
         redirect('CheckoutController');
     }
-    
+
+
 
     public function SaveSize()
     {
