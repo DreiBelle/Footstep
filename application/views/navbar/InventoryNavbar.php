@@ -11,22 +11,22 @@
             padding: 0;
             background-color: #fff;
             font-family: "Poppins", Arial, sans-serif;
-            /* Updated font-family */
         }
 
         .content {
-            margin-left: 270px; 
-            padding: -20px;
+            margin-left: 290px;
+            padding: 20px;
             color: #000;
-            display: inline;
-         
+            margin-top: 80px;
         }
+
         .sidebar {
-            height: 100vh;
+            height: calc(100vh - 80px);
             width: 290px;
             background-color: #000;
             color: #ffc107;
             position: fixed;
+            top: 80px;
         }
 
         .sidebar ul {
@@ -49,7 +49,6 @@
             color: #fff;
         }
 
-
         .section-divider {
             margin-top: 5px;
             border-top: 1px solid #ffc107;
@@ -70,62 +69,48 @@
 
         header {
             padding: 10px;
-            height: 65px;
-          
-            /* Increased height to accommodate the logo */
+            height: 80px;
             background-color: #000;
             color: #ffc107;
             display: flex;
-            /* Added to enable aligning items */
             justify-content: space-between;
-            /* Added to align items */
             font-family: "Poppins", monospace;
-            position: relative;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
             align-items: center;
-            /* Center align items vertically */
         }
 
         .logo-container {
             display: flex;
             align-items: center;
+            
         }
 
         .logo-text {
             font-size: 20px;
-            /* Increased font size */
             color: #ffc107;
             font-family: "Poppins", monospace, sans-serif;
             margin-left: 10px;
-            /* Adjusted margin for better alignment */
         }
 
         .user-label {
             font-size: 14px;
             margin-right: 5px;
-            /* Adjusted margin for better alignment */
             display: flex;
-            /* Added to enable aligning items */
             align-items: center;
-            /* Added to align items */
         }
 
         .user-icon {
-            margin-right: 3px;
-            /* Adjusted margin for better alignment */
-        }
-
-        .sidebar li i {
-            margin-right: 10px;
+            margin-right: 5px; /* Adjust margin to increase space */
         }
 
         .logo {
-            position: absolute;
-            top: -10px;
-            left: 10px;
-            height: 85px;
-            /* Increased height for a bigger logo */
-            padding: 10px;
-        }
+        height: 90px; /* Adjust height to make it bigger */
+        padding: 10px;
+    }
 
         /* Dropdown styles */
         .dropdown {
@@ -166,9 +151,7 @@
             <img src="<?php echo base_url(); ?>assets/logo.png" alt="Logo" class="logo">
             <!-- <span class="logo-text">ZENCO FOOTSTEP</span> -->
         </div>
-        <span class="user-label"><i class="fas fa-user user-icon"></i>User:
-            <?php echo $user['role']; ?>
-        </span>
+        <span class="user-label"><i class="fas fa-user user-icon"></i> User: <?php echo $user['role']; ?></span>
     </header>
 
     <div class="sidebar">
@@ -176,19 +159,15 @@
             <h2>Inventory Management</h2>
         </div>
         <ul>
-            <li><a href="<?php echo site_url('Dashboard'); ?>"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
+            <li><a href="<?php echo site_url('Dashboard'); ?>"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
             <div class="section-divider"></div>
-            <li>
-                <a href="<?php echo site_url('InventoryController/ViewProducts'); ?>"><i
-                        class="fas fa-cube"></i>Product</a>
-            </li>
+            <li><a href="<?php echo site_url('InventoryController/ViewProducts'); ?>"><i
+                        class="fas fa-cube"></i> Product</a></li>
             <div class="section-divider"></div>
-            <li><a href="<?php echo site_url('StockController'); ?>"><i class="fas fa-people-carry"></i>Stock</a>
-    
-    </li>
-    <div class="section-divider"></div>
-    <li><a href="<?php echo site_url('Dashboard/Logout'); ?>"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
-    </ul>
+            <li><a href="<?php echo site_url('StockController'); ?>"><i class="fas fa-people-carry"></i> Stock</a></li>
+            <div class="section-divider"></div>
+            <li><a href="<?php echo site_url('Dashboard/Logout'); ?>"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
     </div>
 
 
