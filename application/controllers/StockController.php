@@ -20,14 +20,13 @@ class StockController extends CI_Controller
 
         if ($user['role'] == "Administrator") {
             $data['user'] = $user;
-            // $data['check'] = $this->Stock_Model->getCheckout();
             $data['navbar'] = "navbar/AdminNavbar";
             $this->load->view('Inventory/Stock', $data);
             
-        } else if ($user['role'] == "Cashier") {
+        } else if ($user['role'] == "Inventory") {
             $data['user'] = $user;
-            $data['navbar'] = "navbar/CashierNavbar";
-            $this->load->view('Dashboard', $data);
+            $data['navbar'] = "navbar/InventoryNavbar";
+            $this->load->view('Inventory/Stock', $data);
         }
     }
 

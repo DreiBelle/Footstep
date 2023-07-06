@@ -9,19 +9,11 @@ class Dashboard extends CI_Controller {
         $this->load->model('Accounting_Model/Payroll_Model');
         $this->load->model('Accounting_Model/Purchase_Model');
         $this->load->model('HR_Model');
+        $this->load->model('Checkout_Model');
+        $this->load->model('Inventory_Model');
+        $this->load->model('Stock_Model');
     }
 
-    // public function index() {
-    //     $user = $this->session->userdata('user');
-    //     if ($user) {
-    //         $data['user'] = $user;
-    //         $this->load->view('Dashboard', $data);
-    //     }
-    //     else {
-    //         redirect('LoginController');
-    //     }
-    // }
-//new
     public function index() {
         $user = $this->session->userdata('user');
         if ($user['role'] == "Administrator") {
@@ -36,6 +28,7 @@ class Dashboard extends CI_Controller {
         else if ($user['role'] == "Accounting") {
             $data['user'] = $user;
             $data['navbar'] = "navbar/FinanceNavbar";
+            $data['employees'] = $this->Payroll_Model->getEmployeesWithSalary();
             $this->load->view('Dashboard', $data);
         }
         else if ($user['role'] == "HR") {
@@ -47,6 +40,7 @@ class Dashboard extends CI_Controller {
         else if ($user['role'] == "Inventory") {
             $data['user'] = $user;
             $data['navbar'] = "navbar/InventoryNavbar";
+            $data['check'] = $this->Inventory_Model->get_all_product();
             $this->load->view('Dashboard', $data);
         }
     }

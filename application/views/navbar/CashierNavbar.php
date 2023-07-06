@@ -156,17 +156,12 @@
         <h2>Checkout Management</h2>
     </div>
     <ul>
-        <li><a href=a href="<?php echo site_url('Dashboard'); ?>"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
+        <li><a href="<?php echo site_url('Dashboard'); ?>"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
         <div class="section-divider"></div>
-        <li class="dropdown">
-            <a href="#"><i class="fas fa-money-bill"></i>Payments</a>
-            <div class="dropdown-content">
-                <a href="#"><i class="fas fa-plus"></i>Add Payment</a>
-                <a href="#"><i class="fas fa-eye"></i>View Payment</a>
-                <a href="#"><i class="fas fa-edit"></i>Edit Payment</a>
-                <a href="#"><i class="fas fa-trash"></i>Delete Payment</a>
-            </div>
-        </li>
+        <li>
+            <a href="<?php echo site_url('CheckoutController'); ?>"><i class="fas fa-money-bill"></i>Product</a></li>
+          
+  
         <div class="section-divider"></div>
         <li><a href="<?php echo site_url('Dashboard/Logout'); ?>"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
     </ul>

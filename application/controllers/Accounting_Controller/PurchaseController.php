@@ -23,10 +23,10 @@ class PurchaseController extends CI_Controller
             $data['user'] = $user;
             $data['navbar'] = "navbar/AdminNavbar";
             $this->load->view('Accounting/PurchaseView', $data);
-        } else if ($user['role'] == "Cashier") {
+        } else if ($user['role'] == "Accounting") {
             $data['user'] = $user;
             $data['navbar'] = "navbar/FinanceNavbar";
-            $this->load->view('Dashboard', $data);
+            $this->load->view('Accounting/PurchaseView', $data);
         }
     }
 

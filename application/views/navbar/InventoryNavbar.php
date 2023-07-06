@@ -14,6 +14,13 @@
             /* Updated font-family */
         }
 
+        .content {
+            margin-left: 270px; 
+            padding: -20px;
+            color: #000;
+            display: inline;
+         
+        }
         .sidebar {
             height: 100vh;
             width: 290px;
@@ -42,13 +49,6 @@
             color: #fff;
         }
 
-        .content {
-            margin-left: 290px;
-            padding: 20px;
-            color: #000;
-            padding-top: 85px;
-            /* Add padding-top to push content below the header */
-        }
 
         .section-divider {
             margin-top: 5px;
@@ -71,6 +71,7 @@
         header {
             padding: 10px;
             height: 65px;
+          
             /* Increased height to accommodate the logo */
             background-color: #000;
             color: #ffc107;
@@ -175,23 +176,22 @@
             <h2>Inventory Management</h2>
         </div>
         <ul>
-            <li><a href="#"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
+            <li><a href="<?php echo site_url('Dashboard'); ?>"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
             <div class="section-divider"></div>
-            <li class="dropdown">
+            <li>
                 <a href="<?php echo site_url('InventoryController/ViewProducts'); ?>"><i
                         class="fas fa-cube"></i>Product</a>
             </li>
             <div class="section-divider"></div>
-            <li class="dropdown">
-                <a href="<?php echo site_url('StockController'); ?>"><i class="fas fa-people-carry"></i>Stock</a>
-    </div>
+            <li><a href="<?php echo site_url('StockController'); ?>"><i class="fas fa-people-carry"></i>Stock</a>
+    
     </li>
     <div class="section-divider"></div>
     <li><a href="<?php echo site_url('Dashboard/Logout'); ?>"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
     </ul>
     </div>
- 
-    
+
+
 </body>
 
 </html>

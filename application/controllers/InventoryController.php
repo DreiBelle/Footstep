@@ -24,6 +24,7 @@ class InventoryController extends CI_Controller
         } else if ($user['role'] == "Inventory/Product") {
             $data['user'] = $user;
             $data['navbar'] = "navbar/InventoryNavbar";
+            $data['check'] = $this->Inventory_Model->get_all_product();
             $this->load->view('InventoryManagement', $data);
         }
     }
@@ -47,6 +48,11 @@ class InventoryController extends CI_Controller
         } else if ($user['role'] == "Inventory") {
             $data['user'] = $user;
             $data['navbar'] = "navbar/InventoryNavbar";
+            if (!empty($searchid)) {
+                $data['check'] = $this->Inventory_Model->Search($searchid);
+            } else {
+                $data['check'] = $this->Inventory_Model->get_all_product();
+            }
             $this->load->view('Inventory/Product', $data);
         }
 

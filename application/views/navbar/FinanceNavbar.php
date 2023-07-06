@@ -40,9 +40,11 @@
         }
 
         .content {
-            margin-left: 290px; /* Adjusted to match sidebar width */
-            padding: 20px;
+            margin-left: 270px; 
+            padding: -20px;
             color: #000;
+            display: inline;
+            margin-bottom: 50px;
         }
 
         .section-divider {

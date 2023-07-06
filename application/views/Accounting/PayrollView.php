@@ -210,7 +210,6 @@
                                         <i class="fas fa-edit"></i> Edit Salary
                                     </button>
 
-
                                 <?php endif; ?>
                             </td>
                         </tr>

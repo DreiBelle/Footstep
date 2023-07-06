@@ -20,7 +20,6 @@ class CheckoutController extends CI_Controller
 
         if ($user['role'] == "Administrator") {
             $data['user'] = $user;
-            // $data['check'] = $this->Checkout_Model->getCheckout();
             $data['navbar'] = "navbar/AdminNavbar";
             $this->load->view('CheckoutManagement', $data);
             
