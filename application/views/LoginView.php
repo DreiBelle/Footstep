@@ -155,7 +155,7 @@
         <div class="login-form">
             <div class="form-content">
                 <img class="logo" src="<?php echo base_url('assets/logo.png'); ?>" alt="Logo">
-                <h2>Welcome Back!</h2>
+                <h2>LOGIN ACCOUNT</h2>
     
                 <form method="post" action="<?php echo site_url('LoginController/authenticate'); ?>">
                     <div class="form-group">

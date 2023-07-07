@@ -176,7 +176,6 @@
 <body>
 <header>
     <div class="logo-container">
- 
     </div>
     <span class="user-label"><i class="fas fa-user user-icon"></i>User: <?php echo $user['role']; ?></span>
 </header>
@@ -190,9 +189,21 @@
         <div class="section-divider"></div>
         <li><a href="<?php echo site_url('CheckoutController'); ?>"><i class="fas fa-shopping-cart"></i>Checkout Management</a></li>
         <div class="section-divider"></div>
-        <li><a href="<?php echo site_url('AccountingController'); ?>"><i class="fas fa-file-invoice"></i>Accounting Management</a></li>
-        <div class="section-divider"></div>
-        <li><a href="<?php echo site_url('InventoryController'); ?>"><i class="fas fa-box"></i>Inventory Management</a></li>
+        <li class="dropdown">
+            <a href="javascript:void(0)"><i class="fas fa-file-invoice"></i>Accounting Management </a>
+            <div class="dropdown-content">
+                <a href="#"><i class="fas fa-chart-line"></i>Sales</a>
+                <a href="#"><i class="fas fa-receipt"></i>Expenses</a>
+            </div>
+        </li>
+                <div class="section-divider"></div>
+        <li class="dropdown">
+        <a href="#"><i class="fas fa-box"></i>Inventory Management </a>
+            <div class="dropdown-content">
+                <a href="<?php echo site_url('InventoryController/ViewProducts'); ?>"><i class="fas fa-cube"></i>Product</a>
+                <a href="#"><i class="fas fa-box-open"></i>Stock</a>
+            </div> 
+        </li>
         <div class="section-divider"></div>
         <li><a href="<?php echo site_url('HRController'); ?>"><i class="fas fa-users"></i>Human Resource Management</a></li>
         <div class="section-divider"></div>
@@ -207,16 +218,12 @@
 <img style="z-index: 3;" class="picFootstep" src="<?php echo base_url();?>assets/logo.png" alt="Logo" class="logo">
 
 <script>
-
     function showDashboardImage() {
         var imageContainer = document.getElementById('imageContainer');
-        imageContainer.style.display = 'flex';
+        imageContainer.style.display ='flex';
     }
     showDashboardImage();
 </script>
 
 </body>
 </html>
-
-
-
