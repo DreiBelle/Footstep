@@ -1,0 +1,45 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+
+class HR_Model extends CI_Model {
+    public function addEmployees($data) {
+        return $this->db->insert('employee', $data);
+    }
+
+
+    public function getEmployees($id) {
+        return $this->db->get_where('employee', array('Employee_id' => $id))->row_array();
+    }
+
+
+    public function getEmployee() {
+        return $this->db->get('employee')->result_array();
+    }
+
+
+    public function EditEmployee($employeeId, $data) {
+        $this->db->set($data);
+        $this->db->where('employee_id', $employeeId);
+        $this->db->update('employee');
+
+        return $this->db->affected_rows() > 0;
+    }
+
+
+    public function deleteRecords($employeeId)
+    {
+        $this->db->where('employee_id', $employeeId);
+        $this->db->delete('employee');
+        
+        return $this->db->affected_rows() > 0;
+    }
+
+    public function Search($id){
+        $this->db->like('employee_id', $id);
+        return $this->db->get('employee')->result_array();
+    }
+}
+    
+?>
+

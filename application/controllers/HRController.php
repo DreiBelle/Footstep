@@ -5,6 +5,7 @@ class HRController extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->library('session');
+        $this->load->model('HR_Model');
         // Load any necessary models or helpers
     }
 
@@ -12,6 +13,7 @@ class HRController extends CI_Controller {
         $user = $this->session->userdata('user');
         if ($user['role'] == "Administrator") {
             $data['user'] = $user;
+            $data['check'] = $this->HR_Model->getEmployee();
             $data['navbar'] = "navbar/AdminNavbar";
             $this->load->view('HRManagement', $data);
         } else if ($user['role'] == "HR") {
@@ -20,4 +22,50 @@ class HRController extends CI_Controller {
             $this->load->view('Dashboard', $data);
         }
     }
+
+    public function addEmployee()
+    {
+        $EmployeeId = $this->input->post('EmployeeId');
+        $Name = $this->input->post('Name');
+        $Position = $this->input->post('Position');
+        $HireDate = $this->input->post('HireDate');
+        $Address = $this->input->post('Address');
+    
+        $data = array(
+            'Employee_id' => $EmployeeId,
+            'Name' => $Name,
+            'Position' => $Position,
+            'Hire_date' => date('Y-m-d H:i:s', strtotime($HireDate)), // Convert date to datetime format
+            'Address' => $Address,
+        );
+    
+        $this->HR_Model->addEmployees($data);
+    
+        redirect('HRController');
+    }
+
+    public function viewEmployee()
+    {
+        // Load the CheckoutManagement view
+        $user = $this->session->userdata('user');
+        $searchid = $this->input->get('asd');
+
+        if ($user['role'] == "Administrator") {
+            $data['user'] = $user;
+         
+            $data['navbar'] = "navbar/AdminNavbar";
+            if(!empty($searchid)){
+                $data['check'] = $this->HR_Model->Search($searchid);
+            }
+            else{
+                $data['check'] = $this->HR_Model->getEmployee();
+            }
+            $this->load->view('HRManagement', $data);
+        } else if ($user['role'] == "Hr") {
+            $data['user'] = $user;
+            $data['navbar'] = "navbar/HrNavbar";
+            $this->load->view('Dashboard', $data);
+        }
+    }
+
 }

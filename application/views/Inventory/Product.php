@@ -23,7 +23,8 @@
         }
 
         .search-form input[type="text"] {
-            width: 200px;
+            margin-left: 90vh;
+            width: 400px;
             padding: 10px;
             border: 1px solid #f9f9f9;
             border-radius: 4px;
@@ -49,7 +50,10 @@
         }
 
         .add-btn button {
+            width: 130px;
+            margin-top: -62px;
             padding: 10px;
+            position: absolute;
             border: none;
             border-radius: 4px;
             background-color: #f9f9f9;
@@ -240,8 +244,8 @@
         <div class="search-form">
             <h1 style="text-align: center; padding: 10px; font-size: 30px; font-weight: bold; margin: 0;">Inventory
                 Management</h1>
-            <form method="get" action="<?php echo site_url('InventoryController/viewCheckout'); ?>">
-                <input type="text" name="searchId" placeholder="Search by ID">
+                <form method="get" action="<?php echo site_url('InventoryController/ViewProducts'); ?>">
+                <input type="text" name="asd" placeholder="Search by ID">
                 <input type="submit" value="Search">
             </form>
         </div>
@@ -259,7 +263,7 @@
                             class="form-container">
                             <!-- <h2>Purchase</h2> -->
                             <label for="ProductImage"><i class="fas fa-image"></i> Product Image:</label>
-                            <input type="text" name="ProductImage" id="ProductImage" required>
+                            <input type="file" name="ProductImage" id="ProductImage" accept="image/*" required>
 
                             <label for="ProductId"><i class="fas fa-barcode"></i> Product ID:</label>
                             <input type="text" name="ProductId" id="ProductId" required>
@@ -301,7 +305,8 @@
                 <?php foreach ($check as $data) { ?>
                     <tr>
                         <td>
-                            <?php echo $data['Product_image']; ?>
+                        <img src="<?php echo base_url('assets/' . $data['Product_image']); ?>" alt="Product Image" style="width: 100px; height: auto;">
+    
                         </td>
                         <td>
                             <?php echo $data['Product_id']; ?>
@@ -353,6 +358,11 @@
                     }
                 };
             })
+
+            function searchById() {
+                    var searchId = document.getElementById('search-id').value;
+                    console.log('Search by ID:', searchId);
+                }
         </script>
 </body>
 
