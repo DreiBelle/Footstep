@@ -122,6 +122,7 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            background-color: #f9f9f9;
             transition: background-color 0.3s;
             color: #fff;
         }
@@ -242,6 +243,7 @@
 <body>
     <?php $this->load->view($navbar) ?>
     <div id="contents">
+    <h1 style="text-align: center; padding: 10px; font-size: 30px; font-weight: bold; margin: 0;">Accounting Management</h1>
         <div class="search-form">
             <form method="get" action="<?php echo site_url('CheckoutController/viewCheckout'); ?>">
                 <div class="search-input-container">

@@ -20,7 +20,7 @@ class HR_Model extends CI_Model {
 
     public function EditEmployee($employeeId, $data) {
         $this->db->set($data);
-        $this->db->where('employee_id', $employeeId);
+        $this->db->where('Employee_id', $employeeId);
         $this->db->update('employee');
 
         return $this->db->affected_rows() > 0;
@@ -29,14 +29,14 @@ class HR_Model extends CI_Model {
 
     public function deleteRecords($employeeId)
     {
-        $this->db->where('employee_id', $employeeId);
+        $this->db->where('Employee_id', $employeeId);
         $this->db->delete('employee');
         
         return $this->db->affected_rows() > 0;
     }
 
     public function Search($id){
-        $this->db->like('employee_id', $id);
+        $this->db->like('Employee_id', $id);
         return $this->db->get('employee')->result_array();
     }
 }

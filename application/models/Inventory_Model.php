@@ -18,14 +18,6 @@ class Inventory_Model extends CI_Model {
     }
 
 
-    public function EditCheckout($PaymentId, $data) {
-        $this->db->set($data);
-        $this->db->where('Payment_id', $PaymentId);
-        $this->db->update('payment');
-
-        return $this->db->affected_rows() > 0;
-    }
-
 
     public function deleteRecords($paymentId)
     {
@@ -39,6 +31,19 @@ class Inventory_Model extends CI_Model {
         $this->db->like('Product_id', $id);
         return $this->db->get('inventory')->result_array();
     }
+
+    public function get_all_product() {
+        // Retrieve all orders from the tbl_order table
+        $query = $this->db->get('inventory');
+        return $query->result_array();
+    }
+
+
+    public function create_product($data) {
+        $this->db->insert('inventory', $data);
+    }
+
+    
 }
     
 ?>

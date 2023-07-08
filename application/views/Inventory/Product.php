@@ -259,7 +259,7 @@
                 <div class="flex-center">
                     <div class="modal-content">
                         <span class="close">&times;</span>
-                        <form method="post" action="<?php echo site_url('InventoryController/addProduct'); ?>"
+                        <form method="post" action="<?php echo site_url('InventoryController/add_prod'); ?>"
                             class="form-container">
                             <!-- <h2>Purchase</h2> -->
                             <label for="ProductImage"><i class="fas fa-image"></i> Product Image:</label>
@@ -305,8 +305,7 @@
                 <?php foreach ($check as $data) { ?>
                     <tr>
                         <td>
-                        <img src="<?php echo base_url('assets/' . $data['Product_image']); ?>" alt="Product Image" style="width: 100px; height: auto;">
-    
+                        <img src="<?php echo MAIN_BASE_URL . $data['Product_image']; ?>"></td>
                         </td>
                         <td>
                             <?php echo $data['Product_id']; ?>

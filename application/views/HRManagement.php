@@ -150,10 +150,7 @@
             background-color: #f9f9f9;
         }
 
-        /* .action-btn.delete-btn {
-            background-color: #e74c3c;
-            margin-left: 5px;
-        } */
+
 
         .action-btn.edit-btn:hover,
         .action-btn.delete-btn:hover {
@@ -244,7 +241,7 @@
         <div class="search-form">
             <h1 style="text-align: center; padding: 10px; font-size: 30px; font-weight: bold; margin: 0;">Human Resource
                 Management</h1>
-            <form method="get" action="<?php echo site_url('HRController/ViewEmployees'); ?>">
+            <form method="get" action="<?php echo site_url('HRController/viewEmployee'); ?>">
                 <input type="text" name="asd" placeholder="Search by ID">
                 <input type="submit" value="Search">
             </form>
@@ -290,6 +287,41 @@
             </div>
         </div>
 
+        <!-- EdIt -->
+        <div id="EditModal" class="modal">
+            <div style="margin-right: 900px; margin-top: -300px; margin-left: -80px;">
+                <div id="EditModalContent" class="modal-content">
+                    <span class="close1" style="color: black; cursor: pointer; font-size: 24px;"
+                        onclick="closeForm()">&times;</span>
+
+                    <form method="post" action="<?php echo site_url('HRController/editEmployee'); ?>"
+                        class="form-container">
+                        <h2>Update Payment</h2>
+                        <label for="EmployeeIdInput" ><i class="fas fa-id-badge"></i> Employee Id:</label>
+                        <input type="text" name="EmployeeIdInput" id="EmployeeIdInput" required
+                            style="border: 1px solid gray;">
+
+                        <label for="NameInput"><i class="fas fa-box"></i> Name:</label>
+                        <input type="text" name="NameInput" id="NameInput" required style="border: 1px solid gray;">
+
+                        <label for="PositionInput"><i class="fas fa-file-alt"></i> Position:</label>
+                        <input type="text" name="PositionInput" id="PositionInput" required
+                            style="border: 1px solid gray;">
+
+                        <label for="HireDateInput"><i class="fas fa-dollar-sign"></i> Hire Date:</label>
+                        <input type="date" name="HireDateInput" id="HireDateInput" required
+                            style="border: 1px solid gray;">
+
+                        <label for="AddressInput"><i class="fas fa-credit-card"></i> Payment Method:</label>
+                        <input type="text" name="AddressInput" id="AddressInput" required
+                            style="border: 1px solid gray;">
+                        <div>
+                            <input type="submit" value="SAVE">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         <table>
             <thead>
                 <tr>
@@ -329,17 +361,18 @@
                                 )"> <i class="fas fa-edit"></i> Edit
 
                             </button>
-                            <button class="action-btn delete-btn" onclick="deleteEmployee(
-                                '<?php echo $data['Employee_id']; ?>'
-                            )">
-                                <i class="fas fa-trash-alt"></i> Delete
-                            </button>
+                            <button onclick="clicks()" class="action-btn edit-btn">
+                                    <i class="fas fa-trash-alt"></i> Delete
+                                </button>
                         </td>
                     </tr>
                 <?php } ?>
             </tbody>
         </table>
         <script>
+            function clicks() {
+                window.location.href = "<?php echo site_url("HRController/deleteRecord/" . $data["Employee_id"]) ?>";
+            }
             document.addEventListener("DOMContentLoaded", function () {
                 var button = document.getElementById("AddEmployeebtn");
                 var modal = document.getElementById("AddEmployeeModal");
@@ -359,6 +392,33 @@
                     }
                 };
             })
+
+            function showForm(EmployeeId, Name, Position, HireDate, Address) {
+                var modal = document.getElementById("EditModal");
+                var content = document.getElementById("EditModalContent");
+
+                var EmployeeIdInput = document.getElementById("EmployeeIdInput");
+                var NameInput = document.getElementById("NameInput");
+                var PositionInput = document.getElementById("PositionInput");
+                var HireDateInput = document.getElementById("HireDateInput");
+                var AddressInput = document.getElementById("AddressInput");
+
+                EmployeeIdInput.value = EmployeeId;
+                NameInput.value = Name;
+                PositionInput.value = Position;
+                HireDateInput.value = HireDate;
+                AddressInput.value = Address;
+
+                modal.style.display = "block";
+            }
+
+            function hideForm() {
+                document.getElementById('form').style.display = 'none';
+            }
+            function closeForm() {
+                var modal = document.getElementById("EditModal");
+                modal.style.display = "none";
+            }
 
             function searchById() {
                 var searchId = document.getElementById('search-id').value;

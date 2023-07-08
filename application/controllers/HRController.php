@@ -64,8 +64,35 @@ class HRController extends CI_Controller {
         } else if ($user['role'] == "Hr") {
             $data['user'] = $user;
             $data['navbar'] = "navbar/HrNavbar";
-            $this->load->view('Dashboard', $data);
+            $this->load->view('HRManagement', $data);
         }
     }
 
+    
+    public function editEmployee()
+    {
+        $EmployeeId = $this->input->post('EmployeeIdInput');
+        $Name = $this->input->post('NameInput');
+        $Position = $this->input->post('PositionInput');
+        $HireDate = $this->input->post('HireDateInput');
+        $Address= $this->input->post('AddressInput');
+
+        $data = array(
+            'Employee_id' => $EmployeeId,
+            'Name' => $Name,
+            'Position' => $Position,
+            'Hire_date' => $HireDate,
+            'Address' => $Address,
+        );
+
+        $this->HR_Model->EditEmployee($EmployeeId, $data);
+
+        redirect('HRController');
+    }
+
+    public function deleteRecord($id)
+    {
+        $this->HR_Model->deleteRecords($id);
+        redirect('HRController');
+    }
 }

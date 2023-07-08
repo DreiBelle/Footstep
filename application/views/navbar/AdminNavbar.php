@@ -201,13 +201,13 @@
         <a href="#"><i class="fas fa-box"></i>Inventory Management </a>
             <div class="dropdown-content">
                 <a href="<?php echo site_url('InventoryController/ViewProducts'); ?>"><i class="fas fa-cube"></i>Product</a>
-                <a href="#"><i class="fas fa-box-open"></i>Stock</a>
+                <a href="<?php echo site_url('InventoryController/ViewStocks'); ?>"><i class="fas fa-box-open"></i>Stock</a>
             </div> 
         </li>
         <div class="section-divider"></div>
         <li><a href="<?php echo site_url('HRController'); ?>"><i class="fas fa-users"></i>Human Resource Management</a></li>
         <div class="section-divider"></div>
-        <li><a href="#"><i class="fas fa-chart-bar"></i>Data Analytics</a></li>
+        <li><a href="<?php echo site_url('DataAnalyticsController'); ?>"><i class="fas fa-chart-bar"></i>Data Analytics</a></li>
         <div class="section-divider"></div>
         <li><a href="#"><i class="fas fa-cog"></i>Settings</a></li>
         <div class="section-divider"></div>
