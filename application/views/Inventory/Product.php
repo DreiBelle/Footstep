@@ -259,11 +259,11 @@
                 <div class="flex-center">
                     <div class="modal-content">
                         <span class="close">&times;</span>
-                        <form method="post" action="<?php echo site_url('InventoryController/add_prod'); ?>"
+                        <form method="post" action="<?php echo site_url('InventoryController/add_prod'); ?>" enctype="multipart/form-data"
                             class="form-container">
                             <!-- <h2>Purchase</h2> -->
                             <label for="ProductImage"><i class="fas fa-image"></i> Product Image:</label>
-                            <input type="file" name="ProductImage" id="ProductImage" accept="image/*" required>
+                            <input type="file" name="Product_image" required>
 
                             <label for="ProductId"><i class="fas fa-barcode"></i> Product ID:</label>
                             <input type="text" name="ProductId" id="ProductId" required>
@@ -305,7 +305,7 @@
                 <?php foreach ($check as $data) { ?>
                     <tr>
                         <td>
-                        <img src="<?php echo MAIN_BASE_URL . $data['Product_image']; ?>"></td>
+                        <img style="height: 100px; width:300px; object-fit: cover; border-radius: 10px; padding: 5px" src="<?php echo MAIN_BASE_URL . $data['Product_image']; ?>"></td>
                         </td>
                         <td>
                             <?php echo $data['Product_id']; ?>
@@ -362,6 +362,8 @@
                     var searchId = document.getElementById('search-id').value;
                     console.log('Search by ID:', searchId);
                 }
+
+
         </script>
 </body>
 

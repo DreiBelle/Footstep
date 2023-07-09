@@ -35,7 +35,7 @@ class HRController extends CI_Controller {
             'Employee_id' => $EmployeeId,
             'Name' => $Name,
             'Position' => $Position,
-            'Hire_date' => date('Y-m-d H:i:s', strtotime($HireDate)), // Convert date to datetime format
+            'Hire_date' => date('Y-m-d', strtotime($HireDate)), // Convert date to datetime format
             'Address' => $Address,
         );
     
