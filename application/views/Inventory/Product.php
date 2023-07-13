@@ -166,20 +166,37 @@
             z-index: 1;
             left: 0;
             top: 0;
-            width: 100%;
-            height: 100%;
+            width: 20px;
+            height: 20px;
             background-color: rgba(0, 0, 0, 0.8);
         }
 
         .modal-content {
             background-color: #f9f9f9;
-            border: 1px solid #f9f9f9;
+            border: 0px solid #f9f9f9;
             color: black;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            margin: 450px;
+            margin: 500px;
+            margin-top: 550px;
+            width: 1px;
+            height: 1px;
+            font-family: "Arial", "Helvetica", sans-serif;
+        }
+        .Purchasemodal-content {
+            background-color: #f9f9f9;
+            border: 0px solid #f9f9f9;
+            color: black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 500px;
+            margin-top: 700px;
+            width: 1px;
+            height: 1px;
             font-family: "Arial", "Helvetica", sans-serif;
         }
 
@@ -239,6 +256,7 @@
         span {
             margin-right: -365px;
         }
+
     </style>
 </head>
 
@@ -262,7 +280,7 @@
             <div id="AddProductModal" class="modal">
                 <div class="flex-center">
                     <div class="modal-content">
-                        <span class="close">&times;</span>
+                        <!-- <span class="close">&times;</span> -->
                         <form method="post" action="<?php echo site_url('InventoryController/add_prod'); ?>"
                             enctype="multipart/form-data" class="form-container">
                             <!-- <h2>Purchase</h2> -->
@@ -292,7 +310,10 @@
                             <input type="text" name="Quantity" id="Quantity" required> -->
 
                             <div>
-                                <input type="submit" value="SAVE">
+                            <input type="submit" value="SAVE"
+                                    style="display: inline-block; background-color: #007bff; color: #fff; border: none; border-radius: 4px; padding: 8px 16px; margin-right: 10px; cursor: pointer;">
+                            <input type="button" value="CANCEL" onclick="closeModal()"
+                                    style="display: inline-block; background-color: #dc3545; color: #fff; border: none; border-radius: 4px; padding: 8px 16px; cursor: pointer; width: 360px; margin-top: 5px;">
                             </div>
                         </form>
                     </div>
@@ -353,9 +374,8 @@
 
         <div id="PurchaseModal" class="modal">
             <div style="margin-right: 900px; margin-top: -300px; margin-left: -80px;">
-                <div id="PurchaseModalContent" class="modal-content">
-                    <span class="close1" style="color: black; cursor: pointer; font-size: 24px;"
-                        onclick="closeForm()">&times;</span>
+                <div id="PurchaseModalContent" class="Purchasemodal-content">
+     
 
                     <form method="post" action="<?php echo site_url('InventoryController/PurchaseProducts'); ?>"
                         class="form-container">
@@ -376,7 +396,11 @@
                         <input type="text" name="QuantityInput" id="QuantityInput" required
                             style="border: 1px solid lightgray;">
                         <div>
-                            <input type="submit" value="Buy">
+                        <input type="submit" value="BUY"
+                                    style="display: inline-block; background-color: #007bff; color: #fff; border: none; border-radius: 4px; padding: 8px 16px; margin-right: 10px; cursor: pointer;">
+                            <input type="button" value="CANCEL" onclick="closeForm()"
+                                    style="display: inline-block; background-color: #dc3545; color: #fff; border: none; border-radius: 4px; padding: 8px 16px; cursor: pointer; width: 360px; margin-top: 5px;">
+                        </div>
                         </div>
                     </form>
                 </div>
@@ -430,6 +454,12 @@
             function closeForm() {
                 var modal = document.getElementById("PurchaseModal");
                 modal.style.display = "none";
+            }
+            function closeForm() {
+                document.getElementById("PurchaseModal").style.display = "none";
+            }
+            function closeModal() {
+                document.getElementById("AddProductModal").style.display = "none";
             }
 
             function searchById() {

@@ -328,8 +328,8 @@
         <div id="EditModal" class="modal">
             <div style="margin-right: 900px; margin-top: -300px; margin-left: -80px;">
                 <div id="EditModalContent" class="Editmodal-content">
-                    <span class="close1" style="color: black; cursor: pointer; font-size: 24px;"
-                        onclick="closeForm()">&times;</span>
+                    <!-- <span class="close1" style="color: black; cursor: pointer; font-size: 24px;"
+                        onclick="closeForm()">&times;</span>  -->
 
                     <form method="post" action="<?php echo site_url('HRController/editEmployee'); ?>"
                         class="form-container">
@@ -365,10 +365,10 @@
         <table>
             <thead>
                 <tr>
-                    <th width="13.67%">Employee ID</th>
+                    <th width="14.67%">Employee ID</th>
                     <th width="16.67%">Name</th>
                     <th width="16.67%">Position</th>
-                    <th width="16.67%">Hire Date</th>
+                    <th width="19.67%">Hire Date</th>
                     <th width="16.67%">Address</th>
                     <th width="19.67%">Action</th>
                 </tr>

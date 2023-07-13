@@ -92,8 +92,8 @@
     </div>
     <div id="contents">
         <div class="content">
-            <h1 style="text-align: center;">Products</h1>
-            <h1 style="text-align: left;">Slippers</h1>
+            <h1 style="text-align: center; text-align: center; padding: 10px; font-size: 30px; font-weight: bold; margin: 0;">Products</h1>
+            <h1 style="text-align: left; text-align: left; padding: 10px; font-size: 30px; font-weight: bold; margin: 0;">Slippers</h1>
             <div style="width: 100%; overflow-x: auto;">
                 <div style="display: flex; flex-wrap: nowrap;">
                     <?php foreach ($Slippers as $item): ?>
@@ -117,10 +117,34 @@
                 </div>
             </div>
 
-            <h1 style="text-align: left;">Rubber Shoes</h1>
+            <h1 style="text-align: left; text-align: left; padding: 10px; font-size: 30px; font-weight: bold; margin: 0;">Rubber Shoes</h1>
             <div style="width: 100%; overflow-x: auto;">
                 <div style="display: flex; flex-wrap: nowrap;">
                     <?php foreach ($RubberShoes as $item): ?>
+                    <div class="card">
+                        <div class="card-image"
+                            style="background-image: url(<?php echo MAIN_BASE_URL . $item->Product_image; ?>);"></div>
+                        <div class="card-details">
+                            <div class="card-title"><?php echo $item->Product_name; ?></div>
+                            <div class="card-quantity">Quantity: <?php echo $item->Quantity; ?></div>
+                            <div class="card-price" id="Price_<?php echo $item->Product_id; ?>">Price: <?php echo $item->Price; ?></div>
+                            <div>
+                                <input class="card-input" type="number" placeholder="Enter Quantity"
+                                    name="QuantityInput" id="QuantityInput_<?php echo $item->Product_id; ?>">
+                                <div class="card-button">
+                                    <button onclick="addToCart(<?php echo $item->Product_id; ?>)">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endforeach ?>
+                </div>
+            </div>
+
+            <h1 style="text-align: left; text-align: left; padding: 10px; font-size: 30px; font-weight: bold; margin: 0;">Black Shoes</h1>
+            <div style="width: 100%; overflow-x: auto;">
+                <div style="display: flex; flex-wrap: nowrap;">
+                    <?php foreach ($BlackShoes as $item): ?>
                     <div class="card">
                         <div class="card-image"
                             style="background-image: url(<?php echo MAIN_BASE_URL . $item->Product_image; ?>);"></div>
