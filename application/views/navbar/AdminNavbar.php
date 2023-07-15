@@ -193,7 +193,7 @@
             <a href="javascript:void(0)"><i class="fas fa-file-invoice"></i>Accounting Management </a>
             <div class="dropdown-content">
                 <a href="<?php echo site_url('AccountingController'); ?>"><i class="fas fa-chart-line"></i>Sales</a>
-                <a href="#"><i class="fas fa-receipt"></i>Expenses</a>
+                <a href="<?php echo site_url('ExpensesController'); ?>"><i class="fas fa-receipt"></i>Expenses</a>
             </div>
         </li>
                 <div class="section-divider"></div>

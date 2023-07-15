@@ -124,22 +124,13 @@
                                         </div>
                                         <div style="margin-top: 10px; ">
                                             <label for="Size"  style="margin-bottom: 10px; font-size: 12px; color: gray"> Size:</label>
-                                            <select name="Size" id="Size" required
+                                            <input type = "text" name="Size" id="Size" required
                                             style="margin-bottom: 10px; font-size: 12px; color: gray; width: 110px;">
-                                                <option>Select size</option>
-                                                <option value="36">36</option>
-                                                <option value="37">37</option>
-                                                <option value="38">38</option>
-                                                <option value="39">39</option>
-                                                <option value="40">40</option>
-                                                <option value="41">41</option>
-                                                <option value="42">42</option>
-                                                <option value="43">43</option>
-                                            </select>
 
                                             <input class="card-input" type="number" placeholder="Enter Quantity"
                                                 name="QuantityInput" id="QuantityInput_<?php echo $item->Product_id; ?>"
                                                 style="width: 70%; padding: 5px; font-size: 12px;">
+
                                             <div class="card-button" style="margin-top: 10px;">
                                                 <button onclick="addToCart(<?php echo $item->Product_id; ?>)"
                                                     style="padding: 5px 10px; font-size: 12px; width: 85%;">Add to
