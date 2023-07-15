@@ -193,15 +193,15 @@
             <a href="javascript:void(0)"><i class="fas fa-file-invoice"></i>Accounting Management </a>
             <div class="dropdown-content">
                 <a href="<?php echo site_url('AccountingController'); ?>"><i class="fas fa-chart-line"></i>Sales</a>
+                <a href="<?php echo site_url('Accounting_Controller/PayrollController'); ?>"><i class="fas fa-receipt"></i>Payroll</a>
                 <a href="<?php echo site_url('Accounting_Controller/PurchaseController'); ?>"><i class="fas fa-receipt"></i>Purchase Transaction</a>
-                <a href="<?php echo site_url('AccountingController'); ?>"><i class="fas fa-receipt"></i>Payroll</a>
             </div>
         </li>
                 <div class="section-divider"></div>
         <li class="dropdown">
         <a href="#"><i class="fas fa-box"></i>Inventory Management </a>
             <div class="dropdown-content">
-                <a href="<?php echo site_url('InventoryController/ViewProducts'); ?>"><i class="fas fa-cube"></i>Product</a>
+                <a href="<?php echo site_url('Inventory_Controller/InventoryController/ViewProducts'); ?>"><i class="fas fa-cube"></i>Product</a>
                 <a href="<?php echo site_url('StockController'); ?>"><i class="fas fa-box-open"></i>Stock</a>
             </div> 
         </li>

@@ -33,10 +33,12 @@
 
         th {
             font-weight: bold;
+            width: calc(100% / 6); /* Divide equally into 6 columns */
         }
 
         td {
             vertical-align: middle;
+            width: calc(100% / 6); /* Divide equally into 6 columns */
         }
 
         td.image-cell {
@@ -49,38 +51,6 @@
             max-height: 100%;
             object-fit: contain;
         }
-        .purchase-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .purchase-table th,
-        .purchase-table td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .purchase-table th {
-            font-weight: bold;
-        }
-
-        .purchase-table td {
-            vertical-align: middle;
-        }
-
-        .image-cell {
-            width: 180px;
-            height: 180px;
-        }
-
-        .image-cell img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-    </style>
-</head>
     </style>
 </head>
 

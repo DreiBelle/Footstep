@@ -47,10 +47,13 @@
 
         .add-btn {
             margin-bottom: 20px;
+            /* position: relative; */
+            z-index: -1;
         }
 
         .add-btn button {
             width: 160px;
+       
             margin-top: -62px;
             padding: 10px;
             position: absolute;
