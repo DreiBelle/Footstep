@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Expenses</title>
+    <title>Purchase</title>
     <script src="https://kit.fontawesome.com/your-font-awesome-kit-id.js" crossorigin="anonymous"></script>
     <style>
         #contents {
@@ -49,16 +49,48 @@
             max-height: 100%;
             object-fit: contain;
         }
+        .purchase-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .purchase-table th,
+        .purchase-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .purchase-table th {
+            font-weight: bold;
+        }
+
+        .purchase-table td {
+            vertical-align: middle;
+        }
+
+        .image-cell {
+            width: 180px;
+            height: 180px;
+        }
+
+        .image-cell img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+    </style>
+</head>
     </style>
 </head>
 
 <body>
     <div id="navbar">
         <?php $this->load->view($navbar) ?>
-    </div>
+
     <div id="contents">
         <div class="content">
-            <h1 style="text-align: center; padding: 10px; font-size: 30px; font-weight: bold; margin: 0;">Expenses</h1>
+            <h1 style="text-align: center; padding: 10px; font-size: 30px; font-weight: bold; margin: 0;">Purchase Transaction</h1>
             <table>
                 <thead>
                     <tr>
@@ -67,6 +99,7 @@
                         <th>Product Name</th>
                         <th>Quantity</th>
                         <th>Price</th>
+                        <!-- <th>Purchase Date</th> -->
                         <th>Price Paid</th>
                     </tr>
                 </thead>
@@ -106,6 +139,7 @@
                 </tbody>
             </table>
         </div>
+    </div>
     </div>
 </body>
 

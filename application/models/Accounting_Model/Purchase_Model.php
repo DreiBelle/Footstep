@@ -2,7 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 
-class Expenses_Model extends CI_Model
+class Purchase_Model extends CI_Model
 {
 
     public function getProductsById($Category)
@@ -28,5 +28,3 @@ class Expenses_Model extends CI_Model
 }
 
 ?>
-
-F
