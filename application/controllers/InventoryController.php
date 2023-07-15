@@ -114,8 +114,6 @@ class InventoryController extends CI_Controller
     }
 
     
-
-
     public function PurchaseProducts()
     {
         $ProductId = $this->input->post('ProductIdInput');

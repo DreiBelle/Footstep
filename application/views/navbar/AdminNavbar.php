@@ -201,7 +201,7 @@
         <li class="dropdown">
         <a href="#"><i class="fas fa-box"></i>Inventory Management </a>
             <div class="dropdown-content">
-                <a href="<?php echo site_url('Inventory_Controller/InventoryController/ViewProducts'); ?>"><i class="fas fa-cube"></i>Product</a>
+                <a href="<?php echo site_url('InventoryController/ViewProducts'); ?>"><i class="fas fa-cube"></i>Product</a>
                 <a href="<?php echo site_url('StockController'); ?>"><i class="fas fa-box-open"></i>Stock</a>
             </div> 
         </li>
