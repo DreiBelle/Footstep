@@ -19,7 +19,7 @@ class HRController extends CI_Controller {
         } else if ($user['role'] == "HR") {
             $data['user'] = $user;
             $data['navbar'] = "navbar/HrNavbar";
-            $this->load->view('Dashboard', $data);
+            $this->load->view('HRManagement', $data);
         }
     }
 

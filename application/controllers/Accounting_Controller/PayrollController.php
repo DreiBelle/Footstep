@@ -35,19 +35,27 @@ class PayrollController extends CI_Controller
         if ($this->Payroll_Model->insertSalary($employeeId, $salary, $dateReceived)) {
             redirect('Accounting_Controller/PayrollController');
         } else {
-            // Handle error
+    
         }
     }
 
-    public function updateSalary() {
+    public function updateSalary()
+    {
         $employeeId = $this->input->post('employeeId');
         $salary = $this->input->post('salary');
         $dateReceived = $this->input->post('dateReceived');
         
-        $this->load->model('Payroll_Model');
-        $this->Payroll_Model->updateSalary($employeeId, $salary, $dateReceived);
+        $data = array(
+            'Salary' => $salary,
+            'Date_received' => $dateReceived
+        );
         
-        redirect('Accounting_Controller/PayrollController');
+        if ($this->Payroll_Model->updateSalary($employeeId, $data)) {
+            redirect('Accounting_Controller/PayrollController');
+        } else {
+            // Handle error
+        }
     }
+    
 }
 ?>

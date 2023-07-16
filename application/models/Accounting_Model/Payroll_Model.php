@@ -19,16 +19,14 @@ class Payroll_Model extends CI_Model
         return $this->db->insert('payroll', $data);
     }
 
-    public function updateSalary($employeeId, $salary, $dateReceived)
+    public function updateSalary($employeeId, $data)
     {
-        // Update the salary in the payroll table
-        $data = array(
-            'Salary' => $salary,
-            'Date_received' => $dateReceived
-        );
-
         $this->db->where('Employee_id', $employeeId);
         $this->db->update('payroll', $data);
+        
+        return $this->db->affected_rows() > 0;
     }
+    
+
 }
 ?>

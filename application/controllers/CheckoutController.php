@@ -27,8 +27,41 @@ class CheckoutController extends CI_Controller
         } else if ($user['role'] == "Cashier") {
             $data['user'] = $user;
             $data['navbar'] = "navbar/CashierNavbar";
-            $this->load->view('Dashboard', $data);
+            $this->load->view('CheckoutManagement', $data);
         }
+    }
+
+    public function ReduceStock()
+    {
+        $ProductId = $this->input->post('ProductIdInput');
+        $CurrentInput = (int) $this->input->post('QuantityInput');
+        $DatabaseStocks = (int) $this->Checkout_Model->GetDatabaseStock($ProductId);
+    
+        $NewStocks = $DatabaseStocks - $CurrentInput;
+    
+        $data = array(
+            'Quantity' => $NewStocks,
+        );
+    
+        $this->Checkout_Model->AddStock($ProductId, $data);
+    
+        // Send a response back to the JavaScript code
+        echo json_encode(['status' => 'success']);
+    }
+    
+    public function InsertTotalExpense()
+    {
+        $totalPrice = json_decode($this->input->raw_input_stream)->totalPrice;
+        $try = json_decode($this->input->raw_input_stream)->additionalProperty;
+
+        $data = array(
+            'TotalBought' => $totalPrice,
+            'try' => $try,
+        );
+
+        $this->Checkout_Model->InsertExpense($data);
+
+        redirect('CheckoutController');
     }
 
 

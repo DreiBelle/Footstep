@@ -24,7 +24,7 @@ class InventoryController extends CI_Controller
         } else if ($user['role'] == "Inventory/Product") {
             $data['user'] = $user;
             $data['navbar'] = "navbar/InventoryNavbar";
-            $this->load->view('Dashboard', $data);
+            $this->load->view('InventoryManagement', $data);
         }
     }
 

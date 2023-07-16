@@ -204,13 +204,17 @@
                                     </button>
                                 <?php else: ?>
                                     <button class="action-btn edit-btn"
-                                        onclick="showSalaryModal('<?php echo $employee['Employee_id']; ?>', '<?php echo $employee['Salary']; ?>', '<?php echo $employee['Date_received']; ?>')">
+                                        onclick="showSalaryModal('<?php echo $employee['Employee_id']; ?>', '<?php echo $employee['Salary']; ?>', '<?php echo $employee['Date_received']; ?>')"
+                                        data-salary="<?php echo $employee['Salary']; ?>"
+                                        data-date-received="<?php echo $employee['Date_received']; ?>">
                                         <i class="fas fa-edit"></i> Edit Salary
                                     </button>
+
+
                                 <?php endif; ?>
                             </td>
                         </tr>
-                    <?php endforeach ?>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
@@ -262,6 +266,9 @@
         </div>
     </div>
 
+
+
+
     <script>
         function showAddSalaryModal(employeeId) {
             var modal = document.getElementById("AddSalaryModal");
@@ -274,17 +281,19 @@
             var modal = document.getElementById("AddSalaryModal");
             modal.style.display = "none";
         }
-
         function showSalaryModal(employeeId, salary, dateReceived) {
             var modal = document.getElementById("SalaryModal");
             var employeeIdInput = document.getElementById("employeeIdInput");
             var salaryInput = document.getElementById("salaryInput");
             var dateReceivedInput = document.getElementById("dateReceivedInput");
+
             employeeIdInput.value = employeeId;
             salaryInput.value = salary;
             dateReceivedInput.value = dateReceived;
+
             modal.style.display = "block";
         }
+
 
         function hideSalaryModal() {
             var modal = document.getElementById("SalaryModal");
