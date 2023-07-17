@@ -11,12 +11,10 @@
             padding-top: 80px;
             min-width: 700px;
             margin-bottom: 200px;
-            /* Adjust the min-width value as needed */
         }
 
         .content {
             min-width: 700px;
-            /* Adjust the min-width value as needed */
         }
 
         #navbar {
@@ -27,45 +25,46 @@
             z-index: 999;
         }
 
-        /* td {
-            border: 1px solid black;
-        } */
-
         ::-webkit-scrollbar {
             display: none;
         }
 
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin-top: 20px;
+        }
+
         .card {
             width: 300px;
-            /* Adjust the width as needed */
             height: 400px;
-            /* Adjust the height as needed */
             border: 1px solid #ccc;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             padding: 10px;
-        }
-
-        .card-image {
-            width: 60%;
-            height: 250px;
-            /* Adjust the height as needed */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        .card-content {
+            margin-right: 20px;
+            margin-bottom: 20px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            height: 100%;
-            margin-top: 10px;
-            /* Adjust the margin top as needed */
+        }
+
+        .card-image {
+            width: 80%;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            text-align: center;
+        }
+
+        .card-content {
+            flex-grow: 1;
         }
 
         .card-button {
-            margin-top: 10px;
             width: 100%;
             padding: 10px;
             background-color: #ffc107;
@@ -88,6 +87,34 @@
             border-radius: 4px;
             box-sizing: border-box;
         }
+
+        .remove-button {
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .remove-button:hover {
+            background-color: #cc0000;
+        }
+
+        .pay-now-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .pay-now-button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 
@@ -97,127 +124,96 @@
     </div>
     <div id="contents">
         <div class="content">
-            <h1
-                style="text-align: center; text-align: center; padding: 10px; font-size: 30px; font-weight: bold; margin: 0;">
-                Products</h1>
-            <div style="width: 100%;">
-                <div style="display: flex; flex-wrap: wrap; justify-content: flex-start; align-items: flex-start;">
-                    <?php foreach ($Slippers as $item): ?>
-                        <div style="flex: 0 0 calc(33.33% - 20px); margin-right: 20px; margin-bottom: 20px;">
-                            <div class="card">
-                                <div class="card-image"
-                                    style="background-image: url(<?php echo MAIN_BASE_URL . $item->Product_image; ?>);">
-                                </div>
-                                <div class="card-content">
-                                    <div>
-                                        <p>Name:
-                                            <?php echo $item->Product_name; ?>
-                                        </p>
-                                        <p>Quantity:
-                                            <?php echo $item->Quantity; ?>
-                                        </p>
-                                        <p id="Price_<?php echo $item->Product_id; ?>">Price: <?php echo $item->Price; ?>
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <input type="hidden" name="ProductIdInput" id="ProductIdInput"
-                                            value="<?php echo $item->Product_id; ?>" disabled>
-                                        <input type="number" placeholder="Enter Quantity" name="QuantityInput"
-                                            id="QuantityInput_<?php echo $item->Product_id; ?>" class="quantity-input">
-                                        <button class="card-button"
-                                            onclick="addToCart(<?php echo $item->Product_id; ?>, '<?php echo $item->Product_name; ?>', '<?php echo $item->Quantity; ?>')">
-                                            Add to Cart
-                                        </button>
-                                    </div>
-                                </div>
+            <h1 style="text-align: center; padding: 10px; font-size: 30px; font-weight: bold; margin: 0;">Products</h1>
+            <div class="card-container">
+                <?php foreach ($Slippers as $item): ?>
+                    <div class="card">
+                        <div class="card-image"
+                            style="background-image: url(<?php echo MAIN_BASE_URL . $item->Product_image; ?>);"></div>
+                        <div class="card-content">
+                            <div>
+                                <p style="color: gray;">Name:
+                                    <?php echo $item->Product_name; ?>
+                                </p>
+                                <p style="color: gray;">Quantity:
+                                    <?php echo $item->Quantity; ?>
+                                </p>
+                                <p style="color: gray;" id="Price_<?php echo $item->Product_id; ?>">Price: <?php echo $item->Price; ?></p>
+                            </div>
+                            <div>
+                                <input type="hidden" name="ProductIdInput" id="ProductIdInput"
+                                    value="<?php echo $item->Product_id; ?>" disabled>
+                                <input type="number" placeholder="Enter Quantity" name="QuantityInput"
+                                    id="QuantityInput_<?php echo $item->Product_id; ?>" class="quantity-input">
+                                <button style="margin-top: 15px;" class="card-button"
+                                    onclick="addToCart(<?php echo $item->Product_id; ?>, '<?php echo $item->Product_name; ?>', '<?php echo $item->Quantity; ?>')">
+                                    Add to Cart
+                                </button>
                             </div>
                         </div>
-                    <?php endforeach ?>
-                </div>
+                    </div>
+                <?php endforeach ?>
 
-            </div>
-            <div style="width: 100%;">
-                <div style="display: flex; flex-wrap: wrap; justify-content: flex-start; align-items: flex-start;">
-                    <?php foreach ($RubberShoes as $item): ?>
-                        <div style="flex: 0 0 calc(33.33% - 20px); margin-right: 20px; margin-bottom: 20px;">
-                            <div class="card">
-                                <div class="card-image"
-                                    style="background-image: url(<?php echo MAIN_BASE_URL . $item->Product_image; ?>);">
-                                </div>
-                                <div class="card-content">
-                                    <div>
-                                        <p>Name:
-                                            <?php echo $item->Product_name; ?>
-                                        </p>
-                                        <p>Quantity:
-                                            <?php echo $item->Quantity; ?>
-                                        </p>
-                                        <p id="Price_<?php echo $item->Product_id; ?>">Price: <?php echo $item->Price; ?>
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <input type="hidden" name="ProductIdInput" id="ProductIdInput"
-                                            value="<?php echo $item->Product_id; ?>" disabled>
-                                        <input type="number" placeholder="Enter Quantity" name="QuantityInput"
-                                            id="QuantityInput_<?php echo $item->Product_id; ?>" class="quantity-input">
-                                        <button class="card-button"
-                                            onclick="addToCart(<?php echo $item->Product_id; ?>, '<?php echo $item->Product_name; ?>', '<?php echo $item->Quantity; ?>')">
-                                            Add to Cart
-                                        </button>
-                                    </div>
-                                </div>
+                <?php foreach ($RubberShoes as $item): ?>
+                    <div class="card">
+                        <div class="card-image"
+                            style="background-image: url(<?php echo MAIN_BASE_URL . $item->Product_image; ?>);"></div>
+                        <div class="card-content">
+                            <div>
+                                <p style="color: gray;">Name:
+                                    <?php echo $item->Product_name; ?>
+                                </p>
+                                <p style="color: gray;">Quantity:
+                                    <?php echo $item->Quantity; ?>
+                                </p>
+                                <p style="color: gray;" id="Price_<?php echo $item->Product_id; ?>">Price: <?php echo $item->Price; ?></p>
+                            </div>
+                            <div>
+                                <input type="hidden" name="ProductIdInput" id="ProductIdInput"
+                                    value="<?php echo $item->Product_id; ?>" disabled>
+                                <input type="number" placeholder="Enter Quantity" name="QuantityInput" style="color: gray;"
+                                    id="QuantityInput_<?php echo $item->Product_id; ?>" class="quantity-input">
+                                <button style="margin-top: 15px;" class="card-button"
+                                    onclick="addToCart(<?php echo $item->Product_id; ?>, '<?php echo $item->Product_name; ?>', '<?php echo $item->Quantity; ?>')">
+                                    Add to Cart
+                                </button>
                             </div>
                         </div>
-                    <?php endforeach ?>
-                </div>
+                    </div>
+                <?php endforeach ?>
 
-            </div>
-
-
-            <div style="width: 100%;">
-                <div style="display: flex; flex-wrap: wrap; justify-content: flex-start; align-items: flex-start;">
-                    <?php foreach ($BlackShoes as $item): ?>
-                        <div style="flex: 0 0 calc(33.33% - 20px); margin-right: 20px; margin-bottom: 20px;">
-                            <div class="card">
-                                <div class="card-image"
-                                    style="background-image: url(<?php echo MAIN_BASE_URL . $item->Product_image; ?>);">
-                                </div>
-                                <div class="card-content">
-                                    <div>
-                                        <p>Name:
-                                            <?php echo $item->Product_name; ?>
-                                        </p>
-                                        <p>Quantity:
-                                            <?php echo $item->Quantity; ?>
-                                        </p>
-                                        <p id="Price_<?php echo $item->Product_id; ?>">Price: <?php echo $item->Price; ?>
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <input type="hidden" name="ProductIdInput" id="ProductIdInput"
-                                            value="<?php echo $item->Product_id; ?>" disabled>
-                                        <input type="number" placeholder="Enter Quantity" name="QuantityInput"
-                                            id="QuantityInput_<?php echo $item->Product_id; ?>" class="quantity-input">
-                                        <button class="card-button"
-                                            onclick="addToCart(<?php echo $item->Product_id; ?>, '<?php echo $item->Product_name; ?>', '<?php echo $item->Quantity; ?>')">
-                                            Add to Cart
-                                        </button>
-                                    </div>
-                                </div>
+                <?php foreach ($BlackShoes as $item): ?>
+                    <div class="card">
+                        <div class="card-image"
+                            style="background-image: url(<?php echo MAIN_BASE_URL . $item->Product_image; ?>);"></div>
+                        <div class="card-content">
+                            <div>
+                                <p style="color: gray;">Name:
+                                    <?php echo $item->Product_name; ?>
+                                </p>
+                                <p style="color: gray;">Quantity:
+                                    <?php echo $item->Quantity; ?>
+                                </p>
+                                <p style="color: gray;" id="Price_<?php echo $item->Product_id; ?>">Price: <?php echo $item->Price; ?></p>
+                            </div>
+                            <div>
+                                <input type="hidden" name="ProductIdInput" id="ProductIdInput"
+                                    value="<?php echo $item->Product_id; ?>" disabled>
+                                <input type="number" placeholder="Enter Quantity" name="QuantityInput"
+                                    id="QuantityInput_<?php echo $item->Product_id; ?>" class="quantity-input">
+                                <button style="margin-top: 15px;" class="card-button"
+                                    onclick="addToCart(<?php echo $item->Product_id; ?>, '<?php echo $item->Product_name; ?>', '<?php echo $item->Quantity; ?>')">
+                                    Add to Cart
+                                </button>
                             </div>
                         </div>
-                    <?php endforeach ?>
-                </div>
-
+                    </div>
+                <?php endforeach ?>
             </div>
 
-
-            <div>
-                <table id="cartDisplay"
-                    style="position: fixed; bottom: 0; width: 75%; background-color: white; height: 10%; margin-right: 5%; display: none; overflow-y: auto;">
-                </table>
-
-            </div>
+            <table id="cartDisplay"
+                style="position: fixed; bottom: 0; width: 75%; background-color: white; height: 10%; margin-right: 5%; display: none; overflow-y: auto;">
+            </table>
         </div>
     </div>
     <script>
@@ -311,6 +307,7 @@
                 var removeButtonElement = document.createElement('button');
                 removeButtonElement.textContent = 'Remove';
                 removeButtonElement.addEventListener('click', createRemoveHandler(item.id));
+                removeButtonElement.classList.add('remove-button'); // Add custom CSS class
                 removeButton.appendChild(removeButtonElement);
                 removeButton.style.borderBottom = '1px solid black';
                 newRow.appendChild(removeButton);
@@ -328,6 +325,7 @@
                 payNowButton.innerText = 'Pay Now';
                 payNowButton.style.width = '100%';
                 payNowButton.addEventListener('click', calculateTotal);
+                payNowButton.classList.add('pay-now-button'); // Add custom CSS class
                 buttonCell.appendChild(payNowButton);
                 buttonRow.appendChild(buttonCell);
                 buttonRow.style.marginBottom = '20px'; // Add margin-bottom for spacing
@@ -335,9 +333,7 @@
             } else if (buttonRow && cartItems.length === 0) {
                 buttonRow.parentNode.removeChild(buttonRow);
             }
-
         }
-
 
         function updateTotalPrice() {
             var totalDisplay = document.getElementById('totalDisplay');
