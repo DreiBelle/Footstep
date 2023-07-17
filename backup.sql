@@ -31,7 +31,25 @@ CREATE TABLE `employee` (
 
 /*Data for the table `employee` */
 
-insert  into `employee`(`Employee_id`,`Name`,`Position`,`Hire_date`,`Address`) values (4,'df','dfdf','2023-07-21','343'),(5,'dffff','ff','2023-07-21','fff'),(2,'dssd','ad,in','2023-07-27','45df'),(3,'dfdfdf','dffd','2023-07-20','34'),(7,'lo','huj','2023-07-15','hj'),(6,'fdf','454','2023-07-18','dfd');
+insert  into `employee`(`Employee_id`,`Name`,`Position`,`Hire_date`,`Address`) values (7,'lo','hj','2023-06-29','hj'),(2,'df','df','2023-07-20','3'),(1,'bel','admin','12/07/2023','aritao');
+
+/*Table structure for table `expenses` */
+
+DROP TABLE IF EXISTS `expenses`;
+
+CREATE TABLE `expenses` (
+  `ItemID` int(20) NOT NULL AUTO_INCREMENT,
+  `ItemName` varchar(20) DEFAULT NULL,
+  `Quantity` int(20) DEFAULT NULL,
+  `TotalStock` int(20) DEFAULT NULL,
+  `Price` int(20) DEFAULT NULL,
+  `Date` date DEFAULT NULL,
+  PRIMARY KEY (`ItemID`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+/*Data for the table `expenses` */
+
+insert  into `expenses`(`ItemID`,`ItemName`,`Quantity`,`TotalStock`,`Price`,`Date`) values (1,'asd',1,1,1,'2023-07-17'),(2,'sd',69,95,138,'2023-07-17'),(3,'emman',68,69,680,'2023-07-17'),(4,'emman',69,138,690,'2023-07-17'),(5,'emman',69,137,690,'2023-07-17'),(6,'12',1,1,3,'2023-07-17');
 
 /*Table structure for table `payroll` */
 
@@ -42,11 +60,11 @@ CREATE TABLE `payroll` (
   `Date_received` varchar(50) DEFAULT NULL,
   `Salary` int(11) DEFAULT NULL,
   PRIMARY KEY (`Employee_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 /*Data for the table `payroll` */
 
-insert  into `payroll`(`Employee_id`,`Date_received`,`Salary`) values (2,'2023-07-16',60),(5,'2023-07-16',66),(4,'2023-07-16',5),(6,'2023-07-05',60);
+insert  into `payroll`(`Employee_id`,`Date_received`,`Salary`) values (1,'2023-07-17',50),(2,'2023-07-16',50);
 
 /*Table structure for table `product` */
 
@@ -61,12 +79,14 @@ CREATE TABLE `product` (
   `Size` int(50) DEFAULT NULL,
   `Quantity` int(50) DEFAULT NULL,
   `TotalProductExpenses` int(50) DEFAULT NULL,
+  `CurrentBought` int(50) DEFAULT NULL,
+  `CurrentPrice` int(50) DEFAULT NULL,
   PRIMARY KEY (`Product_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=556 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=113 DEFAULT CHARSET=latin1;
 
 /*Data for the table `product` */
 
-insert  into `product`(`Product_image`,`Product_id`,`Product_name`,`Category`,`Price`,`Size`,`Quantity`,`TotalProductExpenses`) values ('e1.jpg',5,'df','Rubber Shoes',3,NULL,2,6),('black151.jpg',4,'fffff','Black Shoes',30,NULL,1,60),('a2.jpg',3,'dfd','Rubber Shoes',10,NULL,5,50),('d12.jpg',2,'emman','Slippers',10,NULL,7,120),('a1.jpg',1,'sd','Rubber Shoes',2,NULL,7,14),('a2.jpg',111,'errr','Rubber Shoes',9,NULL,2,18),('b11.jpg',88,'j','Rubber Shoes',77,NULL,44,3388),('a11.jpg',33,'dd','Slippers',599,NULL,0,1198),('d13.jpg',23,'fd','Slippers',45,NULL,3,225),('b1.jpg',444,'f','Slippers',45,NULL,555,24975),('b1.jpg',555,'fgf','Slippers',676,NULL,2,1352);
+insert  into `product`(`Product_image`,`Product_id`,`Product_name`,`Category`,`Price`,`Size`,`Quantity`,`TotalProductExpenses`,`CurrentBought`,`CurrentPrice`) values ('e1.jpg',5,'df','Rubber Shoes',3,NULL,2,6,NULL,NULL),('black151.jpg',4,'fffff','Black Shoes',30,NULL,2,60,NULL,NULL),('a2.jpg',3,'dfd','Rubber Shoes',10,NULL,5,50,NULL,NULL),('d12.jpg',2,'emman','Slippers',10,NULL,137,1390,69,690),('a1.jpg',1,'sd','Rubber Shoes',2,NULL,95,190,69,138),('a2.jpg',111,'errr','Rubber Shoes',9,NULL,2,18,NULL,NULL),('b11.jpg',88,'j','Rubber Shoes',77,NULL,44,3388,NULL,NULL),('a11.jpg',33,'dd','Slippers',599,NULL,1,1198,NULL,NULL),('f1.jpg',112,'12','Slippers',3,NULL,1,3,1,3);
 
 /*Table structure for table `purchase` */
 
@@ -77,21 +97,26 @@ CREATE TABLE `purchase` (
   `TotalBought` varchar(50) DEFAULT NULL,
   `try` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 /*Data for the table `purchase` */
 
-insert  into `purchase`(`id`,`TotalBought`,`try`) values (2,'10','additional value'),(3,'609','additional value'),(4,'20','additional value'),(5,'10','additional value'),(6,'10','additional value'),(7,'10','additional value'),(8,'1198','additional value'),(9,'55','additional value'),(10,'40','additional value'),(11,'45','additional value');
+insert  into `purchase`(`id`,`TotalBought`,`try`) values (2,'20','additional value'),(3,'639','additional value'),(4,'609','additional value'),(5,'10','additional value');
 
 /*Table structure for table `sales` */
 
 DROP TABLE IF EXISTS `sales`;
 
 CREATE TABLE `sales` (
-  `Sales_id` int(50) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `ID` int(50) NOT NULL AUTO_INCREMENT,
+  `Date` date DEFAULT NULL,
+  `TotalPrice` int(50) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 /*Data for the table `sales` */
+
+insert  into `sales`(`ID`,`Date`,`TotalPrice`) values (1,'2023-07-17',1),(2,'2023-07-17',2),(4,'2023-07-17',609),(5,'2023-07-17',10);
 
 /*Table structure for table `tbl_user` */
 
@@ -104,11 +129,39 @@ CREATE TABLE `tbl_user` (
   `password` varchar(50) DEFAULT NULL,
   `role` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_user` */
 
-insert  into `tbl_user`(`id`,`name`,`username`,`password`,`role`) values (1,'admin','admin','admin','Administrator'),(2,'HR','HR','HR','HR'),(3,'a','a','a','Accounting'),(4,'b','b','b','Cashier'),(5,'c','c','c','Inventory');
+insert  into `tbl_user`(`id`,`name`,`username`,`password`,`role`) values (1,'admin','admin','admin','Administrator'),(2,'hr','hr','hr','hr'),(3,'finance','finance','finance','finance'),(4,'cashier','cashier','cashier','cashier');
+
+/* Trigger structure for table `product` */
+
+DELIMITER $$
+
+/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `ExpensesAudit` */$$
+
+/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `ExpensesAudit` AFTER UPDATE ON `product` FOR EACH ROW BEGIN
+    INSERT INTO expenses (ItemName, TotalStock, Quantity, Price, DATE)
+    VALUES (NEW.Product_name, NEW.Quantity, NEW.CurrentBought, NEW.CurrentPrice, NOW());
+END */$$
+
+
+DELIMITER ;
+
+/* Trigger structure for table `purchase` */
+
+DELIMITER $$
+
+/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `SalesAudit` */$$
+
+/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `SalesAudit` AFTER INSERT ON `purchase` FOR EACH ROW BEGIN
+    INSERT INTO sales (ID, DATE, TotalPrice)
+    VALUES (NEW.id, NOW(), NEW.TotalBought);
+END */$$
+
+
+DELIMITER ;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
