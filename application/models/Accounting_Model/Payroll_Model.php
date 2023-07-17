@@ -23,10 +23,8 @@ class Payroll_Model extends CI_Model
     {
         $this->db->where('Employee_id', $employeeId);
         $this->db->update('payroll', $data);
-        
+
         return $this->db->affected_rows() > 0;
     }
-    
-
 }
 ?>

@@ -142,6 +142,8 @@ class InventoryController extends CI_Controller
             'Price' => $Price,
             'Quantity' => $newStocks,
             'TotalProductExpenses' => $getTotalExpenses,
+            'CurrentBought' => $Quantity,
+            'CurrentPrice'=> $expenses,
         );
 
         $this->Inventory_Model->BuyProduct($ProductId, $data);

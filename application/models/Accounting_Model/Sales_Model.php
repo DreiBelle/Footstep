@@ -2,7 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 
-class Purchase_Model extends CI_Model
+class Sales_Model extends CI_Model
 {
 
     // public function getProductsById($Category)
@@ -23,10 +23,24 @@ class Purchase_Model extends CI_Model
     //     return $query->result();
     // }
 
-    public function GetAllExpenses()
+    public function GetAllSales()
     {
-        $query = $this->db->get('expenses');
+        $query = $this->db->get('sales');
         return $query->result();
+    }
+
+    public function CalcTotal()
+    {
+        $query = $this->db->select('SUM(TotalPrice) AS Total')
+            ->from('sales')
+            ->get();
+
+        if ($query->num_rows() > 0) {
+            $result = $query->row();
+            return $result->Total;
+        }
+
+        return 0;
     }
 
 }

@@ -1,115 +1,106 @@
-<!DOCTYPE html>
 <html>
 
 <head>
-    <title>Purchase</title>
-    <script src="https://kit.fontawesome.com/your-font-awesome-kit-id.js" crossorigin="anonymous"></script>
+    <title>
+        Expense
+    </title>
+
     <style>
-        #contents {
-            margin-left: 300px;
-            padding-top: 80px;
-            min-width: 700px; /* Adjust the min-width value as needed */
+        .contents {
+            margin-left: 240px;
+            padding-left: 20px;
+            padding-top: 90px;
+            padding-left: 90px;
+            margin-right: 20px;
+            margin-bottom: 20px;
         }
 
-        .content {
-            min-width: 700px; /* Adjust the min-width value as needed */
-            padding: 20px; /* Add padding to the content */
-            margin-right: 320px; /* Add margin to the right to accommodate the sidebar */
-            margin-left: 300px;
-            margin-top: 10px;
+        .SelectableRow:hover {
+            background-color: lightblue;
         }
 
-        table {
+        td {
+            border: 1px solid black;
+        }
+
+        .UpdateDiv {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
             width: 100%;
-            border-collapse: collapse;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
         }
 
-        th,
-        td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        th {
-            font-weight: bold;
-            width: calc(100% / 6); /* Divide equally into 6 columns */
-        }
-
-        td {
-            vertical-align: middle;
-            width: calc(100% / 6); /* Divide equally into 6 columns */
-        }
-
-        td.image-cell {
-            width: 180px;
-            height: 180px;
-        }
-
-        td.image-cell img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
+        .UpdateFormContent {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            border-radius: 20px;
+            width: fit-content;
+            height: fit-content;
         }
     </style>
 </head>
 
 <body>
-    <div id="navbar">
-        <?php $this->load->view($navbar) ?>
+    <?php $this->load->view($navbar) ?>
 
-    <div id="contents">
-        <div class="content">
-            <h1 style="text-align: center; padding: 10px; font-size: 30px; font-weight: bold; margin: 0;">Purchase Transaction</h1>
-            <table>
+    <div class="contents">
+        <div name="table for showing the the employees alongside the salary">
+            <table style="border-collapse: collapse; width: 100%;">
                 <thead>
                     <tr>
-                        <th>Product ID</th>
-                        <th>Product Image</th>
-                        <th>Product Name</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                        <!-- <th>Purchase Date</th> -->
-                        <th>Price Paid</th>
+                        <th style="width: 16.66%">
+                            Item ID
+                        </th>
+                        <th style="width: 16.66%">
+                            Name
+                        </th>
+                        <th style="width: 16.66%">
+                            Bought Stocks
+                        </th>
+                        <th style="width: 16.66%">
+                            Total Stocks
+                        </th>
+                        <th style="width: 16.66%">
+                            Price
+                        </th>
+                        <th style="width: 16.66%">
+                            Bought Date
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($Slippers as $item): ?>
-                    <tr>
-                        <td><?php echo $item->Product_id; ?></td>
-                        <td class="image-cell"><img src="<?php echo MAIN_BASE_URL . $item->Product_image; ?>" alt="Product Image"></td>
-                        <td><?php echo $item->Product_name; ?></td>
-                        <td><?php echo $item->Quantity; ?></td>
-                        <td><?php echo $item->Price; ?></td>
-                        <td><?php echo $item->TotalProductExpenses; ?></td>
-                    </tr>
-                    <?php endforeach ?>
-
-                    <?php foreach ($RubberShoes as $item): ?>
-                    <tr>
-                        <td><?php echo $item->Product_id; ?></td>
-                        <td class="image-cell"><img src="<?php echo MAIN_BASE_URL . $item->Product_image; ?>" alt="Product Image"></td>
-                        <td><?php echo $item->Product_name; ?></td>
-                        <td><?php echo $item->Quantity; ?></td>
-                        <td><?php echo $item->Price; ?></td>
-                        <td><?php echo $item->TotalProductExpenses; ?></td>
-                    </tr>
-                    <?php endforeach ?>
-
-                    <?php foreach ($BlackShoes as $item): ?>
-                    <tr>
-                        <td><?php echo $item->Product_id; ?></td>
-                        <td class="image-cell"><img src="<?php echo MAIN_BASE_URL . $item->Product_image; ?>" alt="Product Image"></td>
-                        <td><?php echo $item->Product_name; ?></td>
-                        <td><?php echo $item->Quantity; ?></td>
-                        <td><?php echo $item->Price; ?></td>
-                        <td><?php echo $item->TotalProductExpenses; ?></td>
-                    </tr>
-                    <?php endforeach ?>
+                    <?php foreach ($Items as $Item): ?>
+                        <tr class="SelectableRow">
+                            <td>
+                                <?php echo $Item->ItemID; ?>
+                            </td>
+                            <td>
+                                <?php echo $Item->ItemName; ?>
+                            </td>
+                            <td>
+                                <?php echo $Item->Quantity; ?>
+                            </td>
+                            <td>
+                                <?php echo $Item->TotalStock; ?>
+                            </td>
+                            <td>
+                                <?php echo $Item->Price; ?>
+                            </td>
+                            <td>
+                                <?php echo $Item->Date; ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
-    </div>
     </div>
 </body>
 
