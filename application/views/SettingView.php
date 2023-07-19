@@ -46,7 +46,7 @@
 <body>
     <!-- Navigation Bar -->
     <?php $this->load->view($navbar); ?>
-    <!-- End of Navigation Bar -->
+  
 
     <div id="contents">
         <h1 style="text-align: center; padding: 10px; font-size: 30px; font-weight: bold; margin: 0;">Setting</h1>
