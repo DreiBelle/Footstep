@@ -65,7 +65,7 @@
                 </div>
             </div>
         <?php endforeach; ?>
-        <!-- Inserted code ends -->
+    
     </div>
 </body>
 
