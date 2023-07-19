@@ -17,6 +17,7 @@ class CheckoutController extends CI_Controller
         $data['Slippers'] = $this->Checkout_Model->GetSlippers();
         $data['BlackShoes'] = $this->Checkout_Model->GetBlackShoes();
         $data['RubberShoes'] = $this->Checkout_Model->GetRubberShoes();
+        $data['LatestID'] = $this->Checkout_Model->GetLastestID();
 
         if ($user['role'] == "Administrator") {
             $data['user'] = $user;
@@ -91,6 +92,25 @@ class CheckoutController extends CI_Controller
             'message' => 'Size saved successfully'
         );
         echo json_encode($response);
+    }
+
+    public function Insert()
+    {
+        $itemID = $this->input->post('ItemID');
+        $itemName = $this->input->post('ItemName');
+        $quantity = $this->input->post('Quantity');
+
+        $data = array(
+            'ItemID' => $itemID,
+            'ItemName' => $itemName,
+            'ItemQuantity' => $quantity,
+            'Date' => date('Y-m-d') // Assuming the sale date is the current date
+        );
+
+        // Assuming you have a "sales" table in your database
+        $this->db->insert('product_purchases', $data);
+
+        // You can perform any additional logic or return a response as needed
     }
 
 }

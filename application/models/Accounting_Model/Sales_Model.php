@@ -43,6 +43,18 @@ class Sales_Model extends CI_Model
         return 0;
     }
 
+    public function GetItems()
+    {
+        $query = $this->db->get('product_purchases');
+        return $query->result();
+    }
+    
+    public function GetItembyID($ID)
+    {
+        $this->db->like('ItemID', $ID);
+        return $this->db->get('product_purchases')->result();
+    }
+
 }
 
 ?>

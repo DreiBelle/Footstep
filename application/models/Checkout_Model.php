@@ -62,6 +62,15 @@ class Checkout_Model extends CI_Model {
         $query = $this->db->get('product');
         return $query->result();
     }
+
+    public function GetLastestID()
+    {
+        $query = $this->db->query("SELECT MAX(id) AS max_id FROM sales");
+        $row = $query->row();
+        $maxID = $row->max_id;
+        $nextID = $maxID + 1;
+        return $nextID;
+    }
 }
     
 ?>

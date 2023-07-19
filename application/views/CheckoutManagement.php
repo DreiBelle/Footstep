@@ -278,6 +278,7 @@
             style="position: fixed; bottom: 0; width: 75%; background-color: white; height: 10%; margin-right: 5%; display: none; overflow-y: auto;">
         </table>
     </div>
+    <input type="hidden" id="latestid" value="<?php echo $LatestID ?>">
     </div>
     <script>
         var cartItems = [];
@@ -288,6 +289,7 @@
             display1.style.display = "block";
             var quantityInput = document.getElementById('QuantityInput_' + Product_id);
             var quantity = parseInt(quantityInput.value);
+            var itemIdCounter = document.getElementById('latestid').value;
 
             if (quantityInput.value !== "") {
                 var existingItemIndex = cartItems.findIndex(function (item) {
@@ -324,10 +326,33 @@
                     }
                     updateCartDisplay();
 
+                    insertSale(itemIdCounter, Product_name, quantity);
+
                     quantityInput.value = "";
                     sizeInput.value = "";
                 }
             }
+        }
+
+        function insertSale(itemId, itemName, quantity) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "<?php echo site_url('/CheckoutController/Insert'); ?>", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    console.log("Response:", xhr.responseText);
+                }
+            };
+
+            var data =
+                "ItemID=" + encodeURIComponent(itemId) +
+                "&ItemName=" + encodeURIComponent(itemName) +
+                "&Quantity=" + encodeURIComponent(quantity);
+
+            console.log("Data:", data);
+
+            xhr.send(data);
         }
 
         function createRemoveHandler(itemId) {
