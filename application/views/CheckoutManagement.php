@@ -106,7 +106,7 @@
             background-color: #ff0000;
             color: #fff;
             border: none;
-            border-radius: 4px;
+      c
             padding: 5px 10px;
             cursor: pointer;
             transition: background-color 0.3s;
@@ -155,14 +155,20 @@
             /* 15% from the top and centered */
             padding: 20px;
             border: 1px solid #888;
-            width: 200px;
+            border-radius: 9px;
+            width: 500px;
             text-align: center;
+            font-size: 120%;
         }
 
         .payment-option {
             display: block;
             margin: 10px auto;
             padding: 10px;
+            background-color: black;
+            color: #FFC300;
+            border: 1px solid black;
+           
         }
 
         .navbar {
@@ -203,7 +209,7 @@
     <div id="contents">
         <div class="content">
             <h1
-                style="text-align: center; padding: 10px; font-size: 30px; font-weight: bold; margin: 0; background-color: #FFC300; color: black;    max-width: 910px; ">
+                style="text-align: center; padding: 10px; font-size: 30px; max-width: 910px; font-weight: bold; margin: 0; background-color: #ffc107;">
                 Product List
             </h1>
 
@@ -311,21 +317,39 @@
             </div>
 
             <div id="paymentModal" class="paymentModal">
-                <div class="paymentmodal-content">
-                    <h4>Choose Payment Method</h4>
-                    <button id="cashBtn" class="payment-option">Pay Cash</button>
-                    <button id="rbbiBtn" class="payment-option">Pay Card</button>
-                </div>
-            </div>
-        </div>
-
-        <table id="cartDisplay"
-            style="position: fixed; bottom: 0; width: 75%; background-color: white; height: 10%; margin-right: 5%; display: none; overflow-y: auto;">
-        </table>
+    <div class="paymentmodal-content">
+        <span class="close-icon">&times;</span> <!-- X button -->
+        <h4>Choose Payment Method</h4>
+        <label for="cashBtn">
+            <input type="radio" id="cashBtn" name="paymentMethod">
+            <i class="" style="margin-right: 5px;"></i>Cash
+        </label>
+        <br>
+        <label for="rbbiBtn">
+            <input type="radio" id="rbbiBtn" name="paymentMethod">
+            <i class="" style="margin-right: 5px;"></i>Card
+        </label>
     </div>
-    <input type="hidden" id="latestid" value="<?php echo $LatestID ?>">
+</div>
+
+
+
+
+            <table id="cartDisplay"
+                style="position: fixed; bottom: 0; width: 75%; background-color: white; height: 10%; margin-right: 5%; display: none; overflow-y: auto;">
+            </table>
+        </div>
+        <input type="hidden" id="latestid" value="<?php echo $LatestID ?>">
     </div>
     <script>
+
+        var cashBtn = document.getElementById("cashBtn");
+        cashBtn.addEventListener("change", function () {
+            if (cashBtn.checked) {
+                alert("Cash payment selected");
+            }
+        });
+        
         var cartItems = [];
         var totalPrice = 0;
 
@@ -557,6 +581,7 @@
 
             xhr.send(data);
         }
+
     </script>
 </body>
 
