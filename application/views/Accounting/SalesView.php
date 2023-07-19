@@ -99,7 +99,7 @@
                         <tr>
                             <th style="width: calc(100% / 8); font-weight: bold;">Product ID</th>
                             <th style="width: calc(100% / 8); font-weight: bold;">Purchase Date</th>
-                            <th style="width: calc(100% / 8); font-weight: bold;">Total Bought</th>
+                            <th style="width: calc(100% / 8); font-weight: bold;">Sales</th>
                             <th style="width: calc(100% / 8); font-weight: bold;">Actions</th>
                         </tr>
                     </thead>
@@ -116,8 +116,8 @@
                                     <?php echo $Sale->TotalPrice; ?>
                                 </td>
                                 <td>
-                                    <button onclick="ShowUpdateForm('<?php echo $Sale->ID; ?>')" style="background-color: #ffc107; color: black; cursor: pointer; width: 160px;
-            padding: 10px; border: none; border-radius: 5px;">See more details...</button>
+                                    <button onclick="ShowUpdateForm('<?php echo $Sale->ID; ?>')" style="background-color: #ffc107; color: black; cursor: pointer; width: 180px;
+            padding: 10px; border: none; border-radius: 5px; font-weight: bold;">See more details...</button>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -163,7 +163,8 @@
                         </tbody>
                     </table>
                 </div>
-                <button style="width: 100%;" onclick="closeForm()">Close</button>
+                <button style="width: 100%; background-color: black; color: #FFD700; " onclick="closeForm()">Close</button>
+
             </div>
         </div>
 

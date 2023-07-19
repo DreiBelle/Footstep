@@ -66,6 +66,5 @@ class SalesController extends CI_Controller
         echo "
         </tbody>
     </table>";
-
     }
 }

@@ -14,10 +14,10 @@
         }
 
         .content {
-            margin-left: 290px;
-            padding: 20px;
+            margin-left: 270px; 
+            padding: -20px;
             color: #000;
-            margin-top: 80px;
+            display: inline;
         }
 
         .sidebar {
@@ -164,6 +164,7 @@
             <li><a href="<?php echo site_url('InventoryController/ViewProducts'); ?>"><i
                         class="fas fa-cube"></i> Product</a></li>
             <div class="section-divider"></div>
+            
             <li><a href="<?php echo site_url('StockController'); ?>"><i class="fas fa-people-carry"></i> Stock</a></li>
             <div class="section-divider"></div>
             <li><a href="<?php echo site_url('Dashboard/Logout'); ?>"><i class="fas fa-sign-out-alt"></i> Logout</a></li>

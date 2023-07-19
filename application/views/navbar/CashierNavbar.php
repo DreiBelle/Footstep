@@ -12,12 +12,13 @@
             font-family: "Poppins", Arial, sans-serif; /* Updated font-family */
         }
         .sidebar {
-            height: 100vh;
-            width: 290px;
-            background-color: #000;
-            color: #ffc107;
-            position: fixed;
-        }
+    height: 100vh;
+    width: 290px;
+    background-color: #000;
+    color: #ffc107;
+    position: fixed;
+
+}
 
         .sidebar ul {
             list-style: none;
@@ -65,14 +66,18 @@
 
         header {
             padding: 10px;
-            height: 65px; /* Increased height to accommodate the logo */
+            height: 80px;
             background-color: #000;
             color: #ffc107;
-            display: flex; /* Added to enable aligning items */
-            justify-content: space-between; /* Added to align items */
+            display: flex;
+            justify-content: space-between;
             font-family: "Poppins", monospace;
-            position: relative;
-            align-items: center; /* Center align items vertically */
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            align-items: center;
         }
 
         .logo-container {
@@ -139,6 +144,14 @@
         .dropdown-content a:hover {
             background-color: #444;
         }
+
+        .content {
+            margin-left: 270px; 
+            padding: -20px;
+            color: #000;
+            display: inline;
+        }
+
 
     </style>
 </head>

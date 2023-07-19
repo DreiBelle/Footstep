@@ -83,9 +83,9 @@
                 datasets: [{
                     label: 'Total Sales',
                     data: salesPrices,
-                    backgroundColor: 'rgba(255, 0, 0, 0.5)', // Red with transparency
-                    borderColor: '#FF0000',// Set the outline color to #FFD700
-                borderWidth: 2
+                    backgroundColor: 'rgba(255, 215, 0, 0.5)', // Make it transparent with rgba() and set alpha to 0.5
+                    borderColor: '#FFD700', // Set the outline color to #FFD700
+                    borderWidth: 2 
                 }]
             },
             options: {
@@ -115,9 +115,9 @@
                 datasets: [{
                     label: 'Total Expenses',
                     data: expensesTotalPrices,
-                    backgroundColor: 'rgba(255, 0, 0, 0.5)', // Red with transparency
-                    borderColor: '#FF0000',// Set the outline color to #FFD700
-                borderWidth: 2
+                    backgroundColor: 'rgba(255, 215, 0, 0.5)', // Make it transparent with rgba() and set alpha to 0.5
+                    borderColor: '#FFD700', // Set the outline color to #FFD700
+                    borderWidth: 2 
                 }]
             },
             options: {
@@ -147,9 +147,9 @@
                 datasets: [{
                     label: 'Salaries',
                     data: employeeSalaries,
-                    backgroundColor: 'rgba(255, 0, 0, 0.5)', // Red with transparency
-                    borderColor: '#FF0000',// Set the outline color to #FFD700
-                borderWidth: 2
+                    backgroundColor: 'rgba(255, 215, 0, 0.5)', // Make it transparent with rgba() and set alpha to 0.5
+                    borderColor: '#FFD700', // Set the outline color to #FFD700
+                    borderWidth: 2
                 }]
             },
             options: {
@@ -179,9 +179,9 @@
                 datasets: [{
                     label: 'Total',
                     data: totals,
-                    backgroundColor: 'rgba(255, 0, 0, 0.5)', // Red with transparency
-                    borderColor: '#FF0000',// Set the outline color to #FFD700
-                borderWidth: 2
+                    backgroundColor: 'rgba(255, 215, 0, 0.5)', // Make it transparent with rgba() and set alpha to 0.5
+                    borderColor: '#FFD700', // Set the outline color to #FFD700
+                    borderWidth: 2
                 }]
             },
             options: {

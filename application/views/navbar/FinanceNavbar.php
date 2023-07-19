@@ -51,7 +51,6 @@
             margin-top: 5px;
             border-top: 1px solid #ffc107;
         }
-
         .sidebar-header {
             padding: 20px;
             background-color: #ffc107;
@@ -67,14 +66,18 @@
 
         header {
             padding: 10px;
-            height: 65px; /* Increased height to accommodate the logo */
+            height: 80px;
             background-color: #000;
             color: #ffc107;
-            display: flex; /* Added to enable aligning items */
-            justify-content: space-between; /* Added to align items */
+            display: flex;
+            justify-content: space-between;
             font-family: "Poppins", monospace;
-            position: relative;
-            align-items: center; /* Center align items vertically */
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            align-items: center;
         }
 
         .logo-container {
@@ -161,7 +164,7 @@
     <li><a href="<?php echo site_url('Dashboard'); ?>"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
         <div class="section-divider"></div>
         <li >
-        <a href="#"><i class="fas fa-hand-holding-usd"></i>Sales</a>
+        <a href="<?php echo site_url('Accounting_Controller/SalesController'); ?>"><i class="fas fa-hand-holding-usd"></i>Sales</a>
         </li>
         <div class="section-divider"></div>
 

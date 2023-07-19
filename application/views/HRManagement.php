@@ -384,7 +384,7 @@
 
                         <form method="post" action="<?php echo site_url('HRController/editEmployee'); ?>"
                             class="form-container">
-                            <h2>Update Payment</h2>
+                            <h2>Edit Employee Information</h2>
                     
                             <input type="hidden" name="EmployeeIdInput" id="EmployeeIdInput" required
                                 style="border: 1px solid gray;">
@@ -396,11 +396,11 @@
                             <input type="text" name="PositionInput" id="PositionInput" required
                                 style="border: 1px solid gray;">
 
-                            <label for="HireDateInput"><i class="fas fa-dollar-sign"></i> Hire Date:</label>
+                            <label for="HireDateInput"><i class="fas fa-calendar-alt"></i>  Hire Date:</label>
                             <input type="date" name="HireDateInput" id="HireDateInput" required
                                 style="border: 1px solid gray;">
 
-                            <label for="AddressInput"><i class="fas fa-credit-card"></i> Payment Method:</label>
+                            <label for="AddressInput"><i class="fas fa-map-marker-alt"></i> Address:</label>
                             <input type="text" name="AddressInput" id="AddressInput" required
                                 style="border: 1px solid gray;">
                             <div>

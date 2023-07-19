@@ -139,8 +139,9 @@
         }
 
         .action-btn.add-btn {
-            background-color: #ffc107; /* Banana orange color */
-    color: black;
+            background-color: #ffc107;
+            /* Banana orange color */
+            color: black;
         }
 
         .action-btn.edit-btn {
@@ -150,6 +151,37 @@
 
         .action-btn:hover {
             background-color: #FFD700;
+        }
+        .modal-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .salary-submit,
+        .cancel-button {
+            width: 70%;
+            height: 40px;
+            padding: 10px;
+            border: none;
+            color: #FFD700; /* Banana Orange text color */
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .salary-submit {
+            background-color: black;
+        }
+
+        .cancel-button {
+            background-color: black;
+            margin-left: 10px; /* Add some spacing between the buttons */
+        }
+        .fa-icon {
+            margin-right: 5px; /* Adjust the spacing between icon and text */
         }
     </style>
 </head>
@@ -171,7 +203,7 @@
                             <th>Position</th>
                             <th>Hire Date</th>
                             <th>Address</th>
-            
+
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -203,125 +235,127 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-       
-            <br><br>
-            <table style="margin-left: 0px;">
-                <thead>
-                    <tr>
-                        <th>Payroll ID</th>
-                        <th>Staff ID</th>
-                        <th>Salary</th>
-                        <th>Date Received</th>
-                        <th>Type</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($payroll as $pay): ?>
+
+                <br><br>
+                <table style="margin-left: 0px;">
+                    <thead>
                         <tr>
-                            <td>
-                                <?php echo $pay['Payroll_ID']; ?>
-                            </td>
-                            <td>
-                                <?php echo $pay['Employee_id']; ?>
-                            </td>
-                            <td>
-                                <?php echo $pay['Salary']; ?>
-                            </td>
-                            <td>
-                                <?php echo $pay['Date_received']; ?>
-                            </td>
-                            <td>
-                                <?php echo $pay['Type']; ?>
-                            </td>
-                            <td>
-                                <?php echo $pay['Status']; ?>
-                            </td>
-
+                            <th>Payroll ID</th>
+                            <th>Staff ID</th>
+                            <th>Salary</th>
+                            <th>Date Received</th>
+                            <th>Type</th>
+                            <th>Status</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($payroll as $pay): ?>
+                            <tr>
+                                <td>
+                                    <?php echo $pay['Payroll_ID']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $pay['Employee_id']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $pay['Salary']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $pay['Date_received']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $pay['Type']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $pay['Status']; ?>
+                                </td>
+
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+            </div>
         </div>
-    </div>
 
 
-    <div id="AddSalaryModal" class="modal">
-        <div class="modal-content">
-            <h2>Add Salary</h2>
-            <form class="modal-form"
-                action="<?php echo site_url('Accounting_Controller/PayrollController/insertSalary'); ?>" method="post">
-                <input type="hidden" id="employeeIdInput" name="employeeId">
-                <div class="form-group">
-                    <label for="salaryInput">Salary:</label>
-                    <input class="salary-input" type="text" id="salaryInput" name="salary" placeholder="Salary"
-                        required>
-                </div>
-                <div class="form-group">
-                    <label for="dateReceivedInput">Date Received:</label>
-                    <input class="salary-input" type="date" id="dateReceivedInput" name="dateReceived" required>
-                </div>
-                <div class="modal-actions">
-                    <button class="salary-submit" type="submit">Add</button>
-                    <button class="cancel-button" onclick="hideAddSalaryModal()">Cancel</button>
-                </div>
-            </form>
+        <div id="AddSalaryModal" class="modal">
+            <div class="modal-content">
+                <h2>Add Salary</h2>
+                <form class="modal-form"
+                    action="<?php echo site_url('Accounting_Controller/PayrollController/insertSalary'); ?>"
+                    method="post">
+                    <input type="hidden" id="employeeIdInput" name="employeeId">
+                    <div class="form-group">
+                        <label for="salaryInput">Salary:</label>
+                        <input class="salary-input" type="text" id="salaryInput" name="salary" placeholder="Salary"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dateReceivedInput">Date Received:</label>
+                        <input class="salary-input" type="date" id="dateReceivedInput" name="dateReceived" required>
+                    </div>
+                    <div class="modal-actions">
+                        <button class="salary-submit" type="submit">Add</button>
+                        <button class="cancel-button" onclick="hideAddSalaryModal()">Cancel</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
 
-    <div id="SalaryModal" class="modal">
-        <div class="modal-content">
-            <h2>Edit Salary</h2>
-            <form class="modal-form"
-                action="<?php echo site_url('Accounting_Controller/PayrollController/updateSalary'); ?>" method="post">
-                <input type="hidden" id="employeeIdInput" name="employeeId">
-                <div class="form-group">
-                    <label for="salaryInput">Salary:</label>
-                    <input class="salary-input" type="text" id="salaryInput" name="salary" placeholder="Salary"
-                        required>
-                </div>
-                <div class="form-group">
-                    <label for="dateReceivedInput">Date Received:</label>
-                    <input class="salary-input" type="date" id="dateReceivedInput" name="dateReceived" required>
-                </div>
-                <div class="modal-actions">
-                    <button class="salary-submit" type="submit">Save</button>
-                    <button class="cancel-button" onclick="hideSalaryModal()">Cancel</button>
-                </div>
-            </form>
+        <div id="SalaryModal" class="modal">
+            <div class="modal-content">
+                <h2>Edit Salary</h2>
+                <form class="modal-form"
+                    action="<?php echo site_url('Accounting_Controller/PayrollController/updateSalary'); ?>"
+                    method="post">
+                    <input type="hidden" id="employeeIdInput" name="employeeId">
+                    <div class="form-group">
+                        <label for="salaryInput">Salary:</label>
+                        <input class="salary-input" type="text" id="salaryInput" name="salary" placeholder="Salary"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dateReceivedInput">Date Received:</label>
+                        <input class="salary-input" type="date" id="dateReceivedInput" name="dateReceived" required>
+                    </div>
+                    <div class="modal-actions">
+                        <button class="salary-submit" type="submit">Save</button>
+                        <button class="cancel-button" onclick="hideSalaryModal()">Cancel</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
 
-    <script>
-        function showAddSalaryModal(employeeId) {
-            var modal = document.getElementById("AddSalaryModal");
-            var employeeIdInput = document.getElementById("employeeIdInput");
-            employeeIdInput.value = employeeId;
-            modal.style.display = "block";
-        }
+        <script>
+            function showAddSalaryModal(employeeId) {
+                var modal = document.getElementById("AddSalaryModal");
+                var employeeIdInput = document.getElementById("employeeIdInput");
+                employeeIdInput.value = employeeId;
+                modal.style.display = "block";
+            }
 
-        function hideAddSalaryModal() {
-            var modal = document.getElementById("AddSalaryModal");
-            modal.style.display = "none";
-        }
-        function showSalaryModal(employeeId, salary, dateReceived) {
-            var modal = document.getElementById("SalaryModal");
-            var employeeIdInput = document.getElementById("employeeIdInput");
-            var salaryInput = document.getElementById("salaryInput");
-            var dateReceivedInput = document.getElementById("dateReceivedInput");
+            function hideAddSalaryModal() {
+                var modal = document.getElementById("AddSalaryModal");
+                modal.style.display = "none";
+            }
+            function showSalaryModal(employeeId, salary, dateReceived) {
+                var modal = document.getElementById("SalaryModal");
+                var employeeIdInput = document.getElementById("employeeIdInput");
+                var salaryInput = document.getElementById("salaryInput");
+                var dateReceivedInput = document.getElementById("dateReceivedInput");
 
-            employeeIdInput.value = employeeId;
-            salaryInput.value = salary;
-            dateReceivedInput.value = dateReceived;
+                employeeIdInput.value = employeeId;
+                salaryInput.value = salary;
+                dateReceivedInput.value = dateReceived;
 
-            modal.style.display = "block";
-        }
+                modal.style.display = "block";
+            }
 
 
-        function hideSalaryModal() {
-            var modal = document.getElementById("SalaryModal");
-            modal.style.display = "none";
-        }
-    </script>
+            function hideSalaryModal() {
+                var modal = document.getElementById("SalaryModal");
+                modal.style.display = "none";
+            }
+        </script>
 </body>
 
 </html>

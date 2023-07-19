@@ -42,7 +42,7 @@
         }
 
         .card {
-            width: 250px;
+            width: 290px;
             height: 400px;
             border: 1px solid #ccc;
             border-radius: 8px;
@@ -57,8 +57,10 @@
         }
 
         .card-image {
-            width: 80%;
-            height: 250px;
+            width: 90%;
+            height: 290px;
+            /* margin-top: 10px; */
+            /* margin-bottom:-30px; */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
