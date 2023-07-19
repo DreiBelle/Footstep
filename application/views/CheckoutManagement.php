@@ -42,7 +42,7 @@
         }
 
         .card {
-            width: 290px;
+            width: 250px;
             height: 400px;
             border: 1px solid #ccc;
             border-radius: 8px;
@@ -106,7 +106,6 @@
             background-color: #ff0000;
             color: #fff;
             border: none;
-      c
             padding: 5px 10px;
             cursor: pointer;
             transition: background-color 0.3s;
@@ -132,27 +131,19 @@
 
         .paymentModal {
             display: none;
-            /* Hidden by default */
             position: fixed;
-            /* Stay in place */
             z-index: 1;
-            /* Sit on top */
             left: 0;
             top: 0;
             width: 100%;
-            /* Full width */
             height: 100%;
-            /* Full height */
             overflow: auto;
-            /* Enable scroll if needed */
             background-color: rgba(0, 0, 0, 0.5);
-            /* Black w/ opacity */
         }
 
         .paymentmodal-content {
             background-color: #fefefe;
             margin: 15% auto;
-            /* 15% from the top and centered */
             padding: 20px;
             border: 1px solid #888;
             border-radius: 9px;
@@ -168,7 +159,7 @@
             background-color: black;
             color: #FFC300;
             border: 1px solid black;
-           
+
         }
 
         .navbar {
@@ -317,20 +308,20 @@
             </div>
 
             <div id="paymentModal" class="paymentModal">
-    <div class="paymentmodal-content">
-        <span class="close-icon">&times;</span> <!-- X button -->
-        <h4>Choose Payment Method</h4>
-        <label for="cashBtn">
-            <input type="radio" id="cashBtn" name="paymentMethod">
-            <i class="" style="margin-right: 5px;"></i>Cash
-        </label>
-        <br>
-        <label for="rbbiBtn">
-            <input type="radio" id="rbbiBtn" name="paymentMethod">
-            <i class="" style="margin-right: 5px;"></i>Card
-        </label>
-    </div>
-</div>
+                <div class="paymentmodal-content">
+                    <span class="close-icon">&times;</span> <!-- X button -->
+                    <h4>Choose Payment Method</h4>
+                    <label for="cashBtn">
+                        <input type="radio" id="cashBtn" name="paymentMethod">
+                        <i class="" style="margin-right: 5px;"></i>Cash
+                    </label>
+                    <br>
+                    <label for="rbbiBtn">
+                        <input type="radio" id="rbbiBtn" name="paymentMethod">
+                        <i class="" style="margin-right: 5px;"></i>Card
+                    </label>
+                </div>
+            </div>
 
 
 
@@ -349,7 +340,7 @@
                 alert("Cash payment selected");
             }
         });
-        
+
         var cartItems = [];
         var totalPrice = 0;
 
@@ -513,7 +504,7 @@
 
             var rbbiBtn = document.getElementById("rbbiBtn");
             rbbiBtn.addEventListener("click", function () {
-                processPayment("RBBI");
+                processPayment("Card");
             });
         }
 
@@ -548,8 +539,18 @@
                     var dataSize = "ProductIdInput=" + encodeURIComponent(itemId) + "& SizeInput=" + encodeURIComponent(size);
                     xhrSize.send(dataSize);
                 }
-            } else if (chosen == "RBBI") {
-                console.log("this is RBBI");
+            } else if (chosen == "Card") {
+
+                for (var i = 0; i < cartItems.length; i++) {
+                    totalPrice += cartItems[i].price;
+
+                    var itemId = cartItems[i].id;
+                    var quantity = cartItems[i].quantity;
+                    var size = cartItems[i].size;
+                }
+
+                var url = "http://192.168.10.128/RBBI/index.php/access/index/86/" + totalPrice + "/?url=http://192.168.10.120/Footstep/index.php/CheckoutController&data=";
+                window.location.href = url;
             }
 
             var xhr = new XMLHttpRequest();

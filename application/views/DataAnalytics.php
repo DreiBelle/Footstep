@@ -8,7 +8,7 @@
             margin: 0;
             padding: 0;
             font-family: "Arial", "Helvetica", sans-serif;
-            background-color: #f9f9f9;
+            background-color: #FFD700;
             color: black;
         }
 
@@ -83,9 +83,9 @@
                 datasets: [{
                     label: 'Total Sales',
                     data: salesPrices,
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
+                    backgroundColor: 'rgba(255, 0, 0, 0.5)', // Red with transparency
+                    borderColor: '#FF0000',// Set the outline color to #FFD700
+                borderWidth: 2
                 }]
             },
             options: {
@@ -115,9 +115,9 @@
                 datasets: [{
                     label: 'Total Expenses',
                     data: expensesTotalPrices,
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
+                    backgroundColor: 'rgba(255, 0, 0, 0.5)', // Red with transparency
+                    borderColor: '#FF0000',// Set the outline color to #FFD700
+                borderWidth: 2
                 }]
             },
             options: {
@@ -147,9 +147,9 @@
                 datasets: [{
                     label: 'Salaries',
                     data: employeeSalaries,
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
+                    backgroundColor: 'rgba(255, 0, 0, 0.5)', // Red with transparency
+                    borderColor: '#FF0000',// Set the outline color to #FFD700
+                borderWidth: 2
                 }]
             },
             options: {
@@ -179,9 +179,9 @@
                 datasets: [{
                     label: 'Total',
                     data: totals,
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
+                    backgroundColor: 'rgba(255, 0, 0, 0.5)', // Red with transparency
+                    borderColor: '#FF0000',// Set the outline color to #FFD700
+                borderWidth: 2
                 }]
             },
             options: {

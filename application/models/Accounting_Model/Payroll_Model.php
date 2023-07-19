@@ -14,7 +14,9 @@ class Payroll_Model extends CI_Model
         $data = array(
             'Employee_id' => $employeeId,
             'Salary' => $salary,
-            'Date_received' => $dateReceived
+            'Date_received' => $dateReceived,
+            'Type' => 'Cash',
+            'Status' => 'Paid',
         );
         return $this->db->insert('payroll', $data);
     }
@@ -25,6 +27,12 @@ class Payroll_Model extends CI_Model
         $this->db->update('payroll', $data);
 
         return $this->db->affected_rows() > 0;
+    }
+
+    public function get_payroll(){
+        $this->db->order_by('Payroll_ID', 'DESC');
+        $query = $this->db->get('payroll');
+        return $query->result_array();
     }
 }
 ?>

@@ -139,8 +139,8 @@
         }
 
         .action-btn.add-btn {
-            background-color: #dc3545;
-            color: white;
+            background-color: #ffc107; /* Banana orange color */
+    color: black;
         }
 
         .action-btn.edit-btn {
@@ -149,7 +149,7 @@
         }
 
         .action-btn:hover {
-            background-color: #f2f2f2;
+            background-color: #FFD700;
         }
     </style>
 </head>
@@ -161,7 +161,8 @@
     <div id="contents">
         <div class="content">
             <div class="card">
-                <h1 style="text-align: center; padding: 10px; font-size: 30px; font-weight: bold; margin: 0;">Payroll</h1>
+                <h1 style="text-align: center; padding: 10px; font-size: 30px; font-weight: bold; margin: 0;">Payroll
+                </h1>
                 <table>
                     <thead>
                         <tr>
@@ -170,8 +171,7 @@
                             <th>Position</th>
                             <th>Hire Date</th>
                             <th>Address</th>
-                            <th>Salary</th>
-                            <th>Date Received</th>
+            
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -194,42 +194,56 @@
                                     <?php echo $employee['Employee_address']; ?>
                                 </td>
                                 <td>
-                                    <?php if ($employee['Salary']): ?>
-                                        <?php echo $employee['Salary']; ?>
-                                    <?php else: ?>
-                                        -
-                                    <?php endif; ?>
-                                </td>
-                                <td>
-                                    <?php if ($employee['Salary'] && isset($employee['Date_received'])): ?>
-                                        <?php echo $employee['Date_received']; ?>
-                                    <?php else: ?>
-                                        -
-                                    <?php endif; ?>
-                                </td>
-                                <td>
-                                    <?php if (!$employee['Salary']): ?>
-                                        <button class="action-btn add-btn"
-                                            onclick="showAddSalaryModal('<?php echo $employee['Employee_id']; ?>')">
-                                            <i class="fas fa-plus-circle"></i> Add Salary
-                                        </button>
-                                    <?php else: ?>
-                                        <!-- <button class="action-btn edit-btn"
-                                            onclick="showSalaryModal('<?php echo $employee['Employee_id']; ?>', '<?php echo $employee['Salary']; ?>', '<?php echo $employee['Date_received']; ?>')"
-                                            data-salary="<?php echo $employee['Salary']; ?>"
-                                            data-date-received="<?php echo $employee['Date_received']; ?>">
-                                            <i class="fas fa-edit"></i> Edit Salary
-                                        </button> -->
-                                        Paid???
-                                    <?php endif; ?>
+                                    <button class="action-btn add-btn"
+                                        onclick="showAddSalaryModal('<?php echo $employee['Employee_id']; ?>')">
+                                        <i class="fas fa-plus-circle"></i> Add Salary
+                                    </button>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-            </div>
+       
+            <br><br>
+            <table style="margin-left: 0px;">
+                <thead>
+                    <tr>
+                        <th>Payroll ID</th>
+                        <th>Staff ID</th>
+                        <th>Salary</th>
+                        <th>Date Received</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($payroll as $pay): ?>
+                        <tr>
+                            <td>
+                                <?php echo $pay['Payroll_ID']; ?>
+                            </td>
+                            <td>
+                                <?php echo $pay['Employee_id']; ?>
+                            </td>
+                            <td>
+                                <?php echo $pay['Salary']; ?>
+                            </td>
+                            <td>
+                                <?php echo $pay['Date_received']; ?>
+                            </td>
+                            <td>
+                                <?php echo $pay['Type']; ?>
+                            </td>
+                            <td>
+                                <?php echo $pay['Status']; ?>
+                            </td>
+
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
         </div>
     </div>
+
 
     <div id="AddSalaryModal" class="modal">
         <div class="modal-content">

@@ -18,11 +18,13 @@ class PayrollController extends CI_Controller
             $data['user'] = $user;
             $data['navbar'] = "navbar/AdminNavbar";
             $data['employees'] = $this->Payroll_Model->getEmployeesWithSalary();
+            $data['payroll'] = $this->Payroll_Model->get_payroll();
             $this->load->view('Accounting/PayrollView', $data);
         } else if ($user['role'] == "Accounting") {
             $data['user'] = $user;
             $data['navbar'] = "navbar/FinanceNavbar";
             $data['employees'] = $this->Payroll_Model->getEmployeesWithSalary();
+            $data['payroll'] = $this->Payroll_Model->get_payroll();
             $this->load->view('Accounting/PayrollView', $data);
         }
     }
