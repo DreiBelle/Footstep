@@ -117,7 +117,7 @@
                                 </td>
                                 <td>
                                     <button onclick="ShowUpdateForm('<?php echo $Sale->ID; ?>')" style="background-color: #ffc107; color: black; cursor: pointer; width: 160px;
-            padding: 10px; border: none; border-radius: 5px;">See more details</button>
+            padding: 10px; border: none; border-radius: 5px;">See more details...</button>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

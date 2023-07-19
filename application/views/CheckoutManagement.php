@@ -8,7 +8,7 @@
         #contents {
             margin-left: 300px;
             padding-left: 35px;
-            padding-top: 80px;
+            padding-top: 70px;
             min-width: 700px;
             margin-bottom: 200px;
         }
@@ -42,7 +42,7 @@
         }
 
         .card {
-            width: 300px;
+            width: 290px;
             height: 400px;
             border: 1px solid #ccc;
             border-radius: 8px;
@@ -50,6 +50,7 @@
             padding: 10px;
             margin-right: 20px;
             margin-bottom: 20px;
+
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -163,6 +164,35 @@
             margin: 10px auto;
             padding: 10px;
         }
+
+        .navbar {
+            background-color: #f2f2f2;
+            padding: 10px;
+            max-width: 910px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .navbar a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .navbar a:first-child {
+            margin-left: auto;
+        }
+
+        .navbar .icon {
+            margin-left: 5px;
+        }
+
+        .navbar a:hover {
+            text-decoration: none;
+            color: orange;
+        }
     </style>
 </head>
 
@@ -172,8 +202,18 @@
     </div>
     <div id="contents">
         <div class="content">
-            <h1 style="text-align: center; padding: 10px; font-size: 30px; font-weight: bold; margin: 0;">Products</h1>
+            <h1
+                style="text-align: center; padding: 10px; font-size: 30px; font-weight: bold; margin: 0; background-color: #FFC300; color: black;    max-width: 910px; ">
+                Product List
+            </h1>
+
+            <div class="navbar">
+                <a href="#slippers">Slippers <i class="fas fa-chevron-right icon"></i></a>
+                <a href="#rubber-shoes">Rubber Shoes <i class="fas fa-chevron-right icon"></i></a>
+                <a href="#black-shoes">Black Shoes <i class="fas fa-chevron-right icon"></i></a>
+            </div>
             <div class="card-container">
+                <h2 id="slippers"></h2>
                 <?php foreach ($Slippers as $item): ?>
                     <div class="card">
                         <div class="card-image"
@@ -192,18 +232,21 @@
                                 <input type="hidden" name="ProductIdInput"
                                     id="ProductIdInput_<?php echo $item->Product_id; ?>"
                                     value="<?php echo $item->Product_id; ?>" disabled>
-                                <input type="text" placeholder="Enter Size" name="SizeInput"
+                                <input type="text" placeholder="Enter Euro Size" name="SizeInput"
                                     id="SizeInput_<?php echo $item->Product_id; ?>" class="size-input">
                                 <input type="number" placeholder="Enter Quantity" name="QuantityInput"
                                     id="QuantityInput_<?php echo $item->Product_id; ?>" class="quantity-input">
                                 <button style="margin-top: 15px;" class="card-button"
-                                    onclick="addToCart(<?php echo $item->Product_id; ?>, '<?php echo $item->Product_name; ?>', '<?php echo $item->Quantity; ?>')">Add
-                                    to Cart</button>
+                                    onclick="addToCart(<?php echo $item->Product_id; ?>, '<?php echo $item->Product_name; ?>', '<?php echo $item->Quantity; ?>')">
+                                    <i class="fas fa-shopping-cart"></i> Add to Cart
+                                </button>
+
                             </div>
                         </div>
                     </div>
                 <?php endforeach ?>
 
+                <h2 id="rubber-shoes"></h2>
                 <?php foreach ($RubberShoes as $item): ?>
                     <div class="card">
                         <div class="card-image"
@@ -222,18 +265,19 @@
                                 <input type="hidden" name="ProductIdInput"
                                     id="ProductIdInput_<?php echo $item->Product_id; ?>"
                                     value="<?php echo $item->Product_id; ?>" disabled>
-                                <input type="text" placeholder="Enter Size" name="SizeInput"
+                                <input type="text" placeholder="Enter Euro Size" name="SizeInput"
                                     id="SizeInput_<?php echo $item->Product_id; ?>" class="size-input">
                                 <input type="number" placeholder="Enter Quantity" name="QuantityInput"
                                     id="QuantityInput_<?php echo $item->Product_id; ?>" class="quantity-input">
                                 <button style="margin-top: 15px;" class="card-button"
-                                    onclick="addToCart(<?php echo $item->Product_id; ?>, '<?php echo $item->Product_name; ?>', '<?php echo $item->Quantity; ?>')">Add
-                                    to Cart</button>
+                                    onclick="addToCart(<?php echo $item->Product_id; ?>, '<?php echo $item->Product_name; ?>', '<?php echo $item->Quantity; ?>')">
+                                    <i class="fas fa-shopping-cart"></i>Add to Cart</button>
                             </div>
                         </div>
                     </div>
                 <?php endforeach ?>
 
+                <h2 id="black-shoes"></h2>
                 <?php foreach ($BlackShoes as $item): ?>
                     <div class="card">
                         <div class="card-image"
@@ -252,12 +296,13 @@
                                 <input type="hidden" name="ProductIdInput"
                                     id="ProductIdInput_<?php echo $item->Product_id; ?>"
                                     value="<?php echo $item->Product_id; ?>" disabled>
-                                <input type="text" placeholder="Enter Size" name="SizeInput"
+                                <input type="text" placeholder="Enter Euro Size" name="SizeInput"
                                     id="SizeInput_<?php echo $item->Product_id; ?>" class="size-input">
                                 <input type="number" placeholder="Enter Quantity" name="QuantityInput"
                                     id="QuantityInput_<?php echo $item->Product_id; ?>" class="quantity-input">
                                 <button style="margin-top: 15px;" class="card-button"
-                                    onclick="addToCart(<?php echo $item->Product_id; ?>, '<?php echo $item->Product_name; ?>', '<?php echo $item->Quantity; ?>')">Add
+                                    onclick="addToCart(<?php echo $item->Product_id; ?>, '<?php echo $item->Product_name; ?>', '<?php echo $item->Quantity; ?>')">
+                                    <i class="fas fa-shopping-cart"></i>Add
                                     to Cart</button>
                             </div>
                         </div>
@@ -268,8 +313,8 @@
             <div id="paymentModal" class="paymentModal">
                 <div class="paymentmodal-content">
                     <h4>Choose Payment Method</h4>
-                    <button id="cashBtn" class="payment-option">Cash</button>
-                    <button id="rbbiBtn" class="payment-option">Card</button>
+                    <button id="cashBtn" class="payment-option">Pay Cash</button>
+                    <button id="rbbiBtn" class="payment-option">Pay Card</button>
                 </div>
             </div>
         </div>
