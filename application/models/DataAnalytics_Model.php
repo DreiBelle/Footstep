@@ -3,13 +3,13 @@ class DataAnalytics_Model extends CI_Model
 {
     public function GetSalesData()
     {
-        $query = $this->db->query("SELECT DATE, SUM(TotalPrice) AS TotalPrice FROM sales GROUP BY DATE");
+        $query = $this->db->query("SELECT Date, SUM(TotalPrice) AS TotalPrice FROM sales GROUP BY Date");
         return $query->result();
     }
 
     public function GetExpensesData()
     {
-        $query = $this->db->query("SELECT Product_name, SUM(Quantity) AS TotalQuantity, SUM(Price) AS TotalPrice FROM expenses GROUP BY Product_name");
+        $query = $this->db->query("SELECT ItemName, SUM(Quantity) AS TotalQuantity, SUM(Price) AS TotalPrice FROM expenses GROUP BY ItemName");
         return $query->result();
     }
 

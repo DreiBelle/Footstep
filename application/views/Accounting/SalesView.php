@@ -9,7 +9,7 @@
         .contents {
             margin-left: 300px;
             padding-top: 80px;
-            margin-right: 320px;
+            margin-right: 10px;
             margin-bottom: 20px;
         }
 
@@ -19,6 +19,9 @@
             border-radius: 4px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             padding: 20px;
+            width: 100%;
+            height: 80%;
+            overflow-y: scroll;
         }
 
         table {
@@ -97,11 +100,12 @@
                             <th style="width: calc(100% / 8); font-weight: bold;">Product ID</th>
                             <th style="width: calc(100% / 8); font-weight: bold;">Purchase Date</th>
                             <th style="width: calc(100% / 8); font-weight: bold;">Total Bought</th>
+                            <th style="width: calc(100% / 8); font-weight: bold;">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($Sales as $Sale): ?>
-                            <tr onclick="ShowUpdateForm('<?php echo $Sale->ID; ?>')">
+                            <tr>
                                 <td>
                                     <?php echo $Sale->ID; ?>
                                 </td>
@@ -110,6 +114,10 @@
                                 </td>
                                 <td>
                                     <?php echo $Sale->TotalPrice; ?>
+                                </td>
+                                <td>
+                                    <button onclick="ShowUpdateForm('<?php echo $Sale->ID; ?>')" style="background-color: #ffc107; color: black; cursor: pointer; width: 160px;
+            padding: 10px; border: none; border-radius: 5px;">See more details</button>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -169,7 +177,7 @@
             $.post("<?php echo site_url('Accounting_Controller/SalesController/getbyid'); ?>", {
                 ItemID: ID
             }, function (data) {
-                alert("ItemID");
+
                 $("#ModalContent").html(data);
             })
 

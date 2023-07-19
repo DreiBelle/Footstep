@@ -19,12 +19,11 @@
         }
 
         .search-form {
-            margin-bottom: 20px;
+            width: 100%;
         }
 
         .search-form input[type="text"] {
-            margin-left: 60vh;
-            width: 30%;
+            width: 62%;
             padding: 10px;
             border: 1px solid #f9f9f9;
             border-radius: 4px;
@@ -41,27 +40,6 @@
             border: none;
             border-radius: 4px;
             width: 100px;
-            background-color: #ffc107;
-            color: black;
-            cursor: pointer;
-            font-family: "Arial", "Helvetica", sans-serif;
-            transition: background-color 0.3s;
-        }
-
-        .add-btn {
-            margin-bottom: 20px;
-            /* position: relative; */
-            z-index: -1;
-        }
-
-        .add-btn button {
-            width: 160px;
-
-            margin-top: -62px;
-            padding: 10px;
-            position: absolute;
-            border: none;
-            border-radius: 4px;
             background-color: #ffc107;
             color: black;
             cursor: pointer;
@@ -271,60 +249,68 @@
 <body>
     <?php $this->load->view($navbar) ?>
     <div id="contents">
-        <div class="search-form">
-            <h1 style="text-align: center; padding: 10px; font-size: 30px; font-weight: bold; margin: 0;">Inventory
-                Management</h1>
-            <form method="get" action="<?php echo site_url('InventoryController/ViewProducts'); ?>">
-                <input type="text" name="asd" placeholder="Search by ID">
-                <input type="submit" value="Search">
-            </form>
-        </div>
-
-        <div class="add-btn">
-            <button id="AddProductbtn">
-                <i class="fas fa-plus-circle"></i> Add Product
-            </button>
-
-            <div id="AddProductModal" class="modal">
-                <div class="flex-center">
-                    <div class="modal-content">
-                        <!-- <span class="close">&times;</span> -->
-                        <form method="post" action="<?php echo site_url('InventoryController/add_prod'); ?>"
-                            enctype="multipart/form-data" class="form-container">
-                            <!-- <h2>Purchase</h2> -->
-                            <label for="ProductImage"><i class="fas fa-image"></i> Product Image:</label>
-                            <input type="file" name="Product_image" required>
-
-                            <input type="hidden" name="ProductId" id="ProductId" required
-                                style="border: 1px solid lightgray;">
-
-                            <label for="ProductName"><i class="fas fa-cube"></i> Product Name:</label>
-                            <input type="text" name="ProductName" id="ProductName" required
-                                style="border: 1px solid lightgray;">
-
-                            <label for="Category"><i class="fas fa-tags"></i> Category:</label>
-                            <select name="Category" id="Category" required
-                                style="border: 1px solid lightgray; width: 100%; height: 45px;">
-                                <option>Select a category</option>
-                                <option value="Slippers">Slippers</option>
-                                <option value="Rubber Shoes">Rubber Shoes</option>
-                                <option value="Black Shoes">Black Shoes</option>
-                            </select>
-
-                            <label for="Price"><i class="fas fa-money-bill"></i> Price:</label>
-                            <input type="text" name="Price" id="Price" required style="border: 1px solid lightgray;">
-
-                            <!-- <label for="Quantity"><i class="fas fa-sort-numeric-up"></i> Quantity:</label>
-                            <input type="text" name="Quantity" id="Quantity" required> -->
-
-                            <div>
-                                <input type="submit" value="SAVE"
-                                    style="display: inline-block; background-color: #007bff; color: #fff; border: none; border-radius: 4px; padding: 8px 16px; margin-right: 10px; cursor: pointer;">
-                                <input type="button" value="CANCEL" onclick="closeModal()"
-                                    style="display: inline-block; background-color: #dc3545; color: #fff; border: none; border-radius: 4px; padding: 8px 16px; cursor: pointer; width: 360px; margin-top: 5px;">
-                            </div>
+        <table>
+            <tr>
+                <h1 style="text-align: center; padding: 10px; font-size: 30px; font-weight: bold; margin: 0;">Inventory
+                    Management</h1>
+            </tr>
+            <tr style="width: 100%; background-color:transparent">
+                <td style="width: 65%">
+                    <button id="AddProductbtn" style="background-color: #ffc107; color: black; cursor: pointer; width: 160px;
+            padding: 10px; border: none; border-radius: 5px;">
+                        <i class=" fas fa-plus-circle"></i> Add Product
+                    </button>
+                </td>
+                <td style="width: 35%">
+                    <div class="search-form">
+                        <form method="get" action="<?php echo site_url('InventoryController/ViewProducts'); ?>">
+                            <input type="text" name="asd" placeholder="Search by ID">
+                            <input type="submit" value="Search">
                         </form>
                     </div>
+                </td>
+            </tr>
+        </table>
+
+        <div id="AddProductModal" class="modal">
+            <div class="flex-center">
+                <div class="modal-content">
+                    <!-- <span class="close">&times;</span> -->
+                    <form method="post" action="<?php echo site_url('InventoryController/add_prod'); ?>"
+                        enctype="multipart/form-data" class="form-container">
+                        <!-- <h2>Purchase</h2> -->
+                        <label for="ProductImage"><i class="fas fa-image"></i> Product Image:</label>
+                        <input type="file" name="Product_image" required>
+
+                        <input type="hidden" name="ProductId" id="ProductId" required
+                            style="border: 1px solid lightgray;">
+
+                        <label for="ProductName"><i class="fas fa-cube"></i> Product Name:</label>
+                        <input type="text" name="ProductName" id="ProductName" required
+                            style="border: 1px solid lightgray;">
+
+                        <label for="Category"><i class="fas fa-tags"></i> Category:</label>
+                        <select name="Category" id="Category" required
+                            style="border: 1px solid lightgray; width: 100%; height: 45px;">
+                            <option>Select a category</option>
+                            <option value="Slippers">Slippers</option>
+                            <option value="Rubber Shoes">Rubber Shoes</option>
+                            <option value="Black Shoes">Black Shoes</option>
+                        </select>
+
+                        <label for="Price"><i class="fas fa-money-bill"></i> Price:</label>
+                        <input type="text" name="Price" id="Price" required style="border: 1px solid lightgray;">
+
+                        <!-- <label for="Quantity"><i class="fas fa-sort-numeric-up"></i> Quantity:</label>
+                            <input type="text" name="Quantity" id="Quantity" required> -->
+
+                        <div>
+                            <input type="submit" value="SAVE"
+                                style="display: inline-block; background-color: #007bff; color: #fff; border: none; border-radius: 4px; padding: 8px 16px; margin-right: 10px; cursor: pointer;">
+                            <input type="button" value="CANCEL" onclick="closeModal()"
+                                style="display: inline-block; background-color: #dc3545; color: #fff; border: none; border-radius: 4px; padding: 8px 16px; cursor: pointer; width: 360px; margin-top: 5px;">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

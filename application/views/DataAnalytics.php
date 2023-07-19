@@ -71,8 +71,8 @@
         var salesPrices = [];
 
         for (var i = 0; i < salesData.length; i++) {
-            salesDates.push(salesData[i].DATE);
-            salesPrices.push(salesData[i].Price);
+            salesDates.push(salesData[i].Date);
+            salesPrices.push(salesData[i].TotalPrice);
         }
 
         var salesChartCtx = document.getElementById('salesChart').getContext('2d');
@@ -103,7 +103,7 @@
         var expensesTotalPrices = [];
 
         for (var i = 0; i < expensesData.length; i++) {
-            expensesNames.push(expensesData[i].Product_name);
+            expensesNames.push(expensesData[i].ItemName);
             expensesTotalPrices.push(expensesData[i].TotalPrice);
         }
 

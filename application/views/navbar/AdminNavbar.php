@@ -203,12 +203,12 @@
             <div class="dropdown-content">
                 <a href="<?php echo site_url('InventoryController/ViewProducts'); ?>"><i class="fas fa-cube"></i>Product</a>
                 <a href="<?php echo site_url('StockController'); ?>"><i class="fas fa-box-open"></i>Stock</a>
-            </div> 
+            </div>  
         </li>
         <div class="section-divider"></div>
         <li><a href="<?php echo site_url('HRController'); ?>"><i class="fas fa-users"></i>Human Resource Management</a></li>
         <div class="section-divider"></div>
-        <li><a href="<?php echo site_url('DataAnalyticsController'); ?>"><i class="fas fa-chart-bar"></i>Data Analytics</a></li>
+        <li><a href="<?php echo site_url('DataAnalyticsController/AccountingReport'); ?>"><i class="fas fa-chart-bar"></i>Data Analytics</a></li>
         <div class="section-divider"></div>
         <li><a href="<?php echo site_url('SettingController'); ?>"><i class="fas fa-cog"></i>Settings</a></li>
         <div class="section-divider"></div>
