@@ -18,16 +18,19 @@
             padding-top: 80px;
         }
 
-        .table-auto {
-            width: 100%;
-            border-collapse: collapse;
+        .card {
+            background-color: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 0.75rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
-        .table-auto th,
-        .table-auto td {
-            border: 1px solid #e2e8f0;
-            padding: 0.75rem;
-            text-align: left;
+        .card-content {
+            flex-grow: 1;
         }
 
         .text-blue-500 {
@@ -48,30 +51,20 @@
     <div id="contents">
         <h1 style="text-align: center; padding: 10px; font-size: 30px; font-weight: bold; margin: 0;">Setting</h1>
         <!-- Inserted code starts -->
-        <table class="table-auto mt-5">
-            <thead>
-                <tr>
-                    <th class="px-10 py-2">No</th>
-                    <th class="px-10 py-2">Student Name</th>
-                    <th class="px-10 py-2">URL</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($records as $record) : ?>
-                    <tr>
-                        <td class="border px-10 py-2"><?php echo $record['No']; ?></td>
-                        <td class="border px-10 py-2"><?php echo $record['Student Name']; ?></td>
-                        <td class="border px-10 py-2">
-                            <?php if (!empty($record['URL'])) : ?>
-                                <a href="http://<?php echo $record['URL']; ?>" class="text-blue-500" target="_blank">
-                                    <?php echo $record['URL']; ?>
-                                </a>
-                            <?php endif; ?>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+        <?php foreach ($records as $record) : ?>
+            <div class="card">
+                <div class="card-content">
+                    <strong>No:</strong> <?php echo $record['No']; ?><br>
+                    <strong>Student Name:</strong> <?php echo $record['Student Name']; ?><br>
+                    <?php if (!empty($record['URL'])) : ?>
+                        <strong>URL:</strong>
+                        <a href="http://<?php echo $record['URL']; ?>" class="text-blue-500" target="_blank">
+                            <?php echo $record['URL']; ?>
+                        </a>
+                    <?php endif; ?>
+                </div>
+            </div>
+        <?php endforeach; ?>
         <!-- Inserted code ends -->
     </div>
 </body>
