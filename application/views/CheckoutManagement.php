@@ -165,7 +165,7 @@
         }
 
         .navbar {
-            background-color: #f2f2f2;
+           
             padding: 10px;
             max-width: 910px;
             display: flex;
@@ -202,7 +202,7 @@
     <div id="contents">
         <div class="content">
             <h1
-                style="text-align: center; padding: 10px; font-size: 30px; max-width: 910px; font-weight: bold; margin: 0; background-color: #ffc107;">
+                style="text-align: center; padding: 10px; font-size: 30px; max-width: 910px; font-weight: bold; margin: 0; ">
                 Product List
             </h1>
 

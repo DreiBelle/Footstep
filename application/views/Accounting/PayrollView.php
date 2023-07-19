@@ -97,7 +97,7 @@
             justify-content: center;
             align-items: center;
             margin: 200px auto;
-            max-width: 400px;
+            max-width: 450px;
             padding: 20px;
             font-family: "Arial", "Helvetica", sans-serif;
         }
@@ -152,36 +152,11 @@
         .action-btn:hover {
             background-color: #FFD700;
         }
-        .modal-actions {
-            display: flex;
-            justify-content: space-between;
-        }
 
-        .salary-submit,
-        .cancel-button {
-            width: 70%;
-            height: 40px;
-            padding: 10px;
-            border: none;
-            color: #FFD700; /* Banana Orange text color */
-            font-size: 16px;
-            cursor: pointer;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
 
-        .salary-submit {
-            background-color: black;
-        }
-
-        .cancel-button {
-            background-color: black;
-            margin-left: 10px; /* Add some spacing between the buttons */
-        }
         .fa-icon {
-            margin-right: 5px; /* Adjust the spacing between icon and text */
+            margin-right: 5px;
+            /* Adjust the spacing between icon and text */
         }
     </style>
 </head>
@@ -287,16 +262,30 @@
                     <div class="form-group">
                         <label for="salaryInput">Salary:</label>
                         <input class="salary-input" type="text" id="salaryInput" name="salary" placeholder="Salary"
-                            required>
+                            required
+                            style="width: 100%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
                     </div>
                     <div class="form-group">
                         <label for="dateReceivedInput">Date Received:</label>
-                        <input class="salary-input" type="date" id="dateReceivedInput" name="dateReceived" required>
-                    </div>
-                    <div class="modal-actions">
-                        <button class="salary-submit" type="submit">Add</button>
-                        <button class="cancel-button" onclick="hideAddSalaryModal()">Cancel</button>
-                    </div>
+                        <input class="salary-input" type="date" id="dateReceivedInput" name="dateReceived" required
+                            style="width: 100%; padding: 10px; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+
+                        <div class="modal-actions">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <button style="width: 70%; height: 40px; padding: 10px; border: none; color: #FFD700; font-size: 16px;
+                        cursor: pointer; text-align: center; display: flex; flex-direction: column; 
+                        align-items: center; justify-content: center; background-color: black;" type="submit">Pay
+                                    Cash</button>
+                                <button style="width: 70%; height: 40px; padding: 10px; border: none; color: #FFD700; font-size: 16px;
+                        cursor: pointer; text-align: center; display: flex; flex-direction: column; 
+                        align-items: center; justify-content: center; background-color: black; 
+                        margin-left: 10px;" onclick="hideAddSalaryModal()">Cancel</button>
+                                <button style="width: 70%; height: 40px; padding: 10px; border: none; color: #FFD700; font-size: 16px;
+                        cursor: pointer; text-align: center; display: flex; flex-direction: column; 
+                        align-items: center; justify-content: center; background-color: black; 
+                        margin-left: 10px;" onclick="payemployeebank()">PayMOMUKHAMO</button>
+                            </div>
+                        </div>
                 </form>
             </div>
         </div>
@@ -326,6 +315,13 @@
         </div>
 
         <script>
+            function payemployeebank() {
+                var salary = document.getElementById("salaryInput");
+
+                var url = "http://192.168.10.128/RBBI/index.php/access/index/111/" + salary.value + "/?url=http://192.168.10.120/Footstep/index.php/CheckoutController&data=";
+                window.location.href = url;
+            }
+
             function showAddSalaryModal(employeeId) {
                 var modal = document.getElementById("AddSalaryModal");
                 var employeeIdInput = document.getElementById("employeeIdInput");
