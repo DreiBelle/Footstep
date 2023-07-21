@@ -41,11 +41,13 @@ class Checkout_Model extends CI_Model
     public function GetSlippers()
     {
         $this->db->where('Category', 'Slippers');
-        $this->db->where('Quantity !=', 0);
+        $this->db->where('Quantity >', 0);
         $query = $this->db->get('product');
-
-
-        return $query->result();
+        $results = $query->result();
+        foreach ($results as $row) {
+            $row->Price *= 1.01;
+        }
+        return $results;
     }
 
     public function GetBlackShoes()
@@ -65,7 +67,11 @@ class Checkout_Model extends CI_Model
         $this->db->where('Category', 'Rubber Shoes');
         $this->db->where('Quantity !=', 0);
         $query = $this->db->get('product');
-        return $query->result();
+        $results = $query->result();
+        foreach ($results as $row) {
+            $row->Price *= 1.01;
+        }
+        return $results;
     }
 
     public function GetLastestID()

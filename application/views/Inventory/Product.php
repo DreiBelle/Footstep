@@ -392,10 +392,10 @@
                             style="border: 1px solid lightgray;">
                         <div>
                             <button type='button' onclick="paytobank()"
-                                style="display: inline-block; background-color: #007bff; color: #fff; border: none; border-radius: 4px; padding: 8px 16px; margin-right: 10px; cursor: pointer;">PAY
+                                style="display: inline-block; background-color: #007bff; color: #fff; border: none; border-radius: 4px; padding: 8px 16px; margin-right: 10px; cursor: pointer; width: 360px; margin-top: 5px;">
                                 CARD</button>
                             <input type="submit" value="CASH"
-                                style="display: inline-block; background-color: #007bff; color: #fff; border: none; border-radius: 4px; padding: 8px 16px; margin-right: 10px; cursor: pointer;">
+                                style="display: inline-block; background-color: #007bff; color: #fff; border: none; border-radius: 4px; padding: 8px 16px; margin-right: 10px; cursor: pointer; margin-top: 5px; ">
                             <input type="button" value="CANCEL" onclick="closeForm()"
                                 style="display: inline-block; background-color: #dc3545; color: #fff; border: none; border-radius: 4px; padding: 8px 16px; cursor: pointer; width: 360px; margin-top: 5px;">
                         </div>
