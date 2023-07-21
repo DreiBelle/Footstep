@@ -315,7 +315,7 @@
 
             <div id="paymentModal" class="paymentModal">
                 <div class="paymentmodal-content">
-                    <span class="close-icon">&times;</span> <!-- X button -->
+                    <!-- <span class="close-icon">&times;</span>  -->
                     <h4>Choose Payment Method</h4>
                     <label for="cashBtn">
                         <input type="radio" id="cashBtn" name="paymentMethod">
@@ -328,7 +328,6 @@
                     </label>
                 </div>
             </div>
-
 
 
 
