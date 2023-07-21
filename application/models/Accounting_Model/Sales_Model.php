@@ -25,6 +25,7 @@ class Sales_Model extends CI_Model
 
     public function GetAllSales()
     {
+        $this->db->order_by('ID', 'asc');
         $query = $this->db->get('sales');
         return $query->result();
     }

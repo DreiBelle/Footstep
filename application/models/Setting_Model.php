@@ -5,7 +5,7 @@ class Setting_Model extends CI_Model
     public function getRecords()
     {
         return [
-            ['No' => 1, 'Student Name' => 'ACOBA, ERWIN', 'URL' => ''],
+            ['No' => 1, 'Student Name' => 'ACOBA, ERWIN', 'URL' => '192.168.10.95/clickers'],
             ['No' => 2, 'Student Name' => 'ALLAS, KENETH', 'URL' => '192.168.10.72/Monterey'],
             ['No' => 3, 'Student Name' => 'AMORIN, RODRIGO', 'URL' => '192.168.10.65/FiveStarBus'],
             ['No' => 4, 'Student Name' => 'BALADAD, JOHN', 'URL' => '192.168.10.75/LBC'],
@@ -25,7 +25,7 @@ class Setting_Model extends CI_Model
             ['No' => 18, 'Student Name' => 'SIERRA, RC', 'URL' => '192.168.10.186/pldt'],
             ['No' => 19, 'Student Name' => 'UDAUNDO, WINNER', 'URL' => '192.168.10.169/7-11'],
             ['No' => 20, 'Student Name' => 'VICENTE, JERICHO', 'URL' => '192.168.10.92/pandayan'],
-            ['No' => 21, 'Student Name' => 'YU, ANDREI', 'URL' => '192.168.10.224/saberinn'],
+            ['No' => 21, 'Student Name' => 'YU, ANDREI', 'URL' => '192.168.10.224/pcinet'],
             ['No' => 22, 'Student Name' => 'ASIS, DARYNNE', 'URL' => '192.168.10.111/catholicchurch'],
             ['No' => 23, 'Student Name' => 'BUNGUBUNG, NEPH', 'URL' => '192.168.10.103/MangInasal'],
             ['No' => 24, 'Student Name' => 'ERANA, KAT KAT', 'URL' => '192.168.10.199/MisterDonut'],

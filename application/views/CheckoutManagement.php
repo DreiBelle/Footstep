@@ -165,7 +165,7 @@
         }
 
         .navbar {
-           
+           margin-left: -530px;
             padding: 10px;
             max-width: 910px;
             display: flex;
@@ -192,6 +192,10 @@
             text-decoration: none;
             color: orange;
         }
+
+        .close-icon {
+            margin-left: 400px;
+        }
     </style>
 </head>
 
@@ -202,8 +206,8 @@
     <div id="contents">
         <div class="content">
             <h1
-                style="text-align: center; padding: 10px; font-size: 30px; max-width: 910px; font-weight: bold; margin: 0; ">
-                Product List
+                style="text-align: left; padding: 10px; font-size: 30px; max-width: 910px; font-weight: bold; margin: 0; ">
+                Sales
             </h1>
 
             <div class="navbar">
@@ -441,7 +445,7 @@
                 var newRow = document.createElement('tr');
 
                 var itemIdCell = document.createElement('td');
-                itemIdCell.width = '90%';
+                itemIdCell.width = '80%';
                 itemIdCell.style.borderBottom = '1px solid black';
                 itemIdCell.style.borderCollapse = 'collapse';
                 itemIdCell.textContent = item.name;
@@ -450,11 +454,14 @@
                 var quantityCell = document.createElement('td');
                 quantityCell.textContent = item.quantity;
                 quantityCell.style.borderBottom = '1px solid black';
+                quantityCell.style.margin = '300px';
+                quantityCell.width = '10%';
                 newRow.appendChild(quantityCell);
 
                 var priceCell = document.createElement('td');
                 priceCell.textContent = item.price.toFixed(2);
                 priceCell.style.borderBottom = '1px solid black';
+                priceCell.width = '10%';
                 newRow.appendChild(priceCell);
 
                 var removeButton = document.createElement('td');

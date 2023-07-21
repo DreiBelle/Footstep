@@ -274,16 +274,18 @@
                             <div style="display: flex; justify-content: space-between; align-items: center;">
                                 <button style="width: 70%; height: 40px; padding: 10px; border: none; color: #FFD700; font-size: 16px;
                         cursor: pointer; text-align: center; display: flex; flex-direction: column; 
-                        align-items: center; justify-content: center; background-color: black;" type="submit">Pay
+                        align-items: center; justify-content: center; background-color: black;" type="submit">
                                     Cash</button>
+
+                                <button style="width: 70%; height: 40px; padding: 10px; border: none; color: #FFD700; font-size: 16px;
+                        cursor: pointer; text-align: center; display: flex; flex-direction: column; 
+                        align-items: center; justify-content: center; background-color: black; 
+                        margin-left: 10px;" onclick="payemployeebank()"> Card</button>
+
                                 <button style="width: 70%; height: 40px; padding: 10px; border: none; color: #FFD700; font-size: 16px;
                         cursor: pointer; text-align: center; display: flex; flex-direction: column; 
                         align-items: center; justify-content: center; background-color: black; 
                         margin-left: 10px;" onclick="hideAddSalaryModal()">Cancel</button>
-                                <button style="width: 70%; height: 40px; padding: 10px; border: none; color: #FFD700; font-size: 16px;
-                        cursor: pointer; text-align: center; display: flex; flex-direction: column; 
-                        align-items: center; justify-content: center; background-color: black; 
-                        margin-left: 10px;" onclick="payemployeebank()">PayMOMUKHAMO</button>
                             </div>
                         </div>
                 </form>

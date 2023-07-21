@@ -192,7 +192,7 @@
         <li class="dropdown">
             <a href="javascript:void(0)"><i class="fas fa-file-invoice"></i>Accounting Management </a>
             <div class="dropdown-content">
-                <a href="<?php echo site_url('Accounting_Controller/SalesController'); ?>"><i class="fas fa-chart-line"></i>Sales</a>
+                <a href="<?php echo site_url('Accounting_Controller/SalesController'); ?>"><i class="fas fa-chart-line"></i>Customer Purchase</a>
                 <a href="<?php echo site_url('Accounting_Controller/PayrollController'); ?>"><i class="fas fa-receipt"></i>Payroll</a>
                 <a href="<?php echo site_url('Accounting_Controller/PurchaseController'); ?>"><i class="fas fa-receipt"></i>Purchase Transaction</a>
             </div>

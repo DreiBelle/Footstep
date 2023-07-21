@@ -25,9 +25,11 @@ class Purchase_Model extends CI_Model
 
     public function GetAllExpenses()
     {
+        $this->db->order_by('ItemID', 'asc');
         $query = $this->db->get('expenses');
         return $query->result();
     }
+    
 
 }
 

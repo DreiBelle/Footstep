@@ -1,10 +1,9 @@
-
-
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 
-class Checkout_Model extends CI_Model {
+class Checkout_Model extends CI_Model
+{
     public function GetData()
     {
         $query = $this->db->get('product');
@@ -12,7 +11,7 @@ class Checkout_Model extends CI_Model {
     }
 
 
-    
+
     public function AddStock($ID, $data)
     {
         $this->db->where('Product_id', $ID);
@@ -38,21 +37,27 @@ class Checkout_Model extends CI_Model {
     {
         return $this->db->insert('purchase', $data);
     }
-  
+
     public function GetSlippers()
     {
         $this->db->where('Category', 'Slippers');
         $this->db->where('Quantity !=', 0);
         $query = $this->db->get('product');
+
+
         return $query->result();
     }
 
     public function GetBlackShoes()
     {
         $this->db->where('Category', 'Black Shoes');
-        $this->db->where('Quantity !=', 0);
+        $this->db->where('Quantity >', 0);
         $query = $this->db->get('product');
-        return $query->result();
+        $results = $query->result();
+        foreach ($results as $row) {
+            $row->Price *= 1.01;
+        }
+        return $results;
     }
 
     public function GetRubberShoes()
@@ -72,6 +77,5 @@ class Checkout_Model extends CI_Model {
         return $nextID;
     }
 }
-    
-?>
 
+?>
