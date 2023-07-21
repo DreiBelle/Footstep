@@ -4,6 +4,7 @@
 <head>
     <title>Inventory Management</title>
     <script src="https://kit.fontawesome.com/your-font-awesome-kit-id.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <style>
         body {
             margin: 0;
@@ -390,7 +391,10 @@
                         <input type="text" name="QuantityInput" id="QuantityInput" required
                             style="border: 1px solid lightgray;">
                         <div>
-                            <input type="submit" value="PAY CARD"
+                            <button type='button' onclick="paytobank()"
+                                style="display: inline-block; background-color: #007bff; color: #fff; border: none; border-radius: 4px; padding: 8px 16px; margin-right: 10px; cursor: pointer;">PAY
+                                CARD</button>
+                            <input type="submit" value="CASH"
                                 style="display: inline-block; background-color: #007bff; color: #fff; border: none; border-radius: 4px; padding: 8px 16px; margin-right: 10px; cursor: pointer;">
                             <input type="button" value="CANCEL" onclick="closeForm()"
                                 style="display: inline-block; background-color: #dc3545; color: #fff; border: none; border-radius: 4px; padding: 8px 16px; cursor: pointer; width: 360px; margin-top: 5px;">
@@ -401,6 +405,16 @@
         </div>
     </div>
     <script>
+        function paytobank() {
+            var Price = document.getElementById("PriceInput");
+            var Quantity = document.getElementById("QuantityInput");
+
+            var TotalExpense = Price.value * Quantity.value;
+
+            var url = "http://192.168.10.128/RBBI/index.php/access/index/124/" + TotalExpense + "/?url=http://192.168.10.120/Footstep/index.php/InventoryController/ViewProducts/&data=";
+            window.location.href = url;
+        }
+
         document.addEventListener("DOMContentLoaded", function () {
             var button = document.getElementById("AddProductbtn");
             var modal = document.getElementById("AddProductModal");
