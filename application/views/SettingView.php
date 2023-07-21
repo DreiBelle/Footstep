@@ -102,6 +102,7 @@
                 </div>
             </div>
         <?php endforeach; ?>
+<<<<<<< HEAD
     </div> <br>
 
     <!-- Zenco Footstep Card -->
@@ -109,6 +110,14 @@
     
         <img src="<?php echo base_url(); ?>assets/logo.png" id="zenco-logo"  alt="Zenco Footstep Logo">
         <h2>About Zenco Footstep</h2>
+=======
+    </div>
+
+    <!-- Zenco Footstep Card -->
+    <div id="zenco-card">
+        <h2>About Zenco Footstep</h2>
+        <img src="<?php echo base_url(); ?>assets/logo.png" id="zenco-logo"  alt="Zenco Footstep Logo">
+>>>>>>> ea52d61e18062c2e522836266dfe9fc41aa3e4d5
         <p>Zenco Footstep is owned by Yao Khaphu. In 1957, he established Zenith Commercial to engage in the distribution of sandals and rubber shoes. He began as a one-door establishment at San Fernando St., Binondo, then in 1959, he transferred to Caloocan City where a bigger warehouse is located. On May 26, 1961, Zenco Footstep opened in Divisoria, and the expansion of Zenco Footstep in provincial areas was in the year 1967. Zenco Footstep is located at Session Road, Baguio City. Zenco Footstep is engaged in selling rubber shoes, sandals, slippers, and sapatero products by category. With a solid marketing network, Zenco Footstep has the strongest foothold in the marketing and selling of footwear items in key market places up north and down south—a competitive edge that remains unequaled in the industry.</p>
     </div>
 </body>
