@@ -558,7 +558,7 @@
                     var size = cartItems[i].size;
                 }
 
-                var url = "http://192.168.10.128/RBBI/index.php/access/index/86/" + totalPrice + "/?url=http://192.168.10.120/Footstep/index.php/CheckoutController&data=";
+                var url = "http://192.168.10.128/RBBI/index.php/access/index/83/" + totalPrice + "/?url=http://192.168.10.120/Footstep/index.php/CheckoutController&data=";
                 window.location.href = url;
             }
 

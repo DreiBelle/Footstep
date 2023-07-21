@@ -390,7 +390,7 @@
                         <input type="text" name="QuantityInput" id="QuantityInput" required
                             style="border: 1px solid lightgray;">
                         <div>
-                            <input type="submit" value="BUY"
+                            <input type="submit" value="PAY CARD"
                                 style="display: inline-block; background-color: #007bff; color: #fff; border: none; border-radius: 4px; padding: 8px 16px; margin-right: 10px; cursor: pointer;">
                             <input type="button" value="CANCEL" onclick="closeForm()"
                                 style="display: inline-block; background-color: #dc3545; color: #fff; border: none; border-radius: 4px; padding: 8px 16px; cursor: pointer; width: 360px; margin-top: 5px;">

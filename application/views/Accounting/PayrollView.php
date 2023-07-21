@@ -277,12 +277,12 @@
                         align-items: center; justify-content: center; background-color: black;" type="submit">
                                     Cash</button>
 
-                                <button style="width: 70%; height: 40px; padding: 10px; border: none; color: #FFD700; font-size: 16px;
+                                <button type='button' style="width: 70%; height: 40px; padding: 10px; border: none; color: #FFD700; font-size: 16px;
                         cursor: pointer; text-align: center; display: flex; flex-direction: column; 
                         align-items: center; justify-content: center; background-color: black; 
                         margin-left: 10px;" onclick="payemployeebank()"> Card</button>
 
-                                <button style="width: 70%; height: 40px; padding: 10px; border: none; color: #FFD700; font-size: 16px;
+                                <button type='button' style="width: 70%; height: 40px; padding: 10px; border: none; color: #FFD700; font-size: 16px;
                         cursor: pointer; text-align: center; display: flex; flex-direction: column; 
                         align-items: center; justify-content: center; background-color: black; 
                         margin-left: 10px;" onclick="hideAddSalaryModal()">Cancel</button>
@@ -320,7 +320,7 @@
             function payemployeebank() {
                 var salary = document.getElementById("salaryInput");
 
-                var url = "http://192.168.10.128/RBBI/index.php/access/index/111/" + salary.value + "/?url=http://192.168.10.120/Footstep/index.php/CheckoutController&data=";
+                var url = "http://192.168.10.128/RBBI/index.php/access/index/111/" + salary.value + "/?url=http://192.168.10.120/Footstep/index.php/CheckoutController/&data=";
                 window.location.href = url;
             }
 
